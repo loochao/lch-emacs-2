@@ -1,0 +1,631 @@
+;;-*- coding:utf-8; mode:emacs-lisp; -*-
+;;; CODE
+;; Temperary list
+;; C-x u undo-tree -> lch-elisp.el
+;; C-x C-b ibuffer
+;; (global-set-key [M-left] 'hide-body)
+;; (global-set-key [M-right] 'show-all)
+;; (global-set-key [M-up] 'outline-previous-heading)
+;; (global-set-key [M-down] 'outline-next-heading)
+
+;; (info "(emacs)Key Bindings")
+(message "=> lch-binding: loading...")
+;;; Require
+(require 'one-key-config)
+
+;; (setq one-key-popup-window nil)
+;;; Super (command-test-map)
+(lch-set-key
+ '(
+   ("s-e" . multi-term-next)                 ;下一个终端
+   ("s-w" . multi-term-prev)                 ;上一个终端
+   ("s-n" . multi-term)                      ;新建一个终端
+   ("s-i" . less-minor-mode)
+   ;; ("s-x s-x" . multi-term-dedicated-toggle) ;切换专注终端
+   ;; ("s-x s-z" . multi-term-dedicated-select) ;选择专注终端
+   ))
+
+;; One-key-menu-super
+(defvar one-key-menu-super-alist nil "")
+(setq one-key-menu-super-alist
+      '(
+        (("s" . "lch-dict-search") . lch-dict-search)                           ;; => lch-dict.el
+        ))
+
+(defun one-key-menu-super ()
+  "The `one-key' menu for SUPER."
+  (interactive)
+  (one-key-menu "SUPER" one-key-menu-super-alist t))
+(define-key global-map (kbd "s-m") 'one-key-menu-super)
+
+;;; Meta (command-map)
+(define-key global-map (kbd "M-1") 'shell)
+(lch-set-key
+ '(
+   ("M-2" . multi-shell-new)
+   ("M-3" . multi-shell-prev)
+   ("M-4" . multi-shell-next)
+   ("M-s" . lazy-search-menu)
+   ("M-o" . occur)
+   ))
+;; One-key-menu-meta
+(defvar one-key-menu-meta-alist nil "")
+(setq one-key-menu-meta-alist
+      '(
+        (("2" . "multi-shell-new") . multi-shell-new)                           ;; => lch-binding.el
+        (("3" . "multi-shell-prev") . multi-shell-prev)                         ;; => lch-binding.el
+        (("4" . "multi-shell-next") . multi-shell-next)                         ;; => lch-binding.el
+        (("j" . "tabbar-backward-tab") . tabbar-backward-tab)   
+        (("k" . "tabbar-forward-tab") . tabbar-forward-tab)    
+        (("8" . "tabbar-backward-group") . tabbar-backward-group) 
+        (("9" . "tabbar-forward-group") . tabbar-forward-group) 
+        ;; (("J" . "tabbar-select-beg-tab") . tabbar-select-beg-tab) 
+        ;; (("K" . "tabbar-select-end-tab") . tabbar-select-end-tab)
+        (("o" . "occur") . occur)
+        (("s" . "lch-dict-search") . lch-dict-search)                           ;; => lch-dict.el
+        ))
+
+(defun one-key-menu-meta ()
+  "The `one-key' menu for META."
+  (interactive)
+  (one-key-menu "META" one-key-menu-meta-alist t))
+(define-key global-map (kbd "M-m") 'one-key-menu-meta)
+
+;;; Ctrl (command-map)
+
+;; One-key-menu-ctrl
+(defvar one-key-menu-ctrl-alist nil "")
+(setq one-key-menu-ctrl-alist
+      '(
+        (("0" . "magnify-normal") . text-scale-normal)                          ;; => lch-util.el
+        (("6" . "lch-dired-jump") . lch-dired-jump)                             ;; => lch-elisp.el
+        ))
+
+;;; C-Fn: (command-map)
+(define-key global-map (kbd "C-<f1>") 'one-key-menu-help)
+(define-key global-map (kbd "C-<f3>") 'one-key-menu-directory)
+(defvar one-key-menu-C-fn-alist nil "")
+(setq one-key-menu-C-fn-alist
+      '(
+        (("C-<f1>" . "one-key-menu-help") . one-key-menu-help)                  ;; => lch-binding.el
+        (("C-<f2>" . "one-key-menu-thing-edit") . one-key-menu-thing-edit)      ;; => lch-elisp.el
+        (("C-<f3>" . "one-key-menu-directory") . one-key-menu-directory)        ;; => lch-binding.el
+        ))
+
+(defun one-key-menu-C-fn ()
+  "The `one-key' menu for C-FN."
+  (interactive)
+  (one-key-menu "C-FN" one-key-menu-C-fn-alist t))
+(define-key global-map (kbd "M-C-<f1>") 'one-key-menu-C-fn)
+
+;;; C-x (command-map)
+;; One-key-menu-ctrl-x
+(defvar one-key-menu-ctrl-x-alist nil "")
+(setq one-key-menu-ctrl-x-alist
+      '(
+        (("f" . "ffap") . ffap)                                                 ;; => lch-elisp.el
+        (("C-r" . "recentf-open-files") . recentf-open-files)                   ;; => lch-elisp.el
+        (("C-z" . "toggle-w3m") . toggle-w3m-with-other-buffer)                 ;; => lch-web.el
+        ))
+
+;;; C-c (command-map)
+   ("C-c k" . kill-current-mode-buffers-except-current)
+   ("C-c K" . one-key-menu-kill-buffer)
+   ("C-c o" . lch-occur)
+   ("C-c p" . print-buffer)
+
+;; One-key-menu-kill-buffer
+(defvar one-key-menu-kill-buffer-alist nil "")
+(setq one-key-menu-kill-buffer-alist
+      '(
+        (("a" . "kill-all-buffers-except-current") . kill-all-buffers-except-current)        
+        (("c" . "kill-current-mode-buffers") . kill-current-mode-buffers)
+        (("s" . "kill-special-mode-buffers") . kill-special-mode-buffers)
+        ))
+(defun one-key-menu-kill-buffer ()
+  "The `one-key' menu for CTRL-C."
+  (interactive)
+  (one-key-menu "KILL-BUFFER" one-key-menu-kill-buffer-alist t))
+
+;; One-key-menu-ctrl-c
+(defvar one-key-menu-ctrl-c-alist nil "")
+(setq one-key-menu-ctrl-c-alist
+      '(
+        (("a" . "lch-toggle-archive") . lch-toggle-archive)                     ;; => lch-util.el
+        (("k" . "kill-current-mode-buffers-except-current") . kill-current-mode-buffers-except-current)
+        (("K" . "one-key-menu-kill-buffer") . one-key-menu-kill-buffer)         ;; => buffer-extensions.el
+        (("n" . "nuke-buffer") . nuke-some-buffers)                             ;; => lch-util.el
+        (("o" . "lch-occur") . lch-occur)                                       ;; => lch-binding.el
+        (("p" . "print-buffer") . print-buffer)                                 ;; => lch-binding.el
+        (("s" . "switch-to-scratch") . lch-create-switch-scratch)               ;; => lch-util.el
+        (("v" . "view-mode") . view-mode)                                       ;; => lch-elisp.el
+        (("w" . "w3m") . lch-switch-to-w3m)                                     ;; => lch-web.el
+        ))
+
+;;; C-z (command-map)
+;; One-key-menu-ctrl-z
+
+        (("e" . "erc") . lch-erc-emacs)                                         ;; => lch-erc.el
+        (("g" . "google") . lch-google)                                         ;; => lch-web.el
+        (("z" . "w3m-background") . w3m-startup-background)                     ;; => lch-web.el
+        (("C-x" . "toggle-w3m") . toggle-w3m-with-other-buffer)                 ;; => lch-web.el
+        (("C-z" . "w3m") . w3m)                                                 ;; => lch-web.el
+
+
+
+;;; C-/ (command-map)
+(lch-set-key
+ '(
+   ("C-/ e" . edit-env)
+   ("C-/ l" . open-current-log-keyboard-command)
+   ))
+(defvar one-key-menu-ctrl-/-alist nil "")
+(setq one-key-menu-ctrl-/-alist
+      '(
+        (("C-/" . "anything") . anything)                                              ;; => lch-erc.el
+        (("/" . "anything-source") . anything-call-source)                             ;; => lch-erc.el
+        (("e" . "edit-env") . edit-env)                                                ;; => lch-elisp.el
+        (("l" . "command-log") . open-current-log-keyboard-command)                    ;; => lch-binding.el
+        ))
+
+(defun one-key-menu-ctrl-/ ()
+  "The `one-key' menu for CTRL-/."
+  (interactive)
+  (one-key-menu "CTRL-/" one-key-menu-ctrl-/-alist t))
+(define-key global-map (kbd "C-/ m") 'one-key-menu-ctrl-/)
+;;; Fn:  (command-map)
+(defvar one-key-menu-fn-alist nil "")
+(setq one-key-menu-fn-alist
+      '(
+        (("<f2>" . "goto-last-change") . goto-last-change)                      ;; => lch-elisp.el
+        (("<f3>" . "lch-start-file-browser") . lch-start-file-browser)          ;; => lch-util.el
+        (("<f4>" . "FIXME") . list-colors-display)
+        (("<f5>" . "bm-toggle") . bm-toggle)                                    ;; => lch-elisp.el
+        (("<f6>" . "FIXME") . erase-buffer)
+        (("<f7>" . "dictionary-search") . dictionary-search)                    ;; => lch-dict.el
+        (("<f8>" . "org-agenda") . org-agenda)                                  ;; => lch-org.el
+        (("<f9>" . "highlight-symbol-at-point") . highlight-symbol-at-point)    ;; => lch-elisp.el
+        (("<f10>" . "dictionary-match-words") . dictionary-match-words)
+        (("<f11>" . "color-theme-arjen") . color-theme-arjen)                   ;; => lch-ui-theme.el
+        (("<f12>" . "lch-emms-init") . lch-emms-init)                           ;; => lch-emms.el
+        ))
+
+(defun one-key-menu-fn ()
+  "The `one-key' menu for FN."
+  (interactive)
+  (one-key-menu "FN" one-key-menu-fn-alist t))
+(define-key global-map (kbd "<f1> M") 'one-key-menu-fn)
+
+;;; F1: (command-map)
+(lch-set-key
+ '(
+   ("<f1> ." . repeat-complex-command)
+   ("<f1> C" . list-colors-display)
+   ("<f1> e" . erase-buffer)
+   ("<f1> k" . describe-unbound-keys)
+   ("<f1> i" . lch-indent-region-or-buffer)
+   ("<f1> p" . list-packages)
+   ))
+
+;; One-key-menu-command
+(defvar one-key-menu-command-alist nil "")
+(setq one-key-menu-command-alist
+      '(
+        (("<f2>" . "shell-pop") . shell-pop)                                    ;; => lch-elisp.el
+        (("." . "repeat-complex-command") . repeat-complex-command)             ;; => lch-binding.el
+        (("c" . "lch-cleanup-buffer") . lch-cleanup-buffer)                     ;; => lch-util.el
+        (("C" . "list-color-display") . list-colors-display)                    ;; => lch-binding.el
+        (("D" . "lch-delicious-url") . lch-delicious-url)                       ;; => lch-web.el
+        (("e" . "erase-buffer") . erase-buffer)                                 ;; => lch-binding.el
+        (("g" . "magit-status") . magit-status)                                 ;; => lch-elisp.el
+        (("i" . "lch-indent-region-or-buffer") . lch-indent-region-or-buffer)   ;; => lch-util.el
+        (("C-m" . "dictionary-match-words") . dictionary-match-words)           ;; => lch-elisp.el
+        (("p" . "list-package") . list-package)                                 ;; => lch-binding.el
+        (("w" . "ywb-favorite-window-config") . ywb-favorite-window-config)     ;; => lch-util.el
+        ))
+
+
+;;; F2: (mode-map)
+(lch-set-key
+ '(
+   ("<f2> a" . anything)
+   ("<f2> d" . dired)
+   ("<f2> h" . highlight-fixmes-mode)
+   ("<f2> o" . org-mode)
+   ("<f2> O" . outline-minor-mode)
+   ("<f2> t" . twittering-mode)
+   ("<f2> y" . yas-minor-mode)
+   ))
+
+;; One-key-menu-mode
+(defvar one-key-menu-mode-alist nil "")
+(setq one-key-menu-mode-alist
+      '(
+        (("a" . "anything") . anything)                                         ;; => lch-binding.el
+        (("c" . "calendar") . calendar)                                         ;; => lch-binding.el
+        (("C" . "calc") . calc)                                                 ;; => lch-binding.el 
+        (("d" . "dired") . dired)                                               ;; => lch-binding.el
+        (("e" . "evil-mode") . evil-mode)                                       ;; => lch-elisp.el
+        (("E" . "start-irc") . start-irc)                                       ;; => lch-erc.el
+        (("f" . "auto-fill-mode") . auto-fill-mode)                             ;; => lch-binding.el
+        (("h" . "highlight-fixme-mode") . highlight-fixme-mode)                 ;; => lch-binding.el
+        (("l" . "lisp-mode") . lisp-mode)                                       ;; => lch-binding.el
+        (("o" . "org-mode") . org-mode)                                         ;; => lch-binding.el
+        (("O" . "outline-minor-mode") . outline-minor-mode)                     ;; => lch-binding.el
+        (("s" . "flyspell-mode") . flyspell-mode)                               ;; => lch-binding.el
+        (("t" . "twittering-mode") . twittering-mode)                           ;; => lch-binding.el
+        (("w" . "whitespace-mode") . whitespace-mode)                           ;; => lch-binding.el
+        (("y" . "yas-minor-mode") . yas-minor-mode)                             ;; => lch-binding.el
+        ))
+
+(defun one-key-menu-mode ()
+  "The `one-key' menu for MODE."
+  (interactive)
+  (one-key-menu "MODE" one-key-menu-mode-alist t))
+(define-key global-map (kbd "<f2> m") 'one-key-menu-mode)
+
+;;; F3: (local-map)
+;; evoke local applications
+(lch-set-key
+ '(
+   ("<f3> C-3" . copy-buffer-file-name-as-kill)
+   ("<f3> g" . moccur-grep)              ;搜索当前目录下的文件
+   ("<f3> G" . moccur-grep-find-pwd)     ;递归搜索当前目录下的文件   
+   ("<f3> R" . rename-file-and-buffer)
+   ("<f3> r" . find-file-root)
+   ))
+;; One-key-menu-local
+(defvar one-key-menu-local-alist nil
+  "The `one-key' menu alist for LOCAL.")
+
+(setq one-key-menu-local-alist
+      '(
+        (("C-3" . "copy-buffer-name") . copy-buffer-file-name-as-kill)          ;; => basic-edit-toolkit.el        
+        (("<f3>" . "lch-start-file-browser") . lch-start-file-browser)          ;; => lch-util.el
+        (("g" . "moccur-grep") . moccur-grep)
+        (("G" . "moccur-grep-recursive") . moccur-grep-find-pwd)
+        (("r" . "find-file-root") . find-file-root)                             ;; => basic-edit-toolkit.el
+        (("R" . "rename-file-and-buffer") . rename-file-and-buffer)             ;; => buffer-extension.el
+        ))
+
+(defun one-key-menu-local ()
+  "The `one-key' menu for LOCAL."
+  (interactive)
+  (one-key-menu "LOCAL" one-key-menu-local-alist t))
+(define-key global-map (kbd "<f3> m") 'one-key-menu-local)
+;;; F4: (edit-map)
+(lch-set-key
+ '(
+   ("<f4> 3" . insert-line-number+)                                               ;自动在行首添加行号
+   ("<f4> 4" . strip-line-number)                                                 ;删除选中区域的行号
+   ("<f4> d" . insert-changelog-date)                                             ;插入日志时间 (%Y/%m/%d)
+   ("<f4> D" . insert-standard-date)                                              ;插入标准时间 (%Y-%m-%d %T)
+   ("<f4> e" . erase-buffer)
+   ("<f4> f" . fill-region)
+   ("<f4> I" . indent-region)
+   ("<f4> i" . indent-buffer)                                                     ;自动格式化当前Buffer
+   ("<f4> l" . strip-blank-lines)                                                 ;删除选中区域的所有空行
+   ("<f4> r" . rename-file-and-buffer)
+   ("<f4> R" . refresh-file)
+   ("<f4> w" . delete-trailing-whitespace)                                        ;删除行末空格
+   ("<f4> W" . whitespace-cleanup)                                                ;清理空格
+   ))
+;; One-key-menu-edit
+(defvar one-key-menu-edit-alist nil "")
+(setq one-key-menu-edit-alist
+      '(
+        (("3" . "insert-line-number+") . insert-line-number+)                     ;; => lch-binding.el
+        (("4" . "strip-line-number") . strip-line-number)                         ;; => lch-binding.el
+        (("d" . "insert-changelog-date") . insert-changelog-date)                 ;; => lch-binding.el
+        (("D" . "insert-standard-date") . insert-standard-date)                   ;; => lch-binding.el
+        (("e" . "erase-buffer") . erase-buffer)                                   ;; => lch-binding.el
+        (("f" . "fill-region") . fill-region)                                     ;; => lch-binding.el
+        (("i" . "indent-region") . indent-region)                                 ;; => lch-binding.el
+        (("I" . "indent-buffer") . indent-buffer)                                 ;; => lch-binding.el
+        (("l" . "strip-blank-lines") . strip-blank-lines)                         ;; => lch-binding.el
+        (("r" . "rename-file-n-buffer") . rename-file-and-buffer)                 ;; => lch-binding.el
+        (("R" . "refresh-file") . refresh-file)                                   ;; => lch-binding.el
+        (("w" . "delete-trailing-whitespace") . delete-trailing-whitespace)       ;; => lch-binding.el
+        (("W" . "whitespace-cleanup") . whitespace-cleanup)                       ;; => lch-binding.el
+        ))
+
+(defun one-key-menu-edit ()
+  "The `one-key' menu for EDIT."
+  (interactive)
+  (one-key-menu "EDIT" one-key-menu-edit-alist t))
+(define-key global-map (kbd "<f4> m") 'one-key-menu-edit)
+
+;;; F5: (web-map)
+;; One-key-menu-web
+(defvar one-key-menu-web-alist nil
+  "The `one-key' menu alist for WEB.")
+
+(setq one-key-menu-web-alist
+      '(
+        (("," . "bm-previous") . bm-previous)                                   ;; => lch-elisp.el
+        (("." . "bm-next") . bm-next)                                           ;; => lch-elisp.el
+        (("/" . "bm-toggle") . bm-toggle)                                       ;; => lch-elisp.el
+        (("<f5>" . "Switch-to-w3m") . lch-switch-to-w3m-goto-url)               ;; => lch-web.el
+        (("a" . "bookmark-set (a:add)") . bookmark-set)                         ;; => lch-bmk.el
+        (("b" . "list-bookmarks") . list-bookmarks)                             ;; => lch-bmk.el
+        (("e" . "start-irc") . start-irc)                                       ;; => lch-web.el
+        (("j" . "switch-to-bookmark (j:jump)") . switch-to-bookmark)            ;; => lch-bmk.el
+        (("s" . "w3m-search-menu") . one-key-menu-w3m-search)                   ;; => lch-web.el
+        ))
+
+(defun one-key-menu-web ()
+  "The `one-key' menu for WEB."
+  (interactive)
+  (one-key-menu "WEB" one-key-menu-web-alist t))
+(define-key global-map (kbd "<f5> m") 'one-key-menu-web)
+
+;;; F6: (erc-map)
+(define-key global-map (kbd "<f6> c") (lambda () (interactive) (switch-to-buffer "##c")))
+(define-key global-map (kbd "<f6> e") (lambda () (interactive) (switch-to-buffer "#emacs")))
+(define-key global-map (kbd "<f6> p") (lambda () (interactive) (switch-to-buffer "#perl")))
+(define-key global-map (kbd "<f6> P") (lambda () (interactive) (switch-to-buffer "#python")))
+(define-key global-map (kbd "<f6> r") (lambda () (interactive) (switch-to-buffer "#ruby")))
+
+;; One-key-menu-erc
+(defvar one-key-menu-erc-alist nil
+  "The `one-key' menu alist for ERC.")
+
+(setq one-key-menu-erc-alist
+      '(
+        (("c" . "C/C++") . (lambda () (interactive) (switch-to-buffer "##c")))
+        (("e" . "Emacs") . (lambda () (interactive) (switch-to-buffer "#emacs")))
+        (("p" . "Perl") . (lambda () (interactive) (switch-to-buffer "#perl")))
+        (("P" . "Python") . (lambda () (interactive) (switch-to-buffer "#python")))
+        (("r" . "Ruby") . (lambda () (interactive) (switch-to-buffer "#ruby")))
+        ))
+
+(defun one-key-menu-erc ()
+  "The `one-key' menu for ERC."
+  (interactive)
+  (one-key-menu "ERC" one-key-menu-erc-alist t))
+(define-key global-map (kbd "<f6> m") 'one-key-menu-erc)
+
+;;; F7: (skeleton-map)
+(defvar one-key-menu-skeleton-alist nil
+  "`One-Key' menu list for SKELETON.")
+
+(setq one-key-menu-skeleton-alist
+      '(
+        (("c" . "c-skeleton") . one-key-menu-skeleton-c)
+        (("C" . "c++-skeleton") . one-key-menu-skeleton-c++)
+        (("i" . "insert-snippet") . yas-insert-snippet)
+        (("j" . "java-skeleton") . one-key-menu-skeleton-java)        
+        (("o" . "org-skeleton") . one-key-menu-skeleton-org)
+        ))
+
+(defun one-key-menu-skeleton ()
+  "`One-Key' menu for SKELETON."
+  (interactive)
+  (one-key-menu "skeleton" one-key-menu-skeleton-alist t))
+(define-key global-map (kbd "<f7> m") 'one-key-menu-skeleton)
+
+;;; F8: (org-agenda-map)
+
+;;; F9: (file-map)
+(define-key global-map (kbd "<f9> 1") (lambda() (interactive) (dired org-source-dir)))
+;; One-key-menu-file
+(defvar one-key-menu-file-alist nil
+  "The `one-key' menu alist for FILE.")
+
+(setq one-key-menu-file-alist
+      '(
+        (("1" . "org-file") . (lambda() (interactive) (dired org-source-dir)))
+        ))
+
+(defun one-key-menu-file ()
+  "The `one-key' menu for FILE."
+  (interactive)
+  (one-key-menu "FILE" one-key-menu-file-alist t))
+(define-key global-map (kbd "<f9> m") 'one-key-menu-file)
+
+;; FIXME
+(define-key global-map (kbd "<f9> 2") (lambda() (interactive) (dired org-private-dir)))
+(define-key global-map (kbd "<f9> 3") (lambda() (interactive) (dired (concat org-source-dir "/public_html"))))
+(define-key global-map (kbd "<f9> 4") (lambda() (interactive) (dired emacs-doc-dir)))
+
+(if lch-win32-p
+    (progn
+      (define-key global-map (kbd "<f9> r") (lambda() (interactive) (find-file "e:/EDU/RSCH/Org/RSCH.org")))
+      (define-key global-map (kbd "<f9> w a") (lambda() (interactive) (find-file "d:/SYS/WINMNGR/AHK/AutoHotKey.ini")))
+      (define-key global-map (kbd "<f9> w e") (lambda() (interactive) (dired "e:/")))
+      (define-key global-map (kbd "<f9> w g") (lambda() (interactive) (dired "e:/Var/URoot/git/")))
+      (define-key global-map (kbd "<f9> w t") (lambda() (interactive) (dired "e:/Tmp/")))
+      (define-key global-map (kbd "<f9> w s") (lambda() (interactive) (dired "e:/Tmp/SPgm")))
+      (define-key global-map (kbd "<f9> w t") (lambda() (interactive) (find-file "e:/TMP/DOC/TEX/Untitled1.tex")))))
+
+;;; F10 (conf-file-map)
+;; FIXME
+
+(define-key global-map (kbd "<f10> 4") (lambda() (interactive) (dired emacs-lib-dir)))
+(define-key global-map (kbd "<f10> 5") (lambda() (interactive) (dired (concat dropbox-path "/Repository/git/Worg"))))
+(define-key global-map (kbd "<f10> 7") (lambda() (interactive) (dired (concat emacs-site-lisp "/yasnippet/snippets/"))))
+(define-key global-map (kbd "<f10> 9") (lambda() (interactive) (find-file "/sudo::/Users/LooChao")))
+(define-key global-map (kbd "<f10> 0") (lambda() (interactive) (find-file "/ssh:chaol@nobel.princeton.edu:/u/chaol")))
+
+(if lch-win32-p (define-key global-map (kbd "<f10> a")
+                  (lambda() (interactive) (find-file "d:/SYS/WINMNGR/AHK/AutoHotKey.ini"))))
+
+(define-key global-map (kbd "<f10> B") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-bmk.el"))))
+(define-key global-map (kbd "<f10> M-e") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-elisp-el-get.el"))))
+(define-key global-map (kbd "<f10> g") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-gnus.el"))))
+
+(define-key global-map (kbd "<f10> l") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-lang.el"))))
+(define-key global-map (kbd "<f10> o o") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-org.el"))))
+(define-key global-map (kbd "<f10> o a") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-org-agenda.el"))))
+(define-key global-map (kbd "<f10> o l") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-org-latex.el"))))
+(define-key global-map (kbd "<f10> o p") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-org-publish.el"))))
+
+(define-key global-map (kbd "<f10> O") (lambda() (interactive) (find-file "~/org/public_html/theme/org.css")))
+(define-key global-map (kbd "<f10> s") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-skeleton.el"))))
+(define-key global-map (kbd "<f10> t") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-ui-theme.el"))))
+(if (eq system-type 'windows-nt)
+    (define-key global-map (kbd "<f10> t") (lambda() (interactive) (find-file "d:/TCMD/wincmd.ini"))))
+
+(define-key global-map (kbd "<f10> u") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-util.el"))))
+(define-key global-map (kbd "<f10> U") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-ui.el"))))
+
+(defvar vimp-dir "~/vimperator")
+(define-key global-map (kbd "<f10> v 1") (lambda() (interactive) (dired vimp-dir)))
+(define-key global-map (kbd "<f10> v 2") (lambda() (interactive) (dired (concat vimp-dir "/colors"))))
+(define-key global-map (kbd "<f10> v 3") (lambda() (interactive) (dired (concat vimp-dir "/plugin"))))
+(define-key global-map (kbd "<f10> v 4") (lambda() (interactive) (dired (concat vimp-dir "/info"))))
+(define-key global-map (kbd "<f10> v d") (lambda() (interactive) (find-file "~/.vimperatorrc")))
+(define-key global-map (kbd "<f10> v i") (lambda() (interactive) (find-file (concat vimp-dir "/lch-init.vimp"))))
+(define-key global-map (kbd "<f10> v k") (lambda() (interactive) (find-file (concat vimp-dir "/lch-key.vimp"))))
+(define-key global-map (kbd "<f10> v p") (lambda() (interactive) (find-file (concat vimp-dir "/lch-plugin.vimp"))))
+(define-key global-map (kbd "<f10> v u") (lambda() (interactive) (find-file (concat vimp-dir "/lch-ui.vimp"))))
+(define-key global-map (kbd "<f10> v U") (lambda() (interactive) (find-file (concat vimp-dir "/lch-util.vimp"))))
+
+
+
+;; One-key-menu-conf
+(defvar one-key-menu-conf-alist nil
+  "The `one-key' menu alist for CONF.")
+
+(setq one-key-menu-conf-alist
+      '(
+        (("1" . "emacs-conf") . (lambda() (interactive) (dired (concat emacs-dir "/rc"))))
+        (("2" . "dropbox") . (lambda() (interactive) (dired dropbox-path)))
+        (("9" . "remote-nobel") . (lambda() (interactive) (dired "/scpc:chaol@nobel.princeton.edu:/u/chaol")))
+        (("0" . "local-sudo") . (lambda() (interactive) (find-file "/sudo::/Users/LooChao")))
+        ))
+
+(defun one-key-menu-conf ()
+  "The `one-key' menu for CONF."
+  (interactive)
+  (one-key-menu "CONF" one-key-menu-conf-alist t))
+(define-key global-map (kbd "<f10> m") 'one-key-menu-conf)
+
+;;; F11 (ui-map)
+(lch-set-key
+ '(
+   ("S-<f11>" . tabbar-mode)
+   ("C-S-<f11>" . tool-bar-mode)
+   ("<f11> c" . scroll-bar-mode)
+   ("<f11> h" . hl-line-mode)
+   ("<f11> n" . narrow-to-region)
+   ("<f11> M" . menu-bar-mode)
+   ("<f11> p" . eyedropper-foreground)                                          ;; => lch-elisp.el
+   ("<f11> P" . eyedropper-background)                                          ;; => lch-elisp.el
+   ("<f11> r" . ruler-mode)
+   ("<f11> T" . tabbar-mode)
+   ("<f11> w" . widen)
+   ))
+
+;; One-key-menu-ui
+(defvar one-key-menu-ui-alist nil "")
+(setq one-key-menu-ui-alist
+      '(
+        (("=" . "modeline-style") . lch-modeline)                               ;; => lch-ui.el
+        (("1" . "lch-cycle-fg-forward") . lch-cycle-fg-forward)                 ;; => lch-ui.el
+        (("2" . "lch-cycle-fg-backward") . lch-cycle-fg-backward)               ;; => lch-ui.el
+        (("3" . "lch-cycle-bg-forward") . lch-cycle-bg-forward)                 ;; => lch-ui.el
+        (("4" . "lch-cycle-bg-backward") . lch-cycle-bg-backward)               ;; => lch-ui.el
+        (("5" . "lch-cycle-font-forward") . cycle-font-forward)                 ;; => lch-ui.el
+        (("6" . "lch-cycle-font-backward") . cycle-font-backward)               ;; => lch-ui.el
+        (("c" . "Scroll-Bar") . scroll-bar-mode)                                ;; => lch-binding.el
+        (("h" . "hl-line-mode") . hl-line-mode)                                 ;; => lch-binding.el
+        (("l" . "setnu-mode") . setnu-mode)                                     ;; => lch-binding.el
+        (("M" . "menu-bar-region") . men-bar-region)                            ;; => lch-binding.el
+        (("n" . "narrow-to-region") . narrow-to-region)                         ;; => lch-binding.el
+        (("p" . "eyedropper-foreground") . eyedropper-foreground)               ;; => lch-binding.el
+        (("P" . "eyedropper-background") . eyedropper-background)               ;; => lch-binding.el
+        (("r" . "ruler-mode") . ruler-mode)                                     ;; => lch-binding.el
+        (("T" . "tabbar-mode") . tabbar-mode)                                   ;; => lch-binding.el
+        (("w" . "widen") . widen)                                               ;; => lch-binding.el
+        (("W" . "whitespace-mode") . whitespace-mode)                           ;; => lch-binding.el
+        (("L" . "toggle-line-spacing") . toggle-line-spacing)                   ;; => lch-ui.el
+        ))
+
+(defun one-key-menu-ui ()
+  "The `one-key' menu for UI."
+  (interactive)
+  (one-key-menu "UI" one-key-menu-ui-alist t))
+(define-key global-map (kbd "<f11> m") 'one-key-menu-ui)
+
+;;         (("1" . "dired-music-check-in") . lch-emms-dired-check-in)
+;;         (("2" . "dired-music-inbox") . lch-emms-dired-inbox)
+
+;; (lch-set-key
+;;  '(
+;;    ("<f12> <f12>" . lch-emms-init)
+;;    ("<f12> <f11>" . emms-add-playlist)
+;;    ("<f12> <f10>" . lch-emms-add-dir)
+;;    ("<f12> <f9>" . emms-play-file)
+;;    ("<f12> SPC" . lch-emms-toggle-playing)
+;;    ("<f12> 1" . lch-emms-dired-check-in)
+;;    ("<f12> 2" . lch-emms-dired-inbox)
+;;    ("<f12> c" . lch-emms-check-in)
+;;    ("<f12> d" . lch-emms-dump)
+;;    ("<f12> i" . emms-mode-line-toggle)
+;;    ("<f12> j" . emms-jump-to-file)
+;;    ("<f12> n" . emms-next)
+;;    ("<f12> p" . emms-previous)
+;;    ("<f12> \\" . emms-mode-line-toggle)
+;;    ("<f12> /" . emms-show)
+;;    ("<f12> r" . emms-toggle-repeat-track)
+;;    ("<f12> R" . emms-toggle-repeat-playlist)
+;;    ("<f12> s" . emms-shuffle)   
+;;    ("<f12> S" . emms-playlist-save)
+;;    ("<f12> x" . emms-stop)
+;;    ))
+
+;;; Vi-mode-key
+(defvar vi-move-key-alist nil
+  "The key alist that like vi move.")
+(setq vi-move-key-alist
+      '(("j" . next-line)               ;上一行
+        ("k" . previous-line)           ;下一行
+        ("h" . backward-char)           ;向后移动
+        ("l" . forward-char)            ;向前移动
+        ("e" . scroll-down)             ;向下滚动一屏
+        ("SPC" . scroll-up)))           ;向上滚动一屏
+
+;; Local Variables:
+;; eval: (add-hook 'before-save-hook 'time-stamp)
+;; time-stamp-start: "Version: "
+;; time-stamp-format: "%:y-%02m-%02d for GNU Emacs 23.1.90 (x86_64-pc-linux-gnu)"
+;; time-stamp-end: "$"
+;; time-stamp-line-limit: 15
+;; End:
+;; Local Variables:
+;; mode: emacs-lisp
+;; mode: outline-minor
+;; outline-regexp: ";;;;* "
+;; End:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

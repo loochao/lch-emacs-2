@@ -1,0 +1,84 @@
+;;; Tip-of-the-day
+(setq tip-of-the-day-file "~/Dropbox/.emacs.d/TIP.md")
+(defun lch-totd()
+  (interactive)
+   (random t)
+   (let ((stars "*****************************")
+         (tip (with-temp-buffer 
+                (insert-file-contents tip-of-the-day-file)
+                (goto-line (1+ (random
+                                (count-lines (point-min)
+                                             (point-max)))))
+                (buffer-substring (point) (line-end-position)))))
+     (momentary-string-display
+      (concat "\n\n" stars "\n"
+              "Tip of the Day\n"
+              tip "\n"
+              stars "\n\n")
+      (window-start) ?\r
+      "Hit any key when done reading")))
+
+;;; Open-archive-file
+(defun lch-toggle-archive ()
+  (interactive)
+  (let* ((buf (buffer-file-name (current-buffer)))
+	 (dir (file-name-directory buf))
+	 (file (file-name-nondirectory buf))
+	 (archive-buffer (concat dir "archive/" file "_archive"))
+	 (origin-buffer (concat (concat (replace-regexp-in-string "/archive" "" dir)) 
+				(replace-regexp-in-string "_archive" "" buf)  )))
+    (if (string-match "archive" buf)
+        (progn (if (file-exists-p origin-buffer)
+                   (switch-to-buffer (find-file origin-buffer))
+                 (switch-to-buffer (get-buffer-create archive-buffer))))
+      (progn (if (file-exists-p archive-buffer)
+		 (switch-to-buffer (find-file archive-buffer))
+	       (switch-to-buffer (get-buffer-create archive-buffer))
+	       (emacs-lisp-mode))))))
+(define-key global-map (kbd "C-c a") 'lch-toggle-archive)
+
+
+;;; Line-number
+;; Works, but not useful.
+(defun insert-line-number (beg end &optional start-line)
+  "Insert line numbers into buffer."
+  (interactive "r")
+  (save-excursion
+    (let ((max (count-lines beg end))
+          (line (or start-line 1))
+          (counter 1))
+      (goto-char beg)
+      (while (<= counter max)
+        (insert (format "%0d " line))
+        (beginning-of-line 2)
+        (incf line)
+        (incf counter)))))
+
+(defun insert-line-number+ ()
+  "Insert line number into buffer."
+  (interactive)
+  (if mark-active
+      (insert-line-number (region-beginning) (region-end) (read-number "Start line: "))
+    (insert-line-number (point-min) (point-max))))
+
+(defun strip-line-number()
+  "Strip all line number in select area of buffer,
+  if not select any area, then strip all line number of buffer."
+  (interactive)
+  (strip-regular-expression-string "^[0-9]+")
+  (message "Have strip line number. ^_^"))
+
+(defun strip-regular-expression-string (regular-expression)
+  "Strip all string that match REGULAR-EXPRESSION in select area of buffer.
+If not select any area, then strip current buffer"
+  (interactive)
+  (let ((begin (point-min))             ;initialization make select all buffer
+        (end (point-max)))
+    (if mark-active                     ;if have select some area of buffer, then strip this area
+        (setq begin (region-beginning)
+              end (region-end)))
+    (save-excursion                                              ;save position
+      (goto-char end)                                            ;goto end position
+      (while (and (> (point) begin)                              ;when above beginning position
+                  (re-search-backward regular-expression nil t)) ;and find string that match regular expression
+        (replace-match "" t t)))))

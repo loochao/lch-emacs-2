@@ -1,0 +1,146 @@
+;;-*- coding:utf-8; -*-
+
+;;; EMMS.EL
+;;
+;; Copyright (c) 2006-2012 Chao LU
+;;
+;; Author: Chao LU <loochao@gmail.com>
+;; URL: http://www.princeton.edu/~chaol
+
+;; This file is not part of GNU Emacs.
+
+;;; Commentary:
+
+;; Under MAC, need to $port install mplayer mp3info(but does not work for CN)!
+;; $port install amixer for volume adjust.
+
+;;; License:
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License
+;; as published by the Free Software Foundation; either version 3
+;; of the License, or (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to the
+;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+;; Boston, MA 02110-1301, USA.
+
+;;; Code
+(message "=> lch-emms: loading...")
+
+
+(defun lch-emms-lyric ()
+  (interactive)
+  (let* ((music-path (emms-track-name (emms-playlist-current-selected-track)))
+         (music-folder (file-name-directory music-path))
+         (music-file (file-name-nondirectory music-path)))
+    (looking-at "虾小米" music-file)
+    (message (format "%s" music-file))
+)
+)
+
+(setq emms-lyric-display-p nil)
+
+
+(when (eq system-type 'windows-nt)
+  (setq emms-player-mplayer-command-name
+        "d:/MM/MPLAYER/MPlayer/MPLAYER.EXE"))
+
+(require 'emms-extension)
+
+;; (set-face-foreground 'emms-playlist-selected-face "magenta")
+;; (set-face-foreground 'emms-playlist-track-face  "green")
+
+(setq emms-playlist-sort-function
+      'emms-playlist-sort-by-natural-order)
+
+;;; auto-complete
+;; (ac-config-default)
+;; (ac-flyspell-workaround)
+;; (setq ac-auto-show-menu t)
+;; (setq ac-candidate-menu-min 0)
+;; (setq ac-use-menu-map t)
+;; (setq ac-quick-help-delay 1)
+;; (setq ac-quick-help-height 60)
+;; (setq ac-disable-inline t)
+;; (setq ac-show-menu-immediately-on-auto-complete t)
+
+;;; Modeline
+
+
+;; (setq emms-mode-line-titlebar-function 'lch-emms-mode-line-playlist-current)
+
+;; 
+
+;; (setq emms-mode-line-icon-before-format "["
+;;       emms-mode-line-format "%s]"
+;;       emms-lyrics-display-format "%s"
+;;       emms-mode-line-icon-color "black")
+
+;;; Encoding
+(setq emms-info-mp3info-coding-system 'gbk
+      emms-cache-file-codixng-system 'utf-8
+      emms-i18n-default-coding-system '(utf-8 . utf-8))
+
+(require 'emms-info-libtag)
+(setq emms-info-functions '(emms-info-libtag))
+
+
+;;; Utils
+(defvar lch-music-playlist-dir "~/Dropbox/Music/Playlist")
+
+(setq emms-source-playlist-default-format 'native)
+(defun lch-emms-play-check-in ()
+  (interactive)
+  (with-current-buffer "*Music*"
+    (if (yes-or-no-p "Save current playlist? ")
+        (emms-playlist-save 'native
+                            (concat lch-music-playlist-dir "-" (format-time-string "%Y-%m-%d" (current-time)))))
+    (emms-playlist-clear))
+  (emms-add-directory-tree lch-music-check-in)
+  (emms-next))
+
+;; FIXME
+(defun emms-playlist-mode-copy-filename-as-kill ()
+  "Like `dired-copy-filename-as-kill'."
+  (interactive)
+  (save-window-excursion
+    (emms-jump-to-file)
+    (dired-copy-filename-as-kill)))
+(define-key emms-playlist-mode-map (kbd "w") 'emms-playlist-mode-copy-filename-as-kill)
+
+;; FIXME
+;; TO-CHECK-IN
+
+
+
+
+
+
+;;; Emms-Dir
+(defvar lch-emms-inbox "/Volumes/DATA/Music/INBOX" "")
+(defun lch-emms-dired-inbox ()
+  (interactive)
+  (dired lch-emms-inbox))
+
+(defun lch-emms-dired-check-in ()
+  (interactive)
+  (dired "~/Dropbox/Music/CHECKIN"))
+
+;;; Provide
+(provide 'lch-emms)
+
+(message "~~ lch-emms: done.")
+
+;;; Local Vars.
+;; Local Variables:
+;; mode: emacs-lisp
+;; mode: outline-minor
+;; outline-regexp: ";;;;* "
+;; End:

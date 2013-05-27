@@ -1,0 +1,181 @@
+;;-*- coding:utf-8; mode:emacs-lisp; -*-
+
+;>========== DOTEMACS ==========<;
+
+;;; LCH-EMACS
+;;
+;; Copyright (C) 2005 2006 2007 2008 2009 2010 2011 2012 2013
+;; Author: Chao LU <(concat "Loochao" at-symbol "gmail.com")>
+;; Keywords: dotemacs, init, loochao, lch
+;; URL: <>
+;;
+;; This file is NOT part of GNU Emacs.
+;;
+;; $Revision:  $
+;; $Date: 2010-07-08 15:13:00 +0200 (Thu, 08 Jul 2010) $
+;;
+;; This file is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 2, or (at your option)
+;; any later version.
+;;
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+;; Boston, MA 02111-1307, USA.
+;;
+;;; Commentary:
+;;
+;;    ___ _ __ ___   __ _  ___ ___
+;;   / _ \ '_ ` _ \ / _` |/ __/ __|
+;;  |  __/ | | | | | (_| | (__\__ \
+;; (_)___|_| |_| |_|\__,_|\___|___/
+;;
+;;
+;; "Show me your ~/.emacs and I will tell you who you are."
+;;                                                    [Bogdan Maryniuk]
+;;
+;; "Emacs is like a laser guided missile. It only has to be slightly
+;;  mis-configured to ruin your whole day."
+;;                                                       [Sean McGrath]
+;;
+;; "While any text editor can save your files, only Emacs can save your
+;; soul."
+;;                                                     [Per Abrahamsen]
+;; This is where everything starts. Do you remember this place?
+;; It remembers you...
+;;                                                         [Emacs Live]
+;;                _.-^^---....,,--
+;;            _--                  --_
+;;           <          SONIC         >)
+;;           |       BOOOOOOOOM!       |
+;;            \._                   _./
+;;               ```--. . , ; .--'''
+;;                     | |   |
+;;                  .-=||  | |=-.
+;;                  `-=#$%&%$#=-'
+;;                     | ;  :|
+;;            _____.,-#%&$@%#&#~,._____
+
+(message "* --[ Loading my Emacs init file ]--")
+
+;; uptimes
+(setq emacs-load-start-time (current-time))
+
+;;; GLOBAL-CONST
+(defconst lch-win32-p (eq system-type 'windows-nt) "Are we on Windows?")
+(defconst lch-linux-p (eq system-type 'gnu/linux) "Are we on Linux?")
+(defconst lch-mac-p (eq system-type 'darwin) "Are we on Mac")
+
+(if lch-win32-p
+    (defconst emacs-path "~/Dropbox")
+  (defconst emacs-path "~/Dropbox"))
+
+(if lch-win32-p
+    (defconst dropbox-path "~/Dropbox")
+  (defconst dropbox-path "~/Dropbox"))
+
+(defvar emacs-dir (concat emacs-path "/.emacs.d"))
+(setq user-emacs-directory (concat emacs-dir "/"))
+
+
+;;; Quick-start
+;; The configurations in this section are included in other
+;; conf files, but they are gathered here for a feeling to
+;; quickly get into my setting.
+(tool-bar-mode -1)                      
+(scroll-bar-mode -1)
+
+(custom-set-faces
+ '(default
+    ((t (:background "Black" :foreground "Cornsilk"))))
+ 
+ '(mode-line
+   ((t (:foreground "White" :background "DarkRed"
+        :box (:line-width -1 :style released-button)))))
+ 
+ ;; '(mode-line-inactive
+ ;;   ((default (:inherit mode-line))
+ ;;    (((class color) (min-colors 88) (background dark))
+ ;;     (:background "#454545" :foreground "white" :weight light
+ ;;      :box (:line-width -1 :color "#013500" :sytle released-button)))))
+
+ ;; '(mode-line-highlight
+ ;;   ((((class color) (min-colors 88))
+ ;;     (:box (:line-width 1 :color "Green4" :style released-button))))) 
+)
+
+;; Compile conf directory to speed up startup of next time.
+;; (setq font-lock-verbose nil)
+;; (setq byte-compile-verbose nil)
+;; (byte-recompile-directory (concat emacs-dir "/rc"))
+
+;;; Scratch message
+(defvar lch-welcome-messages
+      (if (user-login-name)
+          (list (concat "Hello " (user-login-name) ", somewhere in the world the sun is shining for you right now.\n")
+                (concat "Hello " (user-login-name) ", it's lovely to see you again. I do hope that you're well.\n")
+                (concat "Hello " (user-login-name) ", turn your head towards the sun and the shadows will fall behind you.\n"))
+        (list  "Hello, somewhere in the world the sun is shining for you right now."
+               "Hello, it's lovely to see you again. I do hope that you're well."
+               "Turn your head towards the sun and the shadows will fall behind you.")))
+
+
+(defun lch-welcome-message ()
+  (nth (random (length lch-welcome-messages)) lch-welcome-messages))
+
+(setq initial-scratch-message (concat ";;
+;;     MM\"\"\"\"\"\"\"\"`M
+;;     MM  mmmmmmmM
+;;     M`      MMMM 88d8b.d8b. .d8888b. .d8888b. .d8888b.
+;;     MM  MMMMMMMM 88''88'`88 88'  `88 88'  `\"\" Y8ooooo.
+;;     MM  MMMMMMMM 88  88  88 88.  .88 88.  ...       88
+;;     MM        .M dP  dP  dP `88888P8 '88888P' '88888P'
+;;     MMMMMMMMMMMM
+;;
+;;"  " " (lch-welcome-message)
+))
+
+;; (setq initial-scratch-message (concat ";; " (lch-welcome-message)))
+
+;;; Configurations
+(load (concat emacs-dir "/rc/lch-env.el"))
+(require 'lch-conf)
+;; (require 'lch-startup)
+
+;; CONF From Others
+;; (require 'lch-other-conf)
+
+;; Load CONF Files
+;; This has to be put at the end of dotEmacs
+;; (mapc 'load (directory-files (concat emacs-dir "/rc") t "\\.el\\'"))
+;; If under Windows then load the w3m.el
+;; (add-to-list 'auto-mode-alist '("\\.el2\\'" . emacs-lisp-mode))
+;; (if (and lch-win32-p (file-exists-p (concat emacs-dir "/rc/lch-w3m.el2")))
+;    (load (concat emacs-dir "/rc/lch-w3m.el2")))
+
+;;; Zone
+(defvar lch-disable-zone nil)
+(if (not lch-disable-zone)
+    (add-hook 'term-setup-hook 'zone))
+(setq zone-programs [zone-pgm-putz-with-case zone-pgm-drip zone-pgm-five-oclock-swan-dive])
+
+;; Possible choices
+;; [zone-pgm-random-life zone-pgm-martini-swan-dive
+;;  zone-pgm-drip-fretfully]
+
+;; Local Variables:
+;; coding: utf-8
+;; mode: emacs-lisp
+;; mode: outline-minor
+;; outline-regexp: ";;;;* "
+;; ispell-local-dictionary: "en_US"
+;; byte-compile: nil
+;; End:
+
+;>======== EMACS MAKE A CRAZY SOUL ========<;

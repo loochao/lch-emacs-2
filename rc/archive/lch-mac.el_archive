@@ -1,0 +1,4 @@
+;; Ensure the exec-path honours the shell PATH
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+

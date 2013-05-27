@@ -1,0 +1,192 @@
+;;; Volatile-highlights
+;; Conflict with M-x shell
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
+
+
+;;; Evernote mode
+;; (require 'evernote-mode)
+;; (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8"))
+;; (define-prefix-command 'M0-map)
+;; (add-to-list 'exec-path "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin")
+;; (setenv "PATH" (concat "/System/Library/Frameworks/Ruby.framework/Versions/1.8/usr/bin:" (getenv "PATH")))
+;; (define-key global-map (kbd "M-0") 'M0-map)
+;; (define-key global-map (kbd "M-0 c") 'evernote-create-note)
+;; (define-key global-map (kbd "M-0 o") 'evernote-open-note)
+;; (define-key global-map (kbd "M-0 s") 'evernote-search-notes)
+;; (define-key global-map (kbd "M-0 S") 'evernote-do-saved-search)
+;; (define-key global-map (kbd "M-0 w") 'evernote-write-note)
+;; (define-key global-map (kbd "M-0 p") 'evernote-post-region)
+;; (define-key global-map (kbd "M-0 b") 'evernote-browser)
+
+;;; Desktop
+;; Make emacs open all files in last emacs session.
+;; Desktop is already part of Emacs.
+;; This functionality is provided by desktop-save-mode ("feature"
+;; name: "desktop"). The mode is not on by default in emacs 23, and
+;; has a lot options.
+
+;; By default, it read .emacs.desktop.lock file from the
+;; dir where Emacs starts from, so when evoke Emacs from
+;; FVWM by C-W-2, it reads the file from ~/.
+
+;; Goal: have emacs always auto open the set of opend files in last
+;; session, even if emacs crashed in last session or the OS crashed in
+;; last session. Also, don't bother users by asking questions like "do
+;; you want to save desktop?" or "do you want to override last session
+;; file?", because these are annoying and terms like "session" or
+;; "desktop" are confusing to most users because it can have many
+;; meanings.
+
+;; Some tech detail: set the desktop session file at
+;; user-emacs-directory (default is "~/.emacs.d/.emacs.desktop").  This file
+;; is our desktop file. It will be auto created and or over-written.
+;; if a emacs expert has other desktop session files elsewhere, he can
+;; still use or manage those.
+
+;; Save the desktop file automatically if it already exists.
+;; Use M-x desktop-save once to save the desktop, eachtime you exit Emacs
+;; Or just set (desktop-save-mode 1), so Emacs will save desktop automatically.
+
+(require 'desktop)
+
+                                        ;(setq desktop-path '("~/.emacs.d/"))
+                                        ;(setq desktop-dirname "~/.emacs.d/")
+                                        ;(setq desktop-base-file-name ".emacs-desktop")
+
+(defun desktop-settings-setup()
+  (desktop-save-mode 1)
+  (setq desktop-save t)
+  (setq desktop-load-locked-desktop t)
+  (setq desktop-dirname emacs-var-dir)
+  (setq desktop-path (list emacs-var-dir))
+  (if (file-exists-p (concat desktop-dirname desktop-base-file-name))
+      (desktop-read desktop-dirname)))
+
+(add-hook 'after-init-hook 'desktop-settings-setup)
+
+;; (defun desktop-settings-setup ()
+;;   "Some settings setup for desktop-save-mode."
+;;   (interactive)
+
+;;   ;; At this point the desktop.el hook in after-init-hook was
+;;   ;; executed, so (desktop-read) is avoided.
+;;   (when (not (eq (emacs-pid) (desktop-owner))) ; Check that emacs did not load a desktop yet
+;;     ;; Here we activate the desktop mode
+;;     (desktop-save-mode 1)
+
+;;     ;; The default desktop is saved always
+;;     (setq desktop-save t)
+
+;;     ;; The default desktop is loaded anyway if it is locked
+;;     (setq desktop-load-locked-desktop t)
+
+;;     ;; Set the location to save/load default desktop
+;;     (setq desktop-dirname emacs-var-dir)
+;;     (setq desktop-path (list emacs-var-dir))
+
+;;     ;; Make sure that even if emacs or OS crashed, emacs
+;;     ;; still have last opened files.
+;;     (add-hook 'find-file-hook
+;;               (lambda ()
+;;                 (run-with-timer 5 nil
+;;                                 (lambda ()
+;;                                   ;; Reset desktop modification time so the user is not bothered
+;;                                   (setq desktop-file-modtime (nth 5 (file-attributes (desktop-full-file-name))))
+;;                                   (desktop-save user-emacs-directory)))))
+
+;;     ;; Read default desktop
+;;     (if (file-exists-p (concat desktop-dirname desktop-base-file-name))
+;;     (desktop-read desktop-dirname))
+;;     ;; Add a hook when emacs is closed to we reset the desktop
+;;     ;; modification time (in this way the user does not get a warning
+;;     ;; message about desktop modifications)
+;;     (add-hook 'kill-emacs-hook
+;;               (lambda ()
+;;                 ;; Reset desktop modification time so the user is not bothered
+;;                 (setq desktop-file-modtime (nth 5 (file-attributes (desktop-full-file-name))))))
+;;     )
+;;   )
+
+;; Use Company Backends for Auto-Complete.
+;; (require 'ac-company)
+;; (ac-company-define-source ac-source-company-elisp company-elisp)
+;; (add-hook 'emacs-lisp-mode-hook
+;;        (lambda ()
+;;          (add-to-list 'ac-sources 'ac-source-company-elisp)))
+
+
+
+;;; Highlight-fill-column
+;; (require 'highlight-beyond-fill-column)
+;; (setq highlight-beyond-fill-column-in-modes
+;;       '("emacs-lisp-mode"))
+
+;; Less
+;; (require 'less)
+;; (eval-after-load 'less
+;;   '(progn
+;;      (setq auto-less-exclude-regexp
+;;            (concat auto-less-exclude-regexp
+;;                    "\\|"
+;;                    (regexp-opt '("todo.org"
+;;                                  "outgoing"
+;;                                  "*gud"
+;;                                  "*anything"
+;;                                  ))))
+;;      (setq auto-less-exclude-modes
+;;            (append auto-less-exclude-modes
+;;                    '(proced-mode dired-mode)))
+;;      ))
+;; (global-less-minor-mode 1)
+;; (global-set-key (kbd "C-c v") 'less-minor-mode)
+
+
+
+;;; Flyspell
+;; Resolve conflict between ispell and aspell
+(setq-default ispell-extra-args '("--reverse")) 
+
+;;; Speedbar
+;; 快速访问文件和tags
+(require 'sr-speedbar)
+(setq speedbar-buffers-key-map nil)     ;卸载一些按键
+(setq speedbar-file-key-map nil)
+(lazy-set-key
+ '(
+   ("s-z s-z" . sr-speedbar-toggle)        ;显示/隐藏speedbar
+   ("s-z s-x" . sr-speedbar-select-window) ;选中speedbar窗口
+   ))
+(lazy-set-key
+ '(
+   ;; 导航操作
+   ("f" . speedbar-edit-line)             ;进入当前条目
+   ("C-m" . speedbar-edit-line)           ;进入当前条目
+   ("j" . speedbar-next)                  ;下一行
+   ("k" . speedbar-prev)                  ;上一行
+   ("n" . speedbar-forward-list)          ;下一条目
+   ("p" . speedbar-backward-list)         ;上一条目
+   ("u" . speedbar-forced-contract)       ;跳到上一级
+   ("F" . speedbar-files)                 ;切换文件视图
+   ("B" . speedbar-buffers)               ;切换缓存视图
+   ("q" . sr-speedbar-toggle)             ;退出
+   ;; 树操作
+   ("x" . speedbar-expand-line)           ;展开当前行
+   ("z" . speedbar-contract-line)         ;收缩当前行
+   ("v" . speedbar-toggle-line-expansion) ;切换当前行的状态
+   ;; 文件操作
+   ("g" . speedbar-refresh)             ;刷新
+   ("'" . speedbar-up-directory)        ;上一级目录
+   ("i" . speedbar-item-info)           ;显示信息
+   ("b" . speedbar-item-byte-compile)   ;编译
+   ("l" . speedbar-item-load)           ;加载
+   ("c" . speedbar-item-copy)           ;拷贝
+   ("d" . speedbar-item-delete)         ;删除
+   ("o" . speedbar-item-object-delete)  ;删除对象
+   ("r" . speedbar-item-rename)         ;重命令
+   ("<f7>" . speedbar-create-directory)    ;创建目录
+   ("K" . speedbar-buffer-kill-buffer)  ;关闭当前buffer
+   )
+ speedbar-key-map
+ )
+

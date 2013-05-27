@@ -1,0 +1,10 @@
+(defun lch-irc-quit ()
+  "Disconnects from all irc servers"
+  (interactive)
+  (dolist (buffer (filter-server-buffers))
+    (message "Server buffer: %s" (buffer-name buffer))
+    (with-current-buffer buffer
+      (erc-quit-server "Asta la vista"))
+    (kill-buffer buffer)))
+(define-key global-map (kbd "<f6> q") 'lch-irc-quit)
+

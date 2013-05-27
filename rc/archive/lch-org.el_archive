@@ -1,0 +1,108 @@
+;; (setq org-todo-state-tags-triggers
+;;       (quote (
+;;            ("QUEUE" ("QUEUE" . t))
+;;            ("NEXT"
+;;                ("NEXT" . t) ("QUEUE"))
+;;               ("ACTIVE"
+;;                ("ACTIVE" . t) ("NEXT"))
+;;               ("DONE"
+;;                ("DONE" . t) ("NEXT") ("ACTIVE"))
+;;                )))
+
+;;; Org-Library
+(require 'org-latex)
+(unless (boundp 'org-export-latex-classes)
+  (setq org-export-latex-classes nil))
+(add-to-list 'org-export-latex-classes
+             '("revtex4"
+               "\\documentclass{revtex4}
+                \\usepackage{graphicx}"
+               ("\\section{%s}" . "\\section*{%s}")
+               ("\\subsection{%s}" . "\\subsection*{%s}")
+               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+               ("\\paragraph{%s}" . "\\paragraph*{%s}")
+               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+
+;;; iimage
+(autoload 'iimage-mode "iimage" "Support Inline image minor mode." t)
+(autoload 'turn-on-iimage-mode "iimage" "Turn on Inline image minor mode." t)
+(add-hook 'org-mode-hook 'turn-on-iimage-mode)
+(defun org-toggle-iimage-in-org ()
+  "display images in your org file"
+  (interactive)
+  (if (face-underline-p 'org-link)
+      (set-face-underline-p 'org-link nil)
+      (set-face-underline-p 'org-link t))
+  (iimage-mode))
+
+;; (defun lch-pdf-check-in (fname)
+;;   (interactive "sEnter name of the pdf to check in: ")
+;;   (insert (format "[[pdf:%s][%s]" fname fname)))
+;; (define-key global-map (kbd "C-c h") 'lch-pdf-check-in)
+
+;; (defun org-mode-reftex-setup ()
+;;   (load-library "reftex")
+;;   (and (buffer-file-name) (file-exists-p (buffer-file-name))
+;;        (progn
+;;       ;enable auto-revert-mode to update reftex when bibtex file changes on disk
+;; ;     (global-auto-revert-mode t)
+;;       (reftex-parse-all)
+;;       ;add a custom reftex cite format to insert links
+;;       (reftex-set-cite-format
+;;        '((?b . "[[bib:%l][%l-bib]]")
+;;          (?n . "[[notes:%l][%l-notes]]")
+;;          (?p . "[[papers:%l][%l-paper]]")
+;;          (?t . "%t")
+;;          (?h . "*** %t\n:PROPERTIES:\n:Custom_ID: %l\n:END:\n[[papers:%l][%l-paper]]")))))
+;;   (define-key org-mode-map (kbd "C-c 0") 'reftex-citation))
+;; (add-hook 'org-mode-hook 'org-mode-reftex-setup)
+
+;; Use buffer local setting is better.
+;; (setq org-link-abbrev-alist
+;;       '(("bib" . "~/Dropbox/Research/Research.bib::%s")
+;;      ("notes" . "~/Dropbox/Research/org/Research.org::#%s")
+;;      ("papers" . "~/Dropbox/Research/papers/%s.pdf")))
+
+
+
+;;; Template
+;; #+STARTUP    Overview
+;; #+STARTUP    Odd Hideblocks
+;; #+TITLE:     The title to be shown (default is the buffer name)
+;; #+AUTHOR:    The author (default taken from user-full-name) LooChao
+;; #+EMAIL:     LooChao@gmail.com
+;; #+DATE:
+;; #+LANGUAGE:  Language for HTML
+;; #+TEXT:
+;; #+TODO:
+;; #+TYP_TODO:
+;; #+EXPORT_SELECT_TAGS:
+;; #+EXPORT_EXCLUDE_TAGS:
+;; #+LATEX_HEADER:
+;; #+KEYWORDS:   The page description, e.g. for the XHTML meta tag
+;; #+BIND:
+;; #+INFOJS_OPT: View:info TOC:t Mouse:Underline Buttons:0
+;; #+INFOJS_OPT: Path:http://orgmode.org/org-info.js
+;; #+INFOJS_OPT: Home:index.html Up:index.html
+;; #+OPTIONS:    H:3 Num:nil TOC:t \n:t @:t ::t |:t ^:t *:t TeX:t LaTeX:t
+;; #+OPTIONS:    skip:nil d:t tags:not-in-toc
+;; #+OPTIONS:    *:  Turn on/off emphasized text (bold, italic, underlined).
+;; #+OPTIONS:    f:  Turn on/off footnotes like this[1].
+;; #+OPTIONS:    -:  Turn on/off conversion of special strings.
+;; #+OPTIONS:    ^:  Turn on/off TeX-like syntax for sub- and superscripts.  If
+;; #+OPTIONS:         you write "^:{}", a_{b} will be interpreted, but
+;; #+OPTIONS:         the simple a_b will be left as it is.
+;; #+OPTIONS:    |:  Turn on/off tables
+;; #+OPTIONS:    @:  Turn on/off quoted HTML tags
+;; #+OPTIONS:    <:  Turn on/off inclusion of any time/date stamps like DEADLINES
+;; #+OPTIONS:    d:  Turn on/off inclusion of drawers
+;; #+OPTIONS:    toc:2  d:(HIDE)
+;; #+STYLE:      <link rel="stylesheet" type="text/css" href="./theme/org.css" />
+;; #+SEQ_TODO:   TODO PROPOSED | DONE DEFERRED REJECTED
+;; #+FILETAGS: Cookery
+;; #+setupfile: setup.org
+;; # $Id: kinderuni.org 234 2009-07-12 19:52:12Z stefan $
+;; {{{my-simple-2table(stempel.png, mpilogo.png)}}}
+
+

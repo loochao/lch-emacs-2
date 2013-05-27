@@ -1,0 +1,38 @@
+
+(message "=> lch-conf: loading...")
+
+;; (require 'lch-autoloads)
+(require 'lch-ui)
+(require 'lch-ui-theme)
+(require 'lch-coding)
+(require 'lch-binding)
+(require 'lch-anything)
+;; (require 'lch-one-key)
+;; (require 'lch-mouse)
+(require 'lch-skeleton)
+(require 'lch-alias)
+(require 'lch-util)
+(require 'lch-lang)
+(require 'lch-dict)
+(require 'lch-emms)
+(require 'lch-web)
+(require 'lch-tabbar)
+(require 'lch-auto-mode)
+(require 'lch-var)
+(require 'lch-dired)
+(require 'lch-calendar)
+(require 'lch-shell)
+(require 'lch-bmk)
+(require 'lch-tex)
+(require 'lch-org)
+;; (require 'lch-org-latex)
+(require 'lch-org-export)
+(require 'lch-org-agenda)
+(require 'lch-erc)
+(require 'lch-outline)
+(require 'lch-tramp)
+
+
+
+
+
