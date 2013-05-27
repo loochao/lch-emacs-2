@@ -35,6 +35,29 @@
 (message "=> lch-emms: loading...")
 
 
+(defun emms-first-mark-track ()
+  "Jump to first mark track."
+  (interactive)
+  (let ((original-point (point))
+        (original-column (current-column)))
+    (goto-char (point-min))
+    (if (search-forward-regexp (format "^%c" emms-mark-char) nil t)
+        (move-to-column original-column t)
+      (goto-char original-point)
+      (message "No mark track."))))
+
+(defun emms-last-mark-track ()
+  "Jump to last mark track."
+  (interactive)
+  (let ((original-point (point))
+        (original-column (current-column)))
+    (goto-char (point-max))
+    (if (search-backward-regexp (format "^%c" emms-mark-char) nil t)
+        (move-to-column original-column t)
+      (goto-char original-point)
+      (message "No mark track."))))
+
+
 (defun lch-emms-lyric ()
   (interactive)
   (let* ((music-path (emms-track-name (emms-playlist-current-selected-track)))

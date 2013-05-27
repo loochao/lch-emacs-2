@@ -15,9 +15,10 @@
 
 ;;; CODE
 (message "=> lch-ui: loading...")
-
-;; (require 'rainbow-delimiters)
-;; (global-rainbow-delimiters-mode)
+(require 'lch-key-util)
+;;; Rainbow-delimiter
+(require 'rainbow-delimiters)
+(global-rainbow-delimiters-mode)
 ;;; Maxframe
 (require 'maxframe)
 (add-hook 'window-setup-hook 'maximize-frame t)
@@ -33,6 +34,25 @@
 ;;; Tabbar
 (require 'tabbar)
 (tabbar-mode 1)
+
+(defadvice tabbar-forward (around tabbar-forward-w3m activate)
+  ""
+  (if (derived-mode-p 'w3m-mode)
+      (w3m-next-buffer 1)
+    ad-do-it))
+
+(defadvice tabbar-backward (around tabbar-backward-w3m activate)
+  ""
+  (if (derived-mode-p 'w3m-mode)
+      (w3m-previous-buffer 1)
+    ad-do-it))
+
+(lch-set-key
+ '(("s-k"  . tabbar-backward)
+   ("s-j"    . tabbar-forward)
+   ("s-h"  . tabbar-backward-group)
+   ("s-l"    . tabbar-forward-group))
+ tabbar-mode-map)
 
 ;;; Senu
 ;; line number

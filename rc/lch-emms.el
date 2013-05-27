@@ -18,6 +18,7 @@
 
 ;; Like require lch-conf, emms-setup will load lots of el files.
 (require 'emms-setup)
+(require 'emms-mark)
 
 (emms-default-players)
 ;; NEWEST FEATURE. Use this if you like living on the edge.
@@ -85,6 +86,44 @@
 ;; (require 'emms-lyrics-download)
 ;; (ad-activate 'emms-lyrics-find-lyric)
 ;;; Util
+;; FIXME: emms-mark got some problem (the first char in emms buffer)
+(defun emms-mark-track-and-move-next ()
+  "Mark the current track, and move next track."
+  (interactive)
+  (call-interactively 'emms-mark-track)
+  (call-interactively 'next-line))
+
+(defun emms-mark-unmark-track-and-move-next ()
+  "Unmark the current track, and move next track."
+  (interactive)
+  (call-interactively 'emms-mark-unmark-track)
+  (call-interactively 'next-line))
+
+(defun emms-next-mark-track ()
+  "Jump to next mark track."
+  (interactive)
+  (let ((original-point (point))
+        (original-column (current-column)))
+    (if (bolp)
+        (forward-char +1))
+    (if (search-forward-regexp (format "^%c" emms-mark-char) nil t)
+        (move-to-column original-column t)
+      (goto-char original-point)
+      (message "No next mark track."))))
+
+(defun emms-prev-mark-track ()
+  "Jump to previous mark track."
+  (interactive)
+  (let ((original-point (point))
+        (original-column (current-column)))
+    (if (not (bolp))
+        (beginning-of-line))
+    (if (search-backward-regexp (format "^%c" emms-mark-char) nil t)
+        (move-to-column original-column t)
+      (goto-char original-point)
+      (message "No previous mark track."))))
+
+
 (defun lch-emms-toggle-playing ()
   (interactive)
   (if emms-player-playing-p (emms-pause) (emms-start)))
@@ -205,14 +244,30 @@
 (define-key emms-playlist-mode-map (kbd "<right>") (lambda () (interactive) (emms-seek +10)))
 (define-key emms-playlist-mode-map (kbd "<down>")  (lambda () (interactive) (emms-seek -60)))
 (define-key emms-playlist-mode-map (kbd "<up>")    (lambda () (interactive) (emms-seek +60)))
+
+(define-key emms-playlist-mode-map (kbd ",")  (lambda () (interactive) (emms-seek -10)))
+(define-key emms-playlist-mode-map (kbd ".")  (lambda () (interactive) (emms-seek 10)))
+
 (define-key emms-playlist-mode-map (kbd "'") 'emms-jump-to-file)
 (define-key emms-playlist-mode-map (kbd "SPC") 'lch-emms-toggle-playing)
 (define-key emms-playlist-mode-map (kbd "c") 'lch-emms-check-in)
 (define-key emms-playlist-mode-map (kbd "d") 'lch-emms-dump)
 (define-key emms-playlist-mode-map (kbd "C-6") 'emms-jump-to-file)
+
+(define-key emms-playlist-mode-map (kbd "h")  (lambda () (interactive) (emms-seek -60)))
+(define-key emms-playlist-mode-map (kbd "l")  (lambda () (interactive) (emms-seek 60)))
 (define-key emms-playlist-mode-map (kbd "j") 'next-line)
 (define-key emms-playlist-mode-map (kbd "k") 'previous-line)
 (define-key emms-playlist-mode-map (kbd "C-k") 'emms-playlist-mode-kill-entire-track)
+
+(define-key emms-playlist-mode-map (kbd "m") 'emms-mark-track-and-move-next)
+(define-key emms-playlist-mode-map (kbd "M") 'emms-mark-all)
+(define-key emms-playlist-mode-map (kbd "u") 'emms-mark-unmark-track-and-move-next)
+(define-key emms-playlist-mode-map (kbd "U") 'emms-mark-unmark-all)
+
+(define-key emms-playlist-mode-map (kbd "N") 'emms-next-mark-track)
+(define-key emms-playlist-mode-map (kbd "P") 'emms-prev-mark-track)
+
 (define-key emms-playlist-mode-map (kbd "Q") 'lch-emms-quit)
 (define-key emms-playlist-mode-map (kbd "x") 'emms-stop)
 (define-key emms-playlist-mode-map (kbd "r") 'emms-toggle-repeat-track)

@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Mon May 27 04:57:05 2013
+;; Created Mon May 27 05:49:48 2013
 ;; Desktop file format version 206
 ;; Emacs version 24.3.1
 
@@ -17,10 +17,32 @@
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
 (desktop-create-buffer 206
+  nil
+  ".emacs.d"
+  'dired-mode
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  241
+  '(nil nil)
+  t
+  '("/Users/LooChao/Dropbox/.emacs.d/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "weibo"
+  'dired-mode
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  809
+  '(nil nil)
+  t
+  '("/Users/LooChao/Dropbox/.emacs.d/lisp/weibo/")
+  nil)
+
+(desktop-create-buffer 206
   "/Users/LooChao/Dropbox/.emacs.d/rc/lch-binding.el"
   "lch-binding.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   2487
   '(2389 nil)
   nil
@@ -31,7 +53,7 @@
   "/Users/LooChao/Dropbox/.emacs.d/rc/lch-elisp.el"
   "lch-elisp.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   12365
   '(11923 nil)
   nil
@@ -53,7 +75,7 @@
   "/Volumes/DATA/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MyLisps/init-yasnippet.el"
   "init-yasnippet.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1246
   '(nil nil)
   nil
@@ -72,21 +94,10 @@
   nil)
 
 (desktop-create-buffer 206
-  nil
-  "weibo"
-  'dired-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
-  809
-  '(nil nil)
-  t
-  '("/Users/LooChao/Dropbox/.emacs.d/lisp/weibo/")
-  nil)
-
-(desktop-create-buffer 206
   "/Users/LooChao/Dropbox/.emacs.d/rc/lch-conf.el"
   "lch-conf.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   449
   '(nil nil)
   nil
@@ -97,7 +108,7 @@
   "/Users/LooChao/Downloads/emms-print-metadata.pl"
   "emms-print-metadata.pl"
   'perl-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode undo-tree-mode auto-complete-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode undo-tree-mode yas-minor-mode auto-complete-mode)
   3237
   '(1 nil)
   nil
@@ -108,7 +119,7 @@
   "/Users/LooChao/Downloads/emms-print-metadata.c"
   "emms-print-metadata.c"
   'c-mode
-  '(abbrev-mode global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode undo-tree-mode auto-complete-mode yas-minor-mode)
+  '(abbrev-mode global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode undo-tree-mode yas-minor-mode auto-complete-mode)
   2180
   '(1 nil)
   nil
@@ -152,7 +163,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MySiteLisps/Emms/emms-lyrics-download.el"
   "emms-lyrics-download.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1
   '(nil nil)
   nil
@@ -163,7 +174,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MySiteLisps/Emms/emms-extension.el"
   "emms-extension.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1
   '(nil nil)
   nil
@@ -174,7 +185,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MySiteLisps/BasicEditToolkit/basic-edit-toolkit.el"
   "basic-edit-toolkit.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1
   '(nil nil)
   nil
@@ -207,7 +218,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MyLisps/init-emms.el"
   "init-emms.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1388
   '(nil nil)
   nil
@@ -218,7 +229,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MyLisps/init-dired.el"
   "init-dired.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   2977
   '(2938 nil)
   nil
@@ -229,7 +240,7 @@
   "/Users/LooChao/Dropbox/.emacs.d/rc/lch-dired.el"
   "lch-dired.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1025
   '(960 nil)
   nil
@@ -240,7 +251,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MySiteLisps/AutoPair/autopair.el"
   "autopair.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   25030
   '(nil nil)
   nil
@@ -262,7 +273,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MySiteLisps/MultiTerminalScratch/multi-scratch.el"
   "multi-scratch.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   4924
   '(nil nil)
   nil
@@ -273,7 +284,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MySiteLisps/MultiTerminalScratch/multi-term.el"
   "multi-term.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1
   '(nil nil)
   nil
@@ -281,21 +292,10 @@
   '((buffer-file-coding-system . utf-8-unix)))
 
 (desktop-create-buffer 206
-  nil
-  "var"
-  'dired-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
-  507
-  '(nil nil)
-  t
-  '("/Users/LooChao/Dropbox/.emacs.d/var/")
-  nil)
-
-(desktop-create-buffer 206
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MyLisps/init-weibo.el"
   "init-weibo.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1229
   '(1015 nil)
   nil
@@ -317,7 +317,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MySiteLisps/CalendarChinaX/cal-china-x.el"
   "cal-china-x.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1
   '(nil nil)
   nil
@@ -328,7 +328,7 @@
   "/Users/LooChao/Dropbox/.emacs.lib/LzyEmacsAndXmonadConfiguration/MyLisps/init-sdcv.el"
   "init-sdcv.el"
   'emacs-lisp-mode
-  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode auto-complete-mode paredit-mode yas-minor-mode)
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode paredit-mode)
   1
   '(nil nil)
   nil

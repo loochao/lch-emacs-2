@@ -26,17 +26,22 @@
 ;;; Super (command-map)
 (lch-set-key
  '(
-   ("s-," . previous-buffer)
-   ("s-." . next-buffer)
+   ("s-i" . next-buffer)
+   ("s-u" . previous-buffer)
+   ("s-w" . kill-this-buffer)
    ))
 ;; One-key-menu-super
 (defvar one-key-menu-super-alist nil "")
 (setq one-key-menu-super-alist
       '(
         (("a" . "select all") . mark-whole-buffer)
-        (("," . "prev-buffer") . previous-buffer)                               ;; => lch-binding.el
-        (("." . "next-buffer") . next-buffer)                                   ;; => lch-binding.el
-        (("k" . "kill-buffer") . kill-this-buffer)
+        (("i" . "next-buffer") . next-buffer)                                   ;; => lch-binding.el
+        (("j" . "tabbar-forward") . tabbar-forward)                             ;; => lch-ui.el
+        (("k" . "tabbar-backward") . tabbar-backward)                           ;; => lch-ui.el
+        (("h" . "tabbar-backward-group") . tabbar-backward-group)               ;; => lch-ui.el
+        (("l" . "tabbar-forward-group") . tabbar-forward-group)                 ;; => lch-ui.el
+        (("u" . "prev-buffer") . previous-buffer)                               ;; => lch-binding.el
+        (("w" . "kill-buffer") . kill-this-buffer)                              ;; => lch-binding.el
         (("<r,l,u,d>" . "emms-seek (-/+ 10/60)"))                               ;; => lch-emms.el
         ))
 
@@ -228,7 +233,6 @@
 (setq one-key-menu-ctrl-z-alist
       '(
         (("c" . "count-words") . count-words)                                       ;; => lch-binding.el
-        (("p" . "process") . lch-process)                                           ;; => lch-util.el
         (("f" . "fortune") . lch-echo-fortune)                                      ;; => lch-util.el
         ))
 (defun one-key-menu-ctrl-z ()
@@ -238,11 +242,16 @@
 (define-key global-map (kbd "C-z m") 'one-key-menu-ctrl-z)
 
 ;;; Fn: (command-map)
+(lch-set-key
+ '(
+   ("<f4> <f4>" . kill-this-buffer)
+   ))
 (defvar one-key-menu-fn-alist nil "")
 (setq one-key-menu-fn-alist
       '(
         (("<f2>" . "goto-last-change") . goto-last-change)                      ;; => lch-elisp.el
         (("<f3>" . "w3m") . lch-w3m-init)                                       ;; => lch-web.el
+        (("<f4>" . "kill-buffer") . kill-this-buffer)                           ;; => lch-binding.el
         (("<f7>" . "dictionary") . dictionary-search)                           ;; => lch-elisp.el
         (("<f8>" . "org-agenda") . org-agenda)                                  ;; => lch-org.el
         (("<f9>" . "lch-start-file-browser") . lch-start-file-browser)          ;; => lch-util.el
@@ -414,7 +423,9 @@
 
 (setq one-key-menu-dict-alist
       '(
-        (("<f7>" . "dict-search") . dictionary-search)                    ;; => lch-elisp.el
+        (("<f6>" . "dict-search") . dictionary-search)                    ;; => lch-elisp.el
+        (("<f7>" . "dict-cn") . w3m-search-dict-cn)                       ;; => lch-web.el
+        (("<f8>" . "dict-slang") . w3m-search-slang)                      ;; => lch-web.el
         ))
 
 (defun one-key-menu-dict ()

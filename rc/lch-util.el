@@ -304,24 +304,6 @@ end tell" mydir)))
             (concat "Saved as script: " buffer-file-name)))))
 (add-hook 'after-save-hook 'lch-chmod-x)
 
-;;; Process
-(defun lch-process ()
-  (interactive)
-  (let* ((n "*top*")
-         (b (get-buffer n)))
-    (if b (switch-to-buffer b)
-      ;; (if (eq system-type 'windows-nt)
-      ;;     (progn
-      ;;       (proced)
-      ;;       (proced-toggle-tree 1))
-      (ansi-term "top"))
-    (rename-buffer n)
-    (local-set-key "q" '(lambda () (interactive) (kill-buffer (current-buffer))))
-    ;; (hl-line-mode 1)
-    ))
-
-(define-key global-map (kbd "C-z p") 'lch-process)
-
 ;;; Display-fortune
 (defun lch-echo-fortune ()
   (interactive)
