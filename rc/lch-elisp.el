@@ -13,6 +13,14 @@
 
 ;;; CODE
 (message "=> lch-elisp: loading...")
+;;; Skeleton
+;; Skeleton pair works with paredit, and more generally.
+(setq skeleton-pair t)
+(define-key global-map (kbd "(") 'skeleton-pair-insert-maybe)
+(define-key global-map (kbd "[") 'skeleton-pair-insert-maybe)
+(define-key global-map (kbd "{") 'skeleton-pair-insert-maybe)
+(define-key global-map (kbd "\"") 'skeleton-pair-insert-maybe)
+;; (define-key global-map (kbd "<") 'skeleton-pair-insert-maybe)
 ;;; Weibo
 (defun weibo-setting ()
   "settings for weibo"
@@ -372,9 +380,6 @@
       (desktop-read desktop-dirname)))
 
 (add-hook 'after-init-hook 'desktop-settings-setup)
-
-
-
 ;;; Yasnippet
 (require 'yasnippet)
 (defvar lch-yasnippet-dir (concat emacs-lib-dir "/snippets") "")
@@ -395,41 +400,41 @@
 ;;; Auto-complete
 ;; Disable it usually, for it's slow and distracting.
 ;; Try dabbrev-expand (M-/)
-(require 'auto-complete)
-(require 'auto-complete-config)
-(require 'lch-key-util)
-(ac-config-default)
-(ac-flyspell-workaround)
-(add-to-list 'ac-dictionary-directories (concat emacs-var-dir "/auto-complete-dict"))
-(setq ac-comphist-file  (concat emacs-var-dir "/ac-comphist.dat"))
+;; (require 'auto-complete)
+;; (require 'auto-complete-config)
+;; (require 'lch-key-util)
+;; (ac-config-default)
+;; (ac-flyspell-workaround)
+;; (add-to-list 'ac-dictionary-directories (concat emacs-var-dir "/auto-complete-dict"))
+;; (setq ac-comphist-file  (concat emacs-var-dir "/ac-comphist.dat"))
 
-(global-auto-complete-mode t)
-(setq ac-auto-show-menu t)
-(setq ac-dwim t)
-(setq ac-use-menu-map t)
-(setq ac-quick-help-delay 1)
-(setq ac-quick-help-height 60)
-(setq ac-disable-inline t)
-(setq ac-show-menu-immediately-on-auto-complete t)
-(setq ac-auto-start 2)
-(setq ac-candidate-menu-min 0)
+;; (global-auto-complete-mode t)
+;; (setq ac-auto-show-menu t)
+;; (setq ac-dwim t)
+;; (setq ac-use-menu-map t)
+;; (setq ac-quick-help-delay 1)
+;; (setq ac-quick-help-height 60)
+;; (setq ac-disable-inline t)
+;; (setq ac-show-menu-immediately-on-auto-complete t)
+;; (setq ac-auto-start 2)
+;; (setq ac-candidate-menu-min 0)
 
-(set-default 'ac-sources
-             '(ac-source-dictionary
-               ac-source-words-in-buffer
-               ac-source-words-in-same-mode-buffers
-               ac-source-semantic
-               ac-source-yasnippet))
+;; (set-default 'ac-sources
+;;              '(ac-source-dictionary
+;;                ac-source-words-in-buffer
+;;                ac-source-words-in-same-mode-buffers
+;;                ac-source-semantic
+;;                ac-source-yasnippet))
 
 ;; (dolist (mode '(org-mode text-mode lisp-mode markdown-mode))
 ;;   (add-to-list 'ac-modes mode))
 
 ;; Key triggers
-(define-key ac-completing-map (kbd "M-.") 'ac-next)
-(define-key ac-completing-map (kbd "M-,") 'ac-previous)
-(define-key ac-completing-map "\t" 'ac-complete)
-(define-key ac-completing-map (kbd "M-RET") 'ac-help)
-(define-key ac-completing-map "\r" 'nil)
+;; (define-key ac-completing-map (kbd "M-.") 'ac-next)
+;; (define-key ac-completing-map (kbd "M-,") 'ac-previous)
+;; (define-key ac-completing-map "\t" 'ac-complete)
+;; (define-key ac-completing-map (kbd "M-RET") 'ac-help)
+;; (define-key ac-completing-map "\r" 'nil)
 
 ;;; PROVIDE
 (provide 'lch-elisp)

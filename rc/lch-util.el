@@ -16,6 +16,12 @@
 ;;; CODE
 (message "=> lch-util: loading...")
 
+;;; 
+;;; Open-with-textmate
+(defun lch-open-with-mate ()
+  (interactive)
+  (shell-command (format "mate %s" (buffer-file-name))))
+(define-key global-map (kbd "<f1> o") 'lch-open-with-mate)
 ;;; Buffer-editing
 (defun lch-indent-buffer ()
   "Indent the currently visited buffer."

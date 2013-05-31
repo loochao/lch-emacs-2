@@ -169,3 +169,4 @@
      )))
 
 (provide 'color-theme-loochao)
+(color-theme-loochao)

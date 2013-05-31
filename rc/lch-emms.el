@@ -22,8 +22,9 @@
 
 (emms-default-players)
 ;; NEWEST FEATURE. Use this if you like living on the edge.
-;; (emms-standard)
 (emms-devel)
+;; (emms-standard)
+
 
 (defvar emms-dir (concat emacs-var-dir "/emms"))
 (make-directory emms-dir t)
@@ -51,8 +52,7 @@
 
 ;;; Modeline
 ;; Don't show current track name on modeline.
-;; (emms-mode-line-disable)
-
+(emms-mode-line-disable)
 (setq emms-mode-line-mode-line-function
       'lch-emms-mode-line-playlist-current)
 
@@ -217,9 +217,9 @@
          (music-folder (file-name-directory music-file))) ;get playing music directory
     (when (y-or-n-p (format "DUMP %s? " music-file))
       (with-current-emms-playlist
-	(save-excursion
+	;; (save-excursion
 	  (emms-playlist-mode-center-current)
-	  (emms-playlist-mode-kill-entire-track)))
+	  (emms-playlist-mode-kill-entire-track))
       (dired-delete-file music-file)
       (emms-next)
       (message (format "%s has deleted~" music-file))
@@ -227,52 +227,42 @@
       (emms-show)
       )))
 
-(defun emms-delete-file-from-disk ()
-  "Delete this file from disk."
-  (interactive)
-  (let* ((current-track (emms-track-name (emms-playlist-track-at))))
-    (when (yes-or-no-p (format "Are you really want to delete \' %s \' from disk? " current-track))
-      (if (string-equal current-track (emms-playlist-play-filename))
-          (emms-stop))
-      (emms-playlist-mode-kill-entire-track)
-      (dired-delete-file current-track)
-      (message (format "Have delete \' %s \' from disk." current-track)))))
 ;;; Keymap
 ;; q -- only bury the emms playlist buffer, emms is still there.
 ;; Q -- really quit. But globally, "<f12> q" is really quit.
-(define-key emms-playlist-mode-map (kbd "<left>")  (lambda () (interactive) (emms-seek -10)))
-(define-key emms-playlist-mode-map (kbd "<right>") (lambda () (interactive) (emms-seek +10)))
-(define-key emms-playlist-mode-map (kbd "<down>")  (lambda () (interactive) (emms-seek -60)))
-(define-key emms-playlist-mode-map (kbd "<up>")    (lambda () (interactive) (emms-seek +60)))
+(lch-set-key
+ '(
+   ("<left>" . (lambda () (interactive) (emms-seek -10)))
+   ("<right>" . (lambda () (interactive) (emms-seek 10)))
+   ("<down>" . (lambda () (interactive) (emms-seek -60)))
+   ("<up>" . (lambda () (interactive) (emms-seek 60)))
 
-(define-key emms-playlist-mode-map (kbd ",")  (lambda () (interactive) (emms-seek -10)))
-(define-key emms-playlist-mode-map (kbd ".")  (lambda () (interactive) (emms-seek 10)))
+   ("," . (lambda () (interactive) (emms-seek -10)))
+   ("." . (lambda () (interactive) (emms-seek 10)))
 
-(define-key emms-playlist-mode-map (kbd "'") 'emms-jump-to-file)
-(define-key emms-playlist-mode-map (kbd "SPC") 'lch-emms-toggle-playing)
-(define-key emms-playlist-mode-map (kbd "c") 'lch-emms-check-in)
-(define-key emms-playlist-mode-map (kbd "d") 'lch-emms-dump)
-(define-key emms-playlist-mode-map (kbd "C-6") 'emms-jump-to-file)
+   ("'" . emms-jump-to-file)
+   ("C-6" . emms-jump-to-file)
 
-(define-key emms-playlist-mode-map (kbd "h")  (lambda () (interactive) (emms-seek -60)))
-(define-key emms-playlist-mode-map (kbd "l")  (lambda () (interactive) (emms-seek 60)))
-(define-key emms-playlist-mode-map (kbd "j") 'next-line)
-(define-key emms-playlist-mode-map (kbd "k") 'previous-line)
-(define-key emms-playlist-mode-map (kbd "C-k") 'emms-playlist-mode-kill-entire-track)
+   ("SPC" . lch-emms-toggle-playing)
+   ("c" . lch-emms-check-in)
+   ("d" . lch-emms-dump)
 
-(define-key emms-playlist-mode-map (kbd "m") 'emms-mark-track-and-move-next)
-(define-key emms-playlist-mode-map (kbd "M") 'emms-mark-all)
-(define-key emms-playlist-mode-map (kbd "u") 'emms-mark-unmark-track-and-move-next)
-(define-key emms-playlist-mode-map (kbd "U") 'emms-mark-unmark-all)
+   ("h" . (lambda () (interactive) (emms-seek -60)))
+   ("l" . (lambda () (interactive) (emms-seek 60)))
 
-(define-key emms-playlist-mode-map (kbd "N") 'emms-next-mark-track)
-(define-key emms-playlist-mode-map (kbd "P") 'emms-prev-mark-track)
+   ("j" . next-line)
+   ("k" . previous-line)
+   ("C-k" . emms-playlist-mode-kill-entire-track)
 
-(define-key emms-playlist-mode-map (kbd "Q") 'lch-emms-quit)
-(define-key emms-playlist-mode-map (kbd "x") 'emms-stop)
-(define-key emms-playlist-mode-map (kbd "r") 'emms-toggle-repeat-track)
-(define-key emms-playlist-mode-map (kbd "R") 'emms-toggle-repeat-playlist)
-(define-key emms-playlist-mode-map (kbd "s") 'emms-shuffle)
+   ("Q" . lch-emms-quit)
+   ("x" . emms-stop)
+   ("r" . emms-toggle-repeat-track)
+   ("R" . emms-toggle-repeat-playlist)
+   
+   ("s" . emms-shuffle)
+   )
+ emms-playlist-mode-map
+ )
 
 (define-key global-map (kbd "s-<left>")  (lambda () (interactive) (emms-seek -10)))
 (define-key global-map (kbd "s-<right>") (lambda () (interactive) (emms-seek +10)))

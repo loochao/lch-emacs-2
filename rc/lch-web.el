@@ -34,6 +34,13 @@
 (setq w3m-home-page "http://www.princeton.edu/~chaol")
 (setq w3m-use-favicon nil)
 
+(setq w3m-bookmark-file (concat w3m-dir "/w3m-bookmark.html"))
+(setq w3m-cookie-file (concat w3m-dir "/w3m-cookie"))
+(setq w3m-session-file (concat w3m-dir "/w3m-session"))
+(setq w3m-session-time-format "%Y-%m-%d %A %H:%M")
+(setq w3m-session-load-crashed-sessions t)              
+(setq w3m-session-deleted-save nil)                     
+
 ;;; Browse-url
 ;; Set browse function to be w3m
 ;; (setq browse-url-browser-function 'w3m-browse-url)
@@ -67,8 +74,10 @@ end tell"
   (let ((buf (get-buffer "*w3m*")))
     (if buf
         (switch-to-buffer buf)
-      (w3m)
-      (w3m-bookmark-view)
+      (progn 
+        (w3m)
+        ;; (w3m-bookmark-view)
+        )
       )))
 (define-key global-map (kbd "<f3> <f3>") 'lch-w3m-init)
 
@@ -86,6 +95,13 @@ end tell"
 (defun lch-view-current-url-external ()
   (interactive)
   (chrome-browse-url w3m-current-url))
+
+(defun w3m-view-this-url-background-session ()
+  (interactive)
+  (let ((in-background-state w3m-new-session-in-background))
+    (setq w3m-new-session-in-background t)
+    (w3m-view-this-url-new-session)
+    (setq w3m-new-session-in-background in-background-state)))
 
 ;;; Desktop
 ;; Use desktop to save w3m buffer between sessions.
@@ -110,25 +126,36 @@ end tell"
 ;;; Binding
 (lch-set-key
  '(
+   ("C-<return>" . w3m-view-this-url-background-session)
+
    ("C-6" . w3m-view-parent-page)
    ("^" . w3m-view-parent-page)
 
+   ("7" . w3m-previous-buffer)
+   ("8" . w3m-next-buffer)
+
    ("[" . w3m-view-previous-page)
    ("]" . w3m-view-next-page)
+
+   (";" . w3m-previous-buffer)
+   ("'" . w3m-next-buffer)
+
+   ("." . w3m-next-form)
+   ("," . w3m-previous-form)
 
    ("/" . w3m-print-current-url)
    ("d" . w3m-delete-buffer)
    ("o" . lch-view-current-url-external)
 
-   ("p" . w3m-view-previous-page)
-   ("n" . w3m-view-next-page)
-   ("." . w3m-next-form)
-   ("," . w3m-previous-form)
+   ("H" . w3m-history)
+   ("M-h" . w3m-db-history)
 
    ("m" . w3m-scroll-down-or-previous-url)
 
-   ("H" . w3m-history)
-   ("M-h" . w3m-db-history)
+   ("n" . w3m-view-next-page)
+   ("p" . w3m-view-previous-page)
+
+   ("t" . w3m-new-tab)
    )
  w3m-mode-map
  )

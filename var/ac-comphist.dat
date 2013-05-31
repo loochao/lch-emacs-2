@@ -1,266 +1,288 @@
-((("yas-expand" .
-   [0 0 0 0 0 0 0 1 0 0])
-  ("dired-single" .
-   [0 0 0 0 0 0 1 0 0 0 0 0])
-  ("TODO:" .
-   [0 0 0 0 1])
-  ("te" .
-   [1 0])
-  ("he" .
-   [1 0])
-  ("many" .
-   [1 0 0 0])
-  ("too" .
-   [0 0 1])
-  ("s" .
-   [1])
-  ("log" .
-   [0 0 1])
-  ("a" .
-   [1])
-  ("less-minor-mode" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("less" .
-   [1 0 0 0])
-  ("lch-tip-of-the-day" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("kill-all-buffers" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
-  ("global-unset-key" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("toggle-viper-mode" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("lch-frame-color-set-pink" .
-   [1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("lch-frame-color-set-black" .
-   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("lch-frame-color-set-2" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("lch-frame-color-set-1" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("kbd" .
-   [4 0 0])
-  ("global-map" .
-   [0 0 0 0 1 0 0 0 0 2])
-  ("define-key" .
-   [3 0 0 0 0 0 0 0 0 0])
-  ("background" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("foreground-color" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("emms-lyrics" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("eyedropper" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("lch" .
-   [3 0 0])
-  ("thing-edit" .
-   [2 0 0 0 0 0 0 0 0 0])
-  ("one-key" .
-   [1 0 0 0 0 0 0])
-  ("emms-playlist-current-selected-track" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("eval" .
-   [2 0 0 0])
-  ("emms-player-playing-p" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("state" .
-   [3 0 0 0 0])
-  ("lch-view-current-url-external" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("interactive" .
-   [1 0 0 0 0 0 0 1 0 0 0])
-  ("chrome-browse-url" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
-  ("lch-browse-url-firefox" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("defun" .
-   [2 0 0 0 0])
-  ("w3m-scroll-down-or-previous-url" .
-   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("w3m-previous-form" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("w3m-view-parent-page" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("w3m-print-current-url" .
-   [0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("lch-google" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("lch-w3m-init" .
-   [1 0 0 0 0 0 0 0 0 0 0 0])
-  ("lch-web" .
-   [1 0 0 0 0 0 0])
-  ("lch-org-export" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("lch-org" .
-   [1 0 0 0 0 0 0])
-  ("anything-config" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("anything" .
-   [1 0 0 0 0 0 0 0])
-  ("require" .
-   [15 0 0 0 0 0 1])
-  ("emms-playing-time-style" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("setq" .
-   [4 0 0 0])
-  ("lch-music-check-in-dir" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("emms-toggle-repeat-track" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("emms-repeat-playlist" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("emms-repeat-track" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
-  ("emms-random" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("sit-for" .
-   [1 0 0 0 0 0 0])
-  ("lambda" .
+((("system" .
    [1 0 0 0 0 0])
-  ("run-with-timer" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("emms-show" .
-   [2 0 0 0 0 0 0 0 0])
-  ("setnu-mode-on" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("buf" .
-   [2 0 0])
-  ("let" .
-   [3 1 0])
-  ("*" .
-   [1])
-  ("set-buffer" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("emms" .
-   [1 0 0 0])
-  ("lch-emms-quit" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("." .
-   [11])
-  ("message" .
-   [7 0 0 0 0 0 0])
-  ("get-buffer" .
-   [5 0 0 0 0 0 0 0 0 1])
-  ("kill-buffer" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("progn" .
-   [5 0 0 0 1])
-  ("if" .
-   [2 0])
-  ("nil" .
-   [4 0 0])
-  ("call-process" .
-   [0 0 0 0 0 0 0 0 0 0 0 1])
-  ("now." .
+  ("my" .
+   [1 0])
+  ("foreach" .
+   [1 0 0 0 0 0 0])
+  ("line" .
+   [2 0 0 0])
+  ("one-key-menu-w3m-search" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0])
+  ("one-key-menu-super" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("dired-single-magic-buffer" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("dired-extension" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("lch-pgm" .
+   [1 0 0 0 0 0 0])
+  ("emms-lyrics-download.el" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("emms-devel" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("local" .
+   [1 0 0 0 0])
+  ("test" .
    [0 0 0 1])
-  ("right" .
-   [0 0 0 0 1])
-  ("won" .
+  ("email" .
+   [2 0 0 0 0])
+  ("meta" .
+   [1 0 0 0])
+  ("super" .
+   [1 0 0 0 0])
+  ("zone" .
+   [3 0 0 0])
+  ("one-key-menu-help" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("dabbrev-expand" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("do" .
+   [1 0])
+  ("to" .
+   [2 0])
+  ("lch-key-util" .
+   [2 0 0 0 0 0 0 0 0 0 0 0])
+  ("lch-set-key" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("emms-start" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("lch-emms-toggle-playing" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("+1" .
+   [1 0])
+  ("flyspell-mode" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("newline" .
+   [1 0 0 0 0 0 0])
+  ("while" .
+   [1 0 0 0 0])
+  ("replace-match" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("kill-ring-save" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("copy-region-as-kill" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("point-max" .
+   [5 0 0 0 0 0 0 0 0])
+  ("yank" .
+   [2 0 0 0])
+  ("switch-to-buffer" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3])
+  ("kill-region" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("end-of-line" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("format" .
+   [2 0 0 0 0 0])
+  ("point" .
+   [3 0 0 0 0])
+  ("begin" .
+   [5 0 0 0 0])
+  ("set" .
+   [2 0 0])
+  ("end" .
+   [2 0 0])
+  ("set-mark-command" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("beginning-of-line" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("search-forward" .
+   [4 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("point-min" .
+   [5 0 0 0 0 0 0 0 0])
+  ("goto-char" .
+   [2 0 0 0 0 0 0 0 1])
+  ("with-temp-buffer" .
+   [5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("insert" .
+   [1 0 0 0 0 0])
+  ("emms-stop" .
+   [2 0 0 0 0 0 0 0 0])
+  ("E" .
+   [1])
+  ("emms-playlist-clear" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("save-excursion" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("with-current-emms-playlist" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1])
+  ("Hello" .
+   [1 0 0 0 1])
+  ("Loochao" .
+   [1 0 0 0 0 0 0])
+  ("somewhere" .
+   [0 0 0 0 0 1 0 0 0])
+  ("ing" .
    [0 0 1])
   ("there" .
    [1 0 0 0 1])
-  ("ing" .
+  ("won" .
    [0 0 1])
-  ("somewhere" .
-   [0 0 0 0 0 1 0 0 0])
-  ("Loochao" .
-   [1 0 0 0 0 0 0])
-  ("Hello" .
-   [1 0 0 0 1])
-  ("with-current-emms-playlist" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1])
-  ("save-excursion" .
-   [0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("emms-playlist-clear" .
-   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("E" .
-   [1])
-  ("emms-stop" .
-   [2 0 0 0 0 0 0 0 0])
-  ("insert" .
-   [1 0 0 0 0 0])
-  ("with-temp-buffer" .
-   [5 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("goto-char" .
-   [2 0 0 0 0 0 0 0 1])
-  ("point-min" .
-   [5 0 0 0 0 0 0 0 0])
-  ("search-forward" .
-   [4 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("beginning-of-line" .
-   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
-  ("set-mark-command" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("end" .
-   [2 0 0])
-  ("set" .
-   [2 0 0])
-  ("begin" .
-   [5 0 0 0 0])
-  ("point" .
-   [3 0 0 0 0])
-  ("format" .
-   [2 0 0 0 0 0])
-  ("end-of-line" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("kill-region" .
-   [2 0 0 0 0 0 0 0 0 0 0])
-  ("switch-to-buffer" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3])
-  ("yank" .
-   [2 0 0 0])
-  ("point-max" .
-   [5 0 0 0 0 0 0 0 0])
-  ("copy-region-as-kill" .
-   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
-  ("kill-ring-save" .
-   [2 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("replace-match" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("while" .
-   [1 0 0 0 0])
-  ("newline" .
-   [1 0 0 0 0 0 0])
-  ("flyspell-mode" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 1])
-  ("+1" .
-   [1 0])
-  ("lch-emms-toggle-playing" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("emms-start" .
-   [1 0 0 0 0 0 0 0 0 0])
-  ("lch-set-key" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("lch-key-util" .
-   [2 0 0 0 0 0 0 0 0 0 0 0])
-  ("to" .
-   [2 0])
-  ("do" .
-   [1 0])
-  ("dabbrev-expand" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("one-key-menu-help" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("zone" .
-   [2 0 0 0])
-  ("super" .
-   [1 0 0 0 0])
-  ("meta" .
-   [1 0 0 0])
-  ("email" .
-   [2 0 0 0 0])
-  ("test" .
+  ("right" .
+   [0 0 0 0 1])
+  ("now." .
    [0 0 0 1])
-  ("local" .
-   [1 0 0 0 0])
-  ("emms-devel" .
-   [0 0 0 0 0 0 0 1 0 0])
-  ("emms-lyrics-download.el" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
-  ("lch-pgm" .
+  ("call-process" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("nil" .
+   [4 0 0])
+  ("if" .
+   [2 0])
+  ("progn" .
+   [6 0 0 0 1])
+  ("kill-buffer" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("get-buffer" .
+   [5 0 0 0 0 0 0 0 0 1])
+  ("message" .
+   [7 0 0 0 0 0 0])
+  ("." .
+   [16])
+  ("lch-emms-quit" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("emms" .
+   [1 0 0 0])
+  ("set-buffer" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("*" .
+   [1])
+  ("let" .
+   [3 1 0])
+  ("buf" .
+   [2 0 0])
+  ("setnu-mode-on" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("emms-show" .
+   [2 0 0 0 0 0 0 0 0])
+  ("run-with-timer" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lambda" .
+   [1 0 0 0 0 0])
+  ("sit-for" .
    [1 0 0 0 0 0 0])
-  ("dired-extension" .
-   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
-  ("dired-single-magic-buffer" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])))
+  ("emms-random" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("emms-repeat-track" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("emms-repeat-playlist" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("emms-toggle-repeat-track" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lch-music-check-in-dir" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("setq" .
+   [4 0 0 0])
+  ("emms-playing-time-style" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("require" .
+   [15 0 0 0 0 0 1])
+  ("anything" .
+   [1 0 0 0 0 0 0 0])
+  ("anything-config" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lch-org" .
+   [1 0 0 0 0 0 0])
+  ("lch-org-export" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lch-web" .
+   [1 0 0 0 0 0 0])
+  ("lch-w3m-init" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("lch-google" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("w3m-print-current-url" .
+   [0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("w3m-view-parent-page" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("w3m-previous-form" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("w3m-scroll-down-or-previous-url" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("defun" .
+   [2 0 0 0 0])
+  ("lch-browse-url-firefox" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("chrome-browse-url" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("interactive" .
+   [1 0 0 0 0 0 0 1 0 0 0])
+  ("lch-view-current-url-external" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("state" .
+   [3 0 0 0 0])
+  ("emms-player-playing-p" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("eval" .
+   [2 0 0 0])
+  ("emms-playlist-current-selected-track" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("one-key" .
+   [1 0 0 0 0 0 0])
+  ("thing-edit" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("lch" .
+   [3 0 0])
+  ("eyedropper" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("emms-lyrics" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("foreground-color" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("background" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("define-key" .
+   [3 0 0 0 0 0 0 0 0 0])
+  ("global-map" .
+   [0 0 0 0 1 0 0 0 0 2])
+  ("kbd" .
+   [6 0 0])
+  ("lch-frame-color-set-1" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lch-frame-color-set-2" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lch-frame-color-set-black" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lch-frame-color-set-pink" .
+   [1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("toggle-viper-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("global-unset-key" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("kill-all-buffers" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("lch-tip-of-the-day" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("less" .
+   [1 0 0 0])
+  ("less-minor-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("a" .
+   [1])
+  ("log" .
+   [0 0 1])
+  ("s" .
+   [2])
+  ("too" .
+   [0 0 1])
+  ("many" .
+   [1 0 0 0])
+  ("he" .
+   [1 0])
+  ("te" .
+   [1 0])
+  ("TODO:" .
+   [0 0 0 0 1])
+  ("dired-single" .
+   [0 0 0 0 0 0 1 0 0 0 0 0])
+  ("yas-expand" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("re" .
+   [1 0])
+  ("os" .
+   [1 0])
+  ("search" .
+   [1 0 0 0 0 0])
+  ("isEditline" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("read" .
+   [1 0 0 0])))

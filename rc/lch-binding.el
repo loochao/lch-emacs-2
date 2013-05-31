@@ -23,24 +23,33 @@
 ;; others are command-map-prefix
 ;; according how often the command will be used, it goes into those maps by this seq:
 ;; [C-c/C-x] => f1 => C-z => C-{. , / o}
+;;; Mouse
+(define-key global-map (kbd "<C-wheel-up>") 'text-scale-increase)
+(define-key global-map (kbd "<C-wheel-down>") 'text-scale-decrease)
+
 ;;; Super (command-map)
 (lch-set-key
  '(
-   ("s-i" . next-buffer)
-   ("s-u" . previous-buffer)
+   ("s-7" . previous-buffer)
+   ("s-8" . next-buffer)
+
+   ("s-s" . one-key-menu-w3m-search)
    ("s-w" . kill-this-buffer)
    ))
 ;; One-key-menu-super
 (defvar one-key-menu-super-alist nil "")
 (setq one-key-menu-super-alist
       '(
+        (("7" . "prev-buffer") . previous-buffer)                               ;; => lch-binding.el
+        (("8" . "next-buffer") . next-buffer)                                   ;; => lch-binding.el
+
         (("a" . "select all") . mark-whole-buffer)
-        (("i" . "next-buffer") . next-buffer)                                   ;; => lch-binding.el
         (("j" . "tabbar-forward") . tabbar-forward)                             ;; => lch-ui.el
         (("k" . "tabbar-backward") . tabbar-backward)                           ;; => lch-ui.el
         (("h" . "tabbar-backward-group") . tabbar-backward-group)               ;; => lch-ui.el
         (("l" . "tabbar-forward-group") . tabbar-forward-group)                 ;; => lch-ui.el
-        (("u" . "prev-buffer") . previous-buffer)                               ;; => lch-binding.el
+        (("s" . "w3m-search") . one-key-menu-w3m-search)                        ;; => lch-binding.el
+
         (("w" . "kill-buffer") . kill-this-buffer)                              ;; => lch-binding.el
         (("<r,l,u,d>" . "emms-seek (-/+ 10/60)"))                               ;; => lch-emms.el
         ))
@@ -69,9 +78,9 @@
         (("<SPC>" . "anything") . anything)                                     ;; => lch-elisp.el
         (("/" . "dabbrev") . dabbrev-expand)                                    ;; => emacs-defaults
         (("'" . "yasnippet") . yas-expand)                                      ;; => lch-elisp.el        
-        (("-" . "thing-edit") . one-key-menu-edit)                              ;; => lch-one-key.el
         (("1" . "shell") . shell)                                               ;; => lch-binding.el
         (("2" . "term") . lch-create-switch-term)                               ;; => lch-binding.el
+        (("4" . "thing-edit") . one-key-menu-edit)                              ;; => lch-one-key.el
         (("6" . "erc-switch") . one-key-menu-irc-channel)                       ;; => lch-web.el
         (("8" . "org-agenda") . org-agenda)                                     ;; => lch-org.el
         (("9" . "anything-menu") . one-key-menu-anything)                       ;; => lch-binding.el
@@ -256,9 +265,10 @@
         (("<f8>" . "org-agenda") . org-agenda)                                  ;; => lch-org.el
         (("<f9>" . "lch-start-file-browser") . lch-start-file-browser)          ;; => lch-util.el
         (("<f12>" . "emms") . lch-emms-init)                                    ;; => lch-emms.el
-        (("Shift+ [l,r,u,d] ->" . "windmove") . zone)                           ;; => lch-elisp.el
         (("M-<f9>" . "dired-single-magic") . dired-single-magic-buffer)         ;; => lch-dired.el
         (("M-<f12>" . "douban-music") . douban-music)                           ;; => lch-elisp.el
+        (("Shift+ [l,r,u,d] ->" . "windmove") . zone)                           ;; => lch-elisp.el
+        (("C-[mouse-scroll]" . "text-scale(+/-)") . zone)                       ;; => lch-binding.el
       ))
 
 (defun one-key-menu-fn ()
@@ -282,6 +292,7 @@
         (("<f2>" . "start-terminal") . lch-start-terminal)                   ;; => lch-util.el
         (("f" . "fortune") . lch-cowsay-fortune)                             ;; => lch-elisp.el
         (("l" . "locate") . locate)                                          ;; => lch-binding.el
+        (("o" . "textmate") . lch-open-with-mate)                            ;; => lch-util.el
         (("r" . "re-builder") . re-builder)                                  ;; => lch-binding.el
         (("z" . "zone") . zone)                                              ;; => lch-binding.el
         ))
@@ -505,6 +516,7 @@
 (define-key global-map (kbd "<f10> 2") (lambda() (interactive) (dired dropbox-path)))
 (define-key global-map (kbd "<f10> 3") (lambda() (interactive) (dired "~/Downloads")))
 (define-key global-map (kbd "<f10> 4") (lambda() (interactive) (dired emacs-lisp-dir)))
+(define-key global-map (kbd "<f10> 5") (lambda() (interactive) (dired emacs-lib-dir)))
 
 (define-key global-map (kbd "<f10> b") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-binding.el"))))
 (define-key global-map (kbd "<f10> B") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-bmk.el"))))

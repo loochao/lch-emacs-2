@@ -1,0 +1,5 @@
+;;; w3m-cookie  -*- mode: emacs-lisp; coding: iso-2022-7bit -*-
+;; This file is generated automatically by emacs-w3m v1.4.338.
+
+(["http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=www.google.com" ".google.com" nil "NID" "67=dswz_5exIKQYA2zPyyTBREX2UrfaSVUP6RIyogdZGdMCPj6KtAeid8Yw3x4diH4ANXm0XbkCdMUpP2nFS41O-kcSx_jJConJ1ASfGYvaS_ZY2tc9RdZQ9BEJ1Y-L2dEN" "/" 0 "Sat, 30-Nov-2013 03:03:24 GMT" nil]
+["http://www.google.com/" ".google.com" nil "PREF" "ID=48cf28a96c35e5de:U=ab21585835f5716a:FF=0:TM=1369969404:LM=1369969405:S=oOZgFm_EqqTkEWIi" "/" 0 "Sun, 31-May-2015 03:03:25 GMT" nil])

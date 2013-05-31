@@ -35,6 +35,15 @@
 (message "=> lch-emms: loading...")
 
 
+(define-key emms-playlist-mode-map (kbd "m") 'emms-mark-track-and-move-next)
+(define-key emms-playlist-mode-map (kbd "M") 'emms-mark-all)
+(define-key emms-playlist-mode-map (kbd "u") 'emms-mark-unmark-track-and-move-next)
+(define-key emms-playlist-mode-map (kbd "U") 'emms-mark-unmark-all)
+
+(define-key emms-playlist-mode-map (kbd "N") 'emms-next-mark-track)
+(define-key emms-playlist-mode-map (kbd "P") 'emms-prev-mark-track)
+
+
 (defun emms-first-mark-track ()
   "Jump to first mark track."
   (interactive)
