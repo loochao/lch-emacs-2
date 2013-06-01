@@ -48,16 +48,16 @@
     ad-do-it))
 
 (lch-set-key
- '(("s-k"  . tabbar-backward)
-   ("s-j"    . tabbar-forward)
-   ("s-h"  . tabbar-backward-group)
-   ("s-l"    . tabbar-forward-group))
+ '(("s-h"  . tabbar-backward)
+   ("s-l"    . tabbar-forward)
+   ("s-7"  . tabbar-backward-group)
+   ("s-8"    . tabbar-forward-group))
  tabbar-mode-map)
 
 ;;; Senu
 ;; line number
 (require 'setnu)
-;;; Cycle color
+;;; Cycle-color
 (defun lch-cycle-fg-color (num)
   ""
   (interactive "p")
@@ -133,6 +133,76 @@ See `cycle-color'."
 (message "~~ lch-ui: done.")
 
 
+;;; Modeline
+;; (defun get-lines-4-mode-line ()
+;;   "get line numbers of current buffer"
+;;   (let ((lines (count-lines
+;;                 (point-min) (point-max))))
+;;     (format " %dL" lines)))
+
+;; (defun get-size-indication-format ()
+;;   (if (and transient-mark-mode mark-active)
+;;       (format " (%dLs,%dCs)"
+;;               (count-lines (region-beginning) (region-end))
+;;               (abs (- (mark t) (point))))
+;;     ""))
+
+;; (defun set-mode-line-format ()
+;;   "set mode-line-format"
+;;   (setq-default mode-line-format
+;;                 '((:eval
+;;                    (if (eql buffer-read-only t)
+;;                        (propertize " --RO--" 'face
+;;                                    '(:foreground "Deepskyblue" :family "BN Elements"))
+;;                      (propertize " --W/R--" 'face
+;;                                  '(:foreground "Deepskyblue" :family "BN Elements"))))
+;;                   (:eval
+;;                    (propertize " %b"
+;;                                'face (if (buffer-modified-p)
+;;                                          '(:foreground "SpringGreen" :slant italic)
+;;                                        '(:foreground "SpringGreen"))))
+;;                   (:eval
+;;                    (propertize (get-lines-4-mode-line)
+;;                                'face '(:foreground "grey90")))
+;;                   (:eval
+;;                    (propertize (get-size-indication-format)
+;;                                'face '(:foreground "yellow")))
+;;                   (:eval
+;;                    (propertize " (%l,%c)"
+;;                                'face '(:foreground "#00eedd")))
+;;                   (:eval
+;;                    (propertize " ("
+;;                                'face '(:foreground "White")))
+;;                   (:eval
+;;                    (propertize "%m"
+;;                                'face '(:foreground "LightSkyBlue")))
+;;                   minor-mode-alist
+;;                   (:eval
+;;                    (propertize ") "
+;;                                'face '(:foreground "White")))
+;;                   which-func-format
+;;                   (:eval
+;;                    (propertize (format-time-string " %H:%M ")
+;;                                'face '(:foreground "White")
+;;                                'help-echo
+;;                                (concat (format-time-string "%c; ")
+;;                                        (emacs-uptime "Uptime:%hh")))))))
+
+;; (defun mode-line-setting ()
+;;   "setings for modeline"
+;;   (set-mode-line-format)
+;;   (column-number-mode 1)
+;;   ;; display log and buffer name on frame title
+;;   (setq frame-title-format
+;;         '((:eval
+;;            (let ((login-name (getenv-internal "LOGNAME")))
+;;              (if login-name (concat login-name "@") "")))
+;;           (:eval (system-name))
+;;           ":"
+;;           (:eval (or (buffer-file-name) (buffer-name))))))
+
+;; (mode-line-setting)
+
 ;;; PROVIDE
 (provide 'lch-ui)
 

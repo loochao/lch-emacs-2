@@ -33,16 +33,34 @@
 
      (ido-subdir ((t (:foreground "LightSalmon" :background "black"))))
 
-     ;; (font-lock-comment-face ((t (:foreground "Orange"))))
-     ;; (font-lock-comment-delimiter-face ((t (:foreground "Orange"))))
-     
+     (ffap ((t (:background "DarkRed" :foreground "White"))))
+     (minibuffer-prompt ((t (:foreground "Cyan"))))
      ;; Font-lock-options
      (font-lock-comment-face ((t (:foreground "#7f9f7f"))))
      (font-lock-comment-delimiter-face ((t (:foreground "#7f9f7f"))))
+     ;; (font-lock-comment-face ((t (:foreground "Orange"))))
+     ;; (font-lock-comment-delimiter-face ((t (:foreground "Orange"))))
+     ;; (font-lock-comment-face ((t (:foreground "#869497" :slant italic))))
+     ;; (font-lock-comment-delimiter-face ((t (:foreground "#869497" :slant italic))))
+
+
+     (font-lock-builtin-face ((t (:foreground "LightSteelBlue"))))
+     (font-lock-constant-face ((t (:foreground "LightGoldenrod"))))
+     (font-lock-doc-face ((t (:foreground "LightSalmon" :slant italic))))
+     (font-lock-function-name-face ((t (:foreground "LightSkyBlue"))))
+     (font-lock-keyword-face ((t (:foreground "Cyan"))))
+     (font-lock-string-face ((t (:foreground "LightSalmon"))))
+     (font-lock-type-face ((t (:foreground "PaleGreen"))))
+     (font-lock-variable-name-face ((t (:foreground "LightGoldenrod"))))
+     (font-lock-warning-face ((t (:foreground "#ff0000"))))
+
      ;; Modeline
-      (mode-line
-       ((t (:foreground "White" :background "DarkRed"
-                        :box (:line-width -1 :style released-button)))))
+     (mode-line ((t (:background "DarkRed" :foreground "white" :height 0.92 :box (:line-width -1 :style released-button)))))
+     (mode-line-buffer-id ((t (:bold t :weight bold))))
+     (mode-line-emphasis ((t (:bold t :weight bold))))
+     (mode-line-highlight ((t (:box (:line-width -1 :color "DarkRed" :style released-button)))))
+     (mode-line-inactive ((t (:background "grey30" :foreground "white" :height 0.91 :box (:line-width -1 :color "grey30" :style released-button)))))
+
      ;; Rainbow-delimiter
      (rainbow-delimiters-depth-1-face ((t (:foreground "#8b0000"))))
      (rainbow-delimiters-depth-2-face ((t (:foreground "#d3d3d3"))))
@@ -57,26 +75,39 @@
      (rainbow-delimiters-depth-11-face ((t (:foreground "#94bff3"))))
      (rainbow-delimiters-depth-12-face ((t (:foreground "#8c5353"))))
 
+     ;; EMMS
+     (emms-playlist-selected-face ((t (:foreground "LightSteelBlue"))))
+     (emms-playlist-mark-face ((t (:foreground "Pink"))))
+     (emms-playlist-track-face ((t (:foreground "DarkSeaGreen"))))
+
      ;; Tabbar
-     (tabbar-default (((:inherit variable-pitch :height 0.95 :family "monaco"))))
-     (tabbar-separator ((t (:inherit tabbar-default :background "black" :foreground "brown" :height 0.1))))
-     (tabbar-button-highlight ((t (:inherit tabbar-default :background "black"
-					    :foreground "green" :box (:color "red")))))
-     (tabbar-button
-      ((t (:inherit tabbar-default :background "black" :foreground "red"
-                    :box (:line-width 1 :color "black" :style released-button)))))
-     (tabbar-selected
-      ((t (:inherit tabbar-default :background "black" :foreground "LawnGreen"
-                    :box (:line-width 1 :color "#014500" :style released-button)))))
-     (tabbar-selected-face
-      ((t (:inherit tabbar-default-face :background "black" :foreground "grey"
-                    :box (:line-width -1 :color "grey" :style released-button)))))
-     (tabbar-unselected
-      ((t (:inherit tabbar-default :background "black" :foreground "#10650F"
-                    :box (:line-width 1 :color "Grey10" :style pressed-button)))))
-     (tabbar-unselected-face
-      ((t (:inherit tabbar-default-face :background "black" :foreground "white"
-                    :box (:line-width -1 :color "black" :style pressed-button)))))
+     (tabbar-default ((t (:height 0.97 :background "black"))))
+     (tabbar-highlight ((t (nil))))
+     (tabbar-button ((t (:background "black" :foreground "green" :box (:line-width -1 :color "green" :style released-button)))))
+     (tabbar-button-highlight ((t (:background "black" :foreground "green" :box (:line-width -1 :color "green" :style released-button)))))
+     (tabbar-selected ((t (:background "grey30" :foreground "LawnGreen" :height 0.97))))
+     (tabbar-separator ((t (:background "black" :height 0.97))))
+     (tabbar-unselected ((t (:background "grey20" :foreground "grey60" :height 0.97))))
+
+     ;; (tabbar-default (((:inherit variable-pitch :height 0.95 :family "monaco"))))
+     ;; (tabbar-separator ((t (:inherit tabbar-default :background "black" :foreground "brown" :height 0.1))))
+     ;; (tabbar-button-highlight ((t (:inherit tabbar-default :background "black"
+     ;;    				    :foreground "green" :box (:color "red")))))
+     ;; (tabbar-button
+     ;;  ((t (:inherit tabbar-default :background "black" :foreground "red"
+     ;;                :box (:line-width 1 :color "black" :style released-button)))))
+     ;; (tabbar-selected
+     ;;  ((t (:inherit tabbar-default :background "black" :foreground "LawnGreen"
+     ;;                :box (:line-width 1 :color "#014500" :style released-button)))))
+     ;; (tabbar-selected-face
+     ;;  ((t (:inherit tabbar-default-face :background "black" :foreground "grey"
+     ;;                :box (:line-width -1 :color "grey" :style released-button)))))
+     ;; (tabbar-unselected
+     ;;  ((t (:inherit tabbar-default :background "black" :foreground "#10650F"
+     ;;                :box (:line-width 1 :color "Grey10" :style pressed-button)))))
+     ;; (tabbar-unselected-face
+     ;;  ((t (:inherit tabbar-default-face :background "black" :foreground "white"
+     ;;                :box (:line-width -1 :color "black" :style pressed-button)))))
 
      ;; Auto-complete
      (ac-candidate-face ((t (:background "#454545" :foreground "MistyRose"))))
@@ -93,79 +124,60 @@
      ;; highlight-line
      (highlight ((t (:background "#333333"))))
 
-     ;; w3m color
-     (w3m-anchor ((t (:foreground "SlateBlue" :underline t))))
-     (w3m-arrived-anchor ((t (:foreground "Purple4" :underline t))))
-     (w3m-bold ((t (:foreground "Green3" :weight bold))))
-     (w3m-current-anchor
-      ((t (:box (:line-width -1 :color "Grey30") :underline t))))
-     (w3m-form          
-      ((t (:foreground "Red" :box nil :underline "DarkRed"))))
-     (w3m-form-button   
-      ((t (:background "black" :foreground "LawnGreen" 
-		       :box (:line-width -1 :color "#014500" style released-button)))))
-     (w3m-form-button-mouse
-      ((((type x w32 mac) (class color))
-        (:background "Black" :foreground "Red"
-                     :box (:line-width -1 :color "Grey30" :style released-button)))))
-     (w3m-form-button-pressed
-      ((((type x w32 mac) (class color))
-        (:background "Black" :foreground "DarkRed" 
-		     :box (:line-width -1 :color "Grey60" :style pressed-button)))))
-     (w3m-form-face
-      ((((class color) (background dark))
-        (:foreground "khaki2" :underline "brown"))) t)
-     (w3m-header-line-location-content
-      ((((class color) (background dark))
-        (:background "black" :foreground "Green"))))
-     (w3m-header-line-location-title
-      ((((class color) (background dark))
-        (:background "black" :foreground "brown"))))
-     (w3m-history-current-url
-      ((t (:background "black" :foreground "DodgerBlue"))))
-     (w3m-image
-      ((((class color) (background dark))
-        (:background "Black" :foreground "DarkRed"))))
-     (w3m-image-anchor
-      ((((class color) (background dark))
-        (:background "Black"))))
-     (w3m-session-select
-      ((((class color) (background dark))
-        (:foreground "grey50"))))
-     (w3m-tab-background
-      ((((type x w32 mac) (class color))
-        (:background "black" :foreground "black"))))
-     ;; (w3m-tab-background
-     ;;  ((((type x w32 mac ns) (class color))
-     ;;    (:background "grey" :foreground "black"))))
-     (w3m-tab-selected-background
-      ((((type x w32 mac) (class color))
-        (:background "black" :foreground "black"))))
-     (w3m-tab-mouse
-      ((((type x w32 mac) (class color))
-        (:background "#454545" :foreground "LawnGreen"
-                     :box (:line-width -1 :color "Red" :style released-button)))))
-     (w3m-tab-selected
-      ((((type x w32 mac) (class color))
-        (:background "black" :foreground "LawnGreen"
-                     :box (:line-width -1 :color "#014500" :style released-button)))))
-     (w3m-tab-selected-retrieving
-      ((((type x w32 mac) (class color))
-        (:background "black" :foreground "grey80"
-                     :box (:line-width -1 :color "Grey40" :style released-button)))))
-     (w3m-tab-unselected
-      ((((type x w32 mac) (class color))
-        (:background "black" :foreground "#10650F"
-                     :box (:line-width 1 :color "Black" :style pressed-button)))))
-     (w3m-tab-unselected-retrieving ((((type x w32 mac) (class color))
-				      (:background "black" :foreground "grey30"
-                     :box (:line-width 1 :color "Black" :style pressed-button)))))
-     (w3m-tab-unselected-unseen ((((type x w32 mac) (class color))
-        (:background "black" :foreground "SlateBlue"
-                     :box (:line-width 1 :color "black" :style pressed-button)))))
-     (w3m-link-numbering ((((class color) (background dark))
-        (:background "Black" :foreground "Grey"))))
-
+     ;; w3m
+     (w3m-anchor ((t (:foreground "DarkSeaGreen" :underline t :height 1.05))))
+     (w3m-arrived-anchor ((t (:foreground "red4" :underline t))))
+     (w3m-bold ((t (:foreground "red3" :weight normal :height 1.05))))
+     (w3m-current-anchor ((t (:box (:line-width -1 :color "Grey30") :underline t))))
+     (w3m-form ((t (:foreground "khaki2" :underline "brown"))))
+     (w3m-form-button ((t (:background "white" :foreground "black" :box (:line-width 1 :color "grey80" :style released-button) :height 1.05))))
+     (w3m-form-button-mouse ((t (:background "Black" :foreground "LightSalmon" :box (:line-width -1 :color "Grey30" :style released-button)))))
+     (w3m-form-button-pressed ((t (:background "Black" :foreground "Orange" :box (:line-width -1 :color "Grey60" :style pressed-button)))))
+     (w3m-header-line-location-content ((t (:background "black" :foreground "DarkSeaGreen" :weight normal :height 1.05))))
+     (w3m-header-line-location-title ((t (:background "black" :foreground "LightSalmon" :weight normal :height 1.05))))
+     (w3m-history-current-url ((t (:background "black" :foreground "LightSalmon" :height 1.05))))
+     (w3m-image ((t (:background "Black" :foreground "DarkRed"))))
+     (w3m-image-anchor ((t (:background "Black"))))
+     (w3m-insert ((t (:foreground "orchid"))))
+     (w3m-italic ((t (:italic t :slant italic))))
+     (w3m-link-numbering ((t (:foreground "LightSalmon2"))))
+     (w3m-linknum-match ((t (:inverse-video t))))
+     (w3m-linknum-minibuffer-prompt ((t (:foreground "LightSalmon"))))
+     (w3m-session-select ((t (:foreground "white"))))
+     (w3m-session-selected ((t (:bold t :foreground "white" :underline t :weight bold))))
+     (w3m-strike-through ((t (:strike-through t))))
+     (w3m-tab-background ((t (:background "black" :foreground "black" :height 0.97))))
+     (w3m-tab-mouse ((t (:background "grey30" :foreground "PaleGreen" :height 0.97))))
+     (w3m-tab-selected ((t (:background "grey30" :foreground "PaleGreen" :height 0.97))))
+     (w3m-tab-selected-background ((t (:background "black" :foreground "black" :height 0.97))))
+     (w3m-tab-selected-retrieving ((t (:background "grey30" :foreground "DarkSeaGreen" :height 0.97))))
+     (w3m-tab-unselected ((t (:background "grey20" :foreground "grey80" :height 0.97))))
+     (w3m-tab-unselected-retrieving ((t (:background "grey20" :foreground "grey80" :height 0.97))))
+     (w3m-tab-unselected-unseen ((t (:background "grey20" :foreground "grey80" :height 0.97))))
+     (w3m-underline ((t (:underline t))))
+     
+     ;; Dired
+     (dired-directory ((t (:foreground "LightSkyBlue" :height 1.05))))
+     ;; (dired-flagged ((t (:foreground "red" :height 1.05))))
+     (dired-header ((t (:foreground "PaleGreen" :height 1.05))))
+     ;; (dired-ignored ((t (:foreground "white" :height 1.05))))
+     ;; (dired-mark ((t (:foreground "Pink"))))
+     (dired-marked ((t (:foreground "Pink" :height 1.05))))
+     (dired-perm-write ((t (:foreground "DarkRed" :height 1.05))))
+     (dired-symlink ((t (:foreground "grey60" :height 1.05))))
+     (dired-warning ((t (:foreground "gold" :height 1.05))))
+     (dired-filetype-common ((t (:foreground "Peru" :height 1.05))))
+     (dired-filetype-compress ((t (:foreground "Pink" :height 1.05))))
+     (dired-filetype-document ((t (:foreground "LightGoldenrod" :height 1.05))))
+     (dired-filetype-execute ((t (:foreground "DarkRed" :height 1.05))))
+     (dired-filetype-image ((t (:foreground "SlateBlue" :height 1.05))))
+     (dired-filetype-lnk ((t (:foreground "Cyan" :height 1.05))))
+     (dired-filetype-music ((t (:foreground "Orange" :height 1.05))))
+     (dired-filetype-omit ((t (:foreground "grey50" :height 1.05))))
+     (dired-filetype-plain ((t (:foreground "PaleGreen" :height 1.05))))
+     (dired-filetype-source ((t (:foreground "PaleGreen" :height 1.05))))
+     (dired-filetype-video ((t (:foreground "Pink" :height 1.05))))
+     (dired-filetype-xml ((t (:foreground "Chocolate" :height 1.05))))
      )))
 
 (provide 'color-theme-loochao)

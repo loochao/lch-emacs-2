@@ -31,6 +31,79 @@
      (minibuffer-prompt ((t (:foreground "DarkSeaGreen" :bold t))))
      (font-lock-warning-face ((t (:foreground "Red" :bold t))))
      
+     ;; w3m color
+     (w3m-anchor ((t (:foreground "SlateBlue" :underline t))))
+     (w3m-arrived-anchor ((t (:foreground "Purple4" :underline t))))
+     (w3m-bold ((t (:foreground "Green3" :weight bold))))
+     (w3m-current-anchor
+      ((t (:box (:line-width -1 :color "Grey30") :underline t))))
+     (w3m-form          
+      ((t (:foreground "Red" :box nil :underline "DarkRed"))))
+     (w3m-form-button   
+      ((t (:background "black" :foreground "LawnGreen" 
+		       :box (:line-width -1 :color "#014500" style released-button)))))
+     (w3m-form-button-mouse
+      ((((type x w32 mac) (class color))
+        (:background "Black" :foreground "Red"
+                     :box (:line-width -1 :color "Grey30" :style released-button)))))
+     (w3m-form-button-pressed
+      ((((type x w32 mac) (class color))
+        (:background "Black" :foreground "DarkRed" 
+		     :box (:line-width -1 :color "Grey60" :style pressed-button)))))
+     (w3m-form-face
+      ((((class color) (background dark))
+        (:foreground "khaki2" :underline "brown"))) t)
+     (w3m-header-line-location-content
+      ((((class color) (background dark))
+        (:background "black" :foreground "Green"))))
+     (w3m-header-line-location-title
+      ((((class color) (background dark))
+        (:background "black" :foreground "brown"))))
+     (w3m-history-current-url
+      ((t (:background "black" :foreground "DodgerBlue"))))
+     (w3m-image
+      ((((class color) (background dark))
+        (:background "Black" :foreground "DarkRed"))))
+     (w3m-image-anchor
+      ((((class color) (background dark))
+        (:background "Black"))))
+     (w3m-session-select
+      ((((class color) (background dark))
+        (:foreground "grey50"))))
+     (w3m-tab-background
+      ((((type x w32 mac) (class color))
+        (:background "black" :foreground "black"))))
+     ;; (w3m-tab-background
+     ;;  ((((type x w32 mac ns) (class color))
+     ;;    (:background "grey" :foreground "black"))))
+     (w3m-tab-selected-background
+      ((((type x w32 mac) (class color))
+        (:background "black" :foreground "black"))))
+     (w3m-tab-mouse
+      ((((type x w32 mac) (class color))
+        (:background "#454545" :foreground "LawnGreen"
+                     :box (:line-width -1 :color "Red" :style released-button)))))
+     (w3m-tab-selected
+      ((((type x w32 mac) (class color))
+        (:background "black" :foreground "LawnGreen"
+                     :box (:line-width -1 :color "#014500" :style released-button)))))
+     (w3m-tab-selected-retrieving
+      ((((type x w32 mac) (class color))
+        (:background "black" :foreground "grey80"
+                     :box (:line-width -1 :color "Grey40" :style released-button)))))
+     (w3m-tab-unselected
+      ((((type x w32 mac) (class color))
+        (:background "black" :foreground "#10650F"
+                     :box (:line-width 1 :color "Black" :style pressed-button)))))
+     (w3m-tab-unselected-retrieving ((((type x w32 mac) (class color))
+				      (:background "black" :foreground "grey30"
+                                                   :box (:line-width 1 :color "Black" :style pressed-button)))))
+     (w3m-tab-unselected-unseen ((((type x w32 mac) (class color))
+                                  (:background "black" :foreground "SlateBlue"
+                                               :box (:line-width 1 :color "black" :style pressed-button)))))
+     (w3m-link-numbering ((((class color) (background dark))
+                           (:background "Black" :foreground "Grey"))))
+     
      (isearch                              ;搜索关键字
       ((t (:background "DarkSeaGreen" :foreground "white"))))
      (isearch-fail                         ;搜索失败

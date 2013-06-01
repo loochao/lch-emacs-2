@@ -197,6 +197,7 @@ kill all buffers with MODE except current buffer."
     "! @dired   <=>  Add marked file to emms playlist."
     "C-6 combines to different functions under diff mode."
     "Visit WikEmacs at http://wikemacs.org to find out even more about Emacs."
+    "Open up simple.el and check out all nice functions in there. -- ffap simple"
     "Don't forget there's hexview and eperiodic!"))
 
 (defun lch-tip-of-the-day ()

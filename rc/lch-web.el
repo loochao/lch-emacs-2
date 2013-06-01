@@ -20,9 +20,9 @@
 ;;; W3M
 (require 'w3m)
 ;; (setq w3-default-stylesheet "~/.default.css")
-(defvar w3m-buffer-name-prefix "*w3m" "Name prefix of w3m buffer")
-(defvar w3m-buffer-name (concat w3m-buffer-name-prefix "*") "Name of w3m buffer")
-(defvar w3m-bookmark-buffer-name (concat w3m-buffer-name-prefix "-bookmark*") "Name of w3m buffer")
+;; (defvar w3m-buffer-name-prefix "*w3m" "Name prefix of w3m buffer")
+;; (defvar w3m-buffer-name (concat w3m-buffer-name-prefix "*") "Name of w3m buffer")
+;; (defvar w3m-bookmark-buffer-name (concat w3m-buffer-name-prefix "-bookmark*") "Name of w3m buffer")
 
 ;;; Setting
 (defvar w3m-dir (concat emacs-var-dir "/w3m") "Dir of w3m.")
@@ -37,10 +37,18 @@
 (setq w3m-bookmark-file (concat w3m-dir "/w3m-bookmark.html"))
 (setq w3m-cookie-file (concat w3m-dir "/w3m-cookie"))
 (setq w3m-session-file (concat w3m-dir "/w3m-session"))
-(setq w3m-session-time-format "%Y-%m-%d %A %H:%M")
+
 (setq w3m-session-load-crashed-sessions t)              
 (setq w3m-session-deleted-save nil)                     
-
+(setq w3m-session-time-format "%Y-%m-%d (%a) %H:%M")
+(setq w3m-use-header-line-title t)
+(add-hook 'w3m-display-hook
+          (lambda (url)
+            (rename-buffer
+             (format "*w3m: %s*"
+                     (beautify-string (or w3m-current-title
+                                          w3m-current-url) 50)) t)))
+;; (setq w3m-session-time-format "%Y-%m-%d %A %H:%M")
 ;;; Browse-url
 ;; Set browse function to be w3m
 ;; (setq browse-url-browser-function 'w3m-browse-url)
@@ -91,6 +99,22 @@ end tell"
         (buffer-substring (region-beginning) (region-end))
       (read-string "Google: ")))))
 (define-key global-map (kbd "<f3> g") 'lch-google)
+
+(defun beautify-string (string &optional after)
+  "Strip starting and ending whitespace and beautify `STRING'.
+Replace any chars after AFTER with '...'.
+Argument STRING the string that need beauty."
+  (let ((replace-map (list
+                      (cons "^[ \t]*" "")
+                      (cons "[ \t]*$" "")
+                      (cons (concat "^\\(.\\{"
+                                    (or (number-to-string after) "10")
+                                    "\\}\\).*")
+                            "\\1..."))))
+    (dolist (replace replace-map)
+      (when (string-match (car replace) string)
+        (setq string (replace-match (cdr replace) nil nil string))))
+    string))
 
 (defun lch-view-current-url-external ()
   (interactive)
@@ -145,17 +169,23 @@ end tell"
 
    ("/" . w3m-print-current-url)
    ("d" . w3m-delete-buffer)
-   ("o" . lch-view-current-url-external)
+
+   ("g" . w3m-search-google-web-en)
 
    ("H" . w3m-history)
    ("M-h" . w3m-db-history)
 
    ("m" . w3m-scroll-down-or-previous-url)
 
-   ("n" . w3m-view-next-page)
-   ("p" . w3m-view-previous-page)
+   ("n" . w3m-next-anchor)
+   ("p" . w3m-previous-anchor)
+   
+   ("o" . w3m-goto-url)
+   ("C-o" . lch-view-current-url-external)
 
+   ("s" . one-key-menu-w3m-search)
    ("t" . w3m-new-tab)
+   ("C-t" . w3m-new-tab)
    )
  w3m-mode-map
  )

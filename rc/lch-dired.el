@@ -26,6 +26,7 @@
 (setq dired-recursive-deletes t)                       
 (setq dired-recursive-deletes 'always)                 ;No ask when delete recursively.
 
+(setq dired-use-ls-dired nil)
 ;;; Dired-lisps
 ;; Dired-x
 ;; dired-x is part of GNU Emacs

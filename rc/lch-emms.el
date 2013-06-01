@@ -51,15 +51,16 @@
 (setq emms-show-format "Now Playing: %s")
 
 ;;; Modeline
+;; (defun lch-emms-mode-line-playlist-current ()
+;;   (interactive)
+;;   (format "[%s]" 
+;; 	  (file-name-nondirectory (emms-track-name (emms-playlist-current-selected-track)))))
+;; (setq emms-mode-line-mode-line-function
+;;       'lch-emms-mode-line-playlist-current)
+
 ;; Don't show current track name on modeline.
 (emms-mode-line-disable)
-(setq emms-mode-line-mode-line-function
-      'lch-emms-mode-line-playlist-current)
 
-(defun lch-emms-mode-line-playlist-current ()
-  (interactive)
-  (format "[%s]" 
-	  (file-name-nondirectory (emms-track-name (emms-playlist-current-selected-track)))))
 
 ;; Display playing time
 ;; (setq emms-playing-time-style 'bar)

@@ -30,9 +30,12 @@
 ;;; Super (command-map)
 (lch-set-key
  '(
-   ("s-7" . previous-buffer)
-   ("s-8" . next-buffer)
-
+   ("s-," . previous-buffer)
+   ("s-." . next-buffer)
+   ("s-=" . text-scale-increase)
+   ("s--" . text-scale-decrease)
+   
+   ("s-k" . kill-this-buffer)
    ("s-s" . one-key-menu-w3m-search)
    ("s-w" . kill-this-buffer)
    ))
@@ -40,14 +43,21 @@
 (defvar one-key-menu-super-alist nil "")
 (setq one-key-menu-super-alist
       '(
-        (("7" . "prev-buffer") . previous-buffer)                               ;; => lch-binding.el
-        (("8" . "next-buffer") . next-buffer)                                   ;; => lch-binding.el
+        (("," . "prev-buffer") . previous-buffer)                               ;; => lch-binding.el
+        (("." . "next-buffer") . next-buffer)                                   ;; => lch-binding.el
+
+        (("=" . "magnify-font") . text-scale-increase)                          ;; => lch-binding.el
+        (("-" . "demagnify-font") . text-scale-decrease)                        ;; => lch-binding.el
+
+        (("7" . "tabbar-backward-group") . tabbar-backward-group)               ;; => lch-ui.el
+        (("8" . "tabbar-forward-group") . tabbar-forward-group)                 ;; => lch-ui.el
 
         (("a" . "select all") . mark-whole-buffer)
-        (("j" . "tabbar-forward") . tabbar-forward)                             ;; => lch-ui.el
-        (("k" . "tabbar-backward") . tabbar-backward)                           ;; => lch-ui.el
-        (("h" . "tabbar-backward-group") . tabbar-backward-group)               ;; => lch-ui.el
-        (("l" . "tabbar-forward-group") . tabbar-forward-group)                 ;; => lch-ui.el
+
+        (("h" . "tabbar-backward") . tabbar-backward)                           ;; => lch-ui.el
+        (("l" . "tabbar-forward") . tabbar-forward)                             ;; => lch-ui.el
+
+        (("k" . "kill-this-buffer") . kill-this-buffer)                         ;; => lch-binding
         (("s" . "w3m-search") . one-key-menu-w3m-search)                        ;; => lch-binding.el
 
         (("w" . "kill-buffer") . kill-this-buffer)                              ;; => lch-binding.el
