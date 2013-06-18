@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+#name : one-key
+# --
+(defvar one-key-menu-${1:menu-name}-alist nil "")
+(setq one-key-menu-${1}-alist
+      '(
+        (("<f2>" . "color-theme-loochao") . color-theme-loochao)                ;; => lch-ui.el
+        ))
+
+(defun one-key-menu-${1} ()
+  "The `one-key' menu for ${1:MENU-NAME}."
+  (interactive)
+  (one-key-menu "${1:MENU-NAME}" one-key-menu-${1:menu-name}-alist t))
+(define-key global-map (kbd "${2:key-binding}") 'one-key-menu-${1:menu-name})

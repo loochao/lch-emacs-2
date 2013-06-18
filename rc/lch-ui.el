@@ -20,15 +20,23 @@
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode)
 ;;; Maxframe
-(require 'maxframe)
-(add-hook 'window-setup-hook 'maximize-frame t)
+;; FIXME: Not working under some monitor.
+;; (require 'maxframe)
+;; (add-hook 'window-setup-hook 'maximize-frame t)
 
 ;;; Color-theme
 (defvar emacs-theme-dir (concat emacs-lib-dir "/themes"))
-(add-to-list 'load-path emacs-theme-dir)
+(lch-add-subdirs-to-load-path emacs-theme-dir)
+
 (require 'color-theme)
 (require 'color-theme-loochao)
 (color-theme-loochao)
+(define-key global-map (kbd "<f11> <f2>") 
+  (lambda () (interactive) "" (color-theme-loochao) (message "Color-theme-loochao loaded.")))
+
+(autoload 'color-theme-lazycat "color-theme-lazycat" "" t)
+(define-key global-map (kbd "<f11> <f3>") 
+  (lambda () (interactive) (color-theme-lazycat) (message "Color-theme-lazycat loaded.")))
 
 ;;; Fonts
 ;;; Tabbar

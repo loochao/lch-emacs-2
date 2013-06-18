@@ -16,12 +16,68 @@
 ;;; CODE
 (message "=> lch-util: loading...")
 
-;;; 
-;;; Open-with-textmate
+;;; Interaction-with-macosx
+;; Open-remotes-with-finder
+(defun lch-open-libns-finder ()
+"Make iTunes either pause or play"
+(interactive)
+(setq apscript "
+tell app \"Finder\" to open location \"afp://loochao@loochao.synology.me:/LIBNS/\"
+"
+)
+(do-applescript apscript)
+)
+
+(defun lch-open-pu-finder ()
+"Make iTunes either pause or play"
+(interactive)
+(setq apscript "
+tell app \"Finder\" to open location \"smb://chaol@files.princeton.edu:/chaol/Scan\"
+activate
+"
+)
+(do-applescript apscript)
+)
+
+;; Open-with-textmate
 (defun lch-open-with-mate ()
   (interactive)
   (shell-command (format "mate %s" (buffer-file-name))))
 (define-key global-map (kbd "<f1> o") 'lch-open-with-mate)
+
+;; Start-file-browser
+(defun lch-start-file-browser ()
+  "Open current pwd with file browser.
+   Currently, just work under Mac OSX."
+  (interactive)
+  (let (mydir)
+    (setq mydir (pwd))
+    (string-match "Directory " mydir)
+    (setq mydir (replace-match "" nil nil mydir 0))
+    (when lch-mac-p (shell-command (format "open -a Finder %s" mydir)))
+    ))
+(define-key global-map (kbd "<f9> <f9>") 'lch-start-file-browser)
+
+;; Start-terminal
+(defun lch-start-terminal ()
+  "Open current pwd with terminal.
+   Currently, just work under Mac OSX."
+  (interactive)
+  (let (mydir)
+    (setq mydir (pwd))
+    (string-match "Directory " mydir)
+    (setq mydir (replace-match "" nil nil mydir 0))
+    (when lch-mac-p
+      (do-applescript
+       (format
+        "tell application \"Terminal\"
+activate
+do script \"cd '%s'; bash \"
+end tell" mydir)))
+    ))
+(define-key global-map (kbd "<f1> t") 'lch-start-terminal)
+(define-key global-map (kbd "<f1> <f2>") 'lch-start-terminal)
+
 ;;; Buffer-editing
 (defun lch-indent-buffer ()
   "Indent the currently visited buffer."
@@ -131,6 +187,10 @@ And don't kill current buffer."
         (add-to-ordered-list 'mode-list (symbol-name major-mode))))
     (kill-special-mode-buffers-internal (intern-soft (completing-read "Mode: " mode-list)))))
 
+(defun kill-org-mode-buffers ()
+  (interactive)
+  (kill-special-mode-buffers-internal 'org-mode))
+
 (defun kill-special-mode-buffers-internal (mode &optional except-current-buffer)
   "Kill all buffers that major MODE same with special.
 If option EXCEPT-CURRENT-BUFFER is `non-nil',
@@ -170,9 +230,10 @@ kill all buffers with MODE except current buffer."
       '(
         (("M-k" . "kill-all-buffers") . kill-all-buffers)
         (("a" . "kill-all-buffers-except-current") . kill-all-buffers-except-current)
-        (("s" . "kill-special-mode-buffers") . kill-special-mode-buffers)
         (("c" . "kill-current-mode-buffers") . kill-current-mode-buffers)
         (("C" . "kill-current-mode-buffers-except-current") . kill-current-mode-buffers-except-current)
+        (("o" . "kill-org-mode-buffers") . kill-org-mode-buffers)
+        (("s" . "kill-special-mode-buffers") . kill-special-mode-buffers)
         ))
 
 (defun one-key-menu-kill ()
@@ -198,6 +259,8 @@ kill all buffers with MODE except current buffer."
     "C-6 combines to different functions under diff mode."
     "Visit WikEmacs at http://wikemacs.org to find out even more about Emacs."
     "Open up simple.el and check out all nice functions in there. -- ffap simple"
+    "/ m in dired to get file filtering, like C-<f12> in TC."
+    "<f9s>: remote-notes; <f9> m: org-notes; <f10s> dirs; <f10> m: emacs-conf"
     "Don't forget there's hexview and eperiodic!"))
 
 (defun lch-tip-of-the-day ()
@@ -240,7 +303,7 @@ Argument STRING the string that need pretty."
   (message "%s: EVALED" (buffer-name (current-buffer))))
 (define-key global-map (kbd "C-c e") 'lch-eval-buffer)
 
-;;; Create-switch-scratch
+;;; Create-switch-scratch/message
 (defun lch-create-switch-scratch ()
   (interactive)
   (let ((buf (get-buffer "*scratch*")))
@@ -249,45 +312,18 @@ Argument STRING the string that need pretty."
       (lisp-interaction-mode))))
 (define-key global-map (kbd "C-c s") 'lch-create-switch-scratch)
 
+(defun lch-switch-to-message ()
+  (interactive)
+  (switch-to-buffer (get-buffer "*Messages*")))
+;; "/" means system output.
+(define-key global-map (kbd "C-c /") 'lch-switch-to-message)
 ;;; Create-switch-term
 (defun lch-create-switch-term ()
   (interactive)
   (if (not (get-buffer "*ansi-term*"))
       (ansi-term "/usr/texbin/bash")
     (switch-to-buffer "*ansi-term*")))
-(define-key global-map (kbd "M-2") 'lch-create-switch-term)
-;;; Start-file-browser
-(defun lch-start-file-browser ()
-  "Open current pwd with file browser.
-   Currently, just work under Mac OSX."
-  (interactive)
-  (let (mydir)
-    (setq mydir (pwd))
-    (string-match "Directory " mydir)
-    (setq mydir (replace-match "" nil nil mydir 0))
-    (when lch-mac-p (shell-command (format "open -a Finder %s" mydir)))
-    ))
-(define-key global-map (kbd "<f9> <f9>") 'lch-start-file-browser)
-
-;;; Start-terminal
-(defun lch-start-terminal ()
-  "Open current pwd with terminal.
-   Currently, just work under Mac OSX."
-  (interactive)
-  (let (mydir)
-    (setq mydir (pwd))
-    (string-match "Directory " mydir)
-    (setq mydir (replace-match "" nil nil mydir 0))
-    (when lch-mac-p
-      (do-applescript
-       (format
-        "tell application \"Terminal\"
-activate
-do script \"cd '%s'; bash \"
-end tell" mydir)))
-    ))
-(define-key global-map (kbd "<f1> <f2>") 'lch-start-terminal)
-
+;; (define-key global-map (kbd "M-2") 'lch-create-switch-term)
 ;;; Face-at-point
 (defun lch-face-at-point (pos)
   "Return the name of the face at point"

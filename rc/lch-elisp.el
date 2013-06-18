@@ -13,6 +13,55 @@
 
 ;;; CODE
 (message "=> lch-elisp: loading...")
+
+;;; Multi-term/scratch
+(require 'multi-term)
+(require 'multi-scratch)
+(define-key global-map (kbd "M-n") 'multi-term)
+(define-key global-map (kbd "M-[") 'multi-term-prev)
+(define-key global-map (kbd "M-]") 'multi-term-next)
+
+;; One-key-menu-term-scratch
+(defvar one-key-menu-term-scratch-alist nil "")
+(setq one-key-menu-term-scratch-alist
+      '(
+        (("[" . "mterm-prev") . multi-term-prev)                                    ;; => lch-binding.el
+        (("]" . "mterm-next") . multi-term-next)                                    ;; => lch-binding.el
+
+        (("," . "scratch-prev") . multi-scratch-prev)                               ;; => lch-binding.el
+        (("." . "scratch-next") . multi-scratch-next)                               ;; => lch-binding.el
+        (("s" . "scratch-new") . multi-scratch-new)                                 ;; => lch-binding.el
+
+        (("n" . "mterm") . multi-term)                                              ;; => lch-binding.el
+        (("t" . "mterm-dedicated-toggle") . multi-term-dedicated-toggle)            ;; => lch-binding.el
+        ))
+(defun one-key-menu-term-scratch ()
+  "The `one-key' menu for TERM."
+  (interactive)
+  (one-key-menu "TERM" one-key-menu-term-scratch-alist t))
+(define-key global-map (kbd "M-3") 'one-key-menu-term-scratch)
+
+;;; ASCII
+(autoload 'ascii-display "ascii" "" t)
+(autoload 'ascii-on "ascii" "" t)
+(autoload 'ascii-off "ascii" "" t)
+(define-key global-map (kbd "<f11> a") 'ascii-on)
+(define-key global-map (kbd "<f11> A") 'ascii-off)
+;;; Calendar
+(defun calendar-settings ()
+  "settings for calendar mode"
+  ;; required features
+  (require 'cal-china-x)
+  ;; settings
+  (setq mark-holidays-in-calendar t)
+  (setq cal-china-x-important-holidays cal-china-x-chinese-holidays)
+  (setq calendar-holidays cal-china-x-important-holidays))
+
+(add-hook 'calendar-load-hook 'calendar-settings)
+;;; Smart-Compile
+(autoload 'smart-compile "smart-compile" "" t)
+(define-key global-map (kbd "M-<f2>") 'smart-compile)
+(define-key global-map (kbd "<f1> c") 'smart-compile)
 ;;; Skeleton
 ;; Skeleton pair works with paredit, and more generally.
 (setq skeleton-pair t)
@@ -84,7 +133,7 @@
 ;;; Hexview
 (autoload 'hexview-mode "hexview-mode"
   "Major mode for viewing file in hexical mode" t)
-
+(define-key global-map (kbd "<f11> x") 'hexview-mode)
 ;;; ESS
 (autoload 'ess-mode "ess-site" "Emacs Speaks Statistics" t)
 (autoload 'R-mode "ess-site" "Emacs Speaks Statistics" t)
@@ -382,8 +431,13 @@
 (add-hook 'after-init-hook 'desktop-settings-setup)
 ;;; Yasnippet
 (require 'yasnippet)
-(defvar lch-yasnippet-dir (concat emacs-lib-dir "/snippets") "")
-(add-to-list 'yas-snippet-dirs lch-yasnippet-dir)
+(defvar snippet-root-dir (concat emacs-lib-dir "/snippets") "")
+
+(defvar lch-snippet-dir (concat snippet-root-dir "/lch") "")
+(defvar rejeep-snippet-dir (concat snippet-root-dir "/rejeep") "")
+(add-to-list 'yas-snippet-dirs lch-snippet-dir)
+(add-to-list 'yas-snippet-dirs rejeep-snippet-dir)
+
 (yas-global-mode 1)
 
 (defun lch-reload-snippets ()

@@ -26,15 +26,15 @@
 (make-face 'font-lock-fixme-face)
 (make-face 'font-lock-todo-face)
 
-(modify-face 'font-lock-fixme-face "Black" "Yellow" nil t nil t nil nil)
-(modify-face 'font-lock-todo-face  "Black" "Pink" nil t nil nil nil nil)
+(set-face-attribute 'font-lock-fixme-face nil :foreground "Black" :background "Yellow")
+(set-face-attribute 'font-lock-todo-face nil :foreground "Black" :background "Pink")
 
 (defun lch-highlight-special-keywords ()
   (mapc (lambda (mode)
 	  (font-lock-add-keywords
 	   mode
 	   '(("\\<\\(FIXME\\)" 1 'font-lock-fixme-face t)
-	     ("\\<\\(TODO\\)"  1 'font-lock-todo-face  t))))
+	     ("\\<\\(TODOs\\)"  1 'font-lock-todo-face  t))))
 	lch-keyword-highlight-modes))
 
 (lch-highlight-special-keywords)

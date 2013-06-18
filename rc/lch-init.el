@@ -71,6 +71,11 @@
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-defun 'disabled nil)
 
+;; no split horizontally for wide screen
+;; nil: means infinity, so always vertically.
+(setq split-width-threshold nil)
+;; (setq split-height-threshold nil)
+
 ;; enabled change region case commands
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -101,7 +106,15 @@
 ;; (info "(emacs)Variables")
 ;; (info "(emacs)Directory Variables")
 
-
+;; Auto fill
+;; Turn on auto-fill mode for all major modes
+;; (setq-default auto-fill-function 'do-auto-fill)
+;; Lines should be 80 characters wide, not 72
+(setq-default fill-column 80)
+;; Automatically turn on auto-fill-mode when editing text files
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+(add-hook 'tex-mode-hook 'turn-on-auto-fill)
+
 ;; User info
 (setq user-full-name "LooChao<LooChao@gmail.com>")
 (setq user-mail-address "LooChao@gmail.com")

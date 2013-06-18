@@ -80,6 +80,25 @@
      (emms-playlist-mark-face ((t (:foreground "Pink"))))
      (emms-playlist-track-face ((t (:foreground "DarkSeaGreen"))))
 
+     ;; Org
+     (org-document-title ((t (:foreground "Pale Turquoise" :weight normal :height 1.2))))
+
+     (org-level-1 ((t (:foreground "LightSkyBlue"))))
+     (org-level-2 ((t (:foreground "DarkSeaGreen"))))
+     (org-level-3 ((t (:foreground "LightSteelBlue"))))
+     (org-level-4 ((t (:foreground "LightGoldenrod"))))
+     (org-level-5 ((t (:foreground "DeepSkyBlue"))))
+     (org-level-6 ((t (:foreground "Cyan"))))
+     (org-level-7 ((t (:foreground "Yellow"))))
+     (org-level-8 ((t (:foreground "DarkRed"))))
+
+     (org-meta-line ((t (:foreground "LightPink4"))))
+     (org-todo ((t (:bold t :foreground "Orange" :weight bold
+                              :box (:line-width 1 :style none)))))
+     ;; iSearch
+     (isearch ((t (:background "Pink" :foreground "black"))))
+     (isearch-fail ((t (:background "grey90" :foreground "red2"))))
+
      ;; Tabbar
      (tabbar-default ((t (:height 0.97 :background "black"))))
      (tabbar-highlight ((t (nil))))

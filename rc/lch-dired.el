@@ -36,7 +36,7 @@
 
 ;; Dired-single
 (require 'dired-single)
-(define-key global-map (kbd "M-<f9>") 'dired-single-magic-buffer)
+(define-key global-map (kbd "C-<f9>") 'dired-single-magic-buffer)
 
 ;; Wdired
 ;; wdired is Part of GNU Emacs.

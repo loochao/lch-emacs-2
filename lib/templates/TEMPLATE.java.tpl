@@ -3,9 +3,7 @@
  * 
  * @brief none
  * 
- * Time-stamp: <2013-03-14 16:56:19 Thursday by lzy>
- * 
- * Copyright (c) 2011-2012, zhengyu li <(>>>AUTHOR<<<)>
+ * Copyright (c) 2011-2013, Charles Lu <(>>>AUTHOR<<<)>
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without" 

@@ -1,7 +1,7 @@
 ;; -*- Emacs-Lisp -*-
 ;; -*- coding: utf-8; -*-
 ;;; douban-music-mode.el ---
-;; Time-stamp: <2013-05-15 17:38:10 Wednesday by lzy>
+;; Time-stamp: <2013-06-12 06:15:16 LooChao>
 
 ;; Copyright (C) 2013 zhengyu li
 ;;
@@ -154,6 +154,7 @@
         (define-key map "n" 'douban-music-play-next)
         (define-key map "p" 'douban-music-play-previous)
         (define-key map "q" 'douban-music-bury-buffer)
+        (define-key map "Q" 'douban-music-quit)
         (define-key map "x" 'douban-music-quit)
         (define-key map " " 'douban-music-pause/resume)
         (define-key map "<" 'douban-music-seek-backward)

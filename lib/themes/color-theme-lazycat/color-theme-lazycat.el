@@ -1,6 +1,6 @@
 ;; -*- Emacs-Lisp -*-
 ;;; LzyTheme.el ---
-;; Time-stamp: <2013-05-17 10:57:04 Friday by lzy>
+;; Time-stamp: <2013-06-11 02:03:50 LooChao>
 
 ;; Copyright (C) 2013 zhengyu li
 ;;
@@ -27,18 +27,18 @@
 ;;
 
 ;; Put this file into your load-path and the following into your ~/.emacs:
-;;   (require 'LzyTheme)
+;;   (require 'color-theme-lazycat)
 
 ;;; Code:
 
 (eval-when-compile
   (require 'color-theme))
 
-(defun color-theme-molokai ()
+(defun color-theme-lazycat ()
   "Color theme by zhengyu li, created 2013-03-29."
   (interactive)
   (color-theme-install
-   '(color-theme-molokai
+   '(color-theme-lazycat
      ((foreground-color . "#F8F8F2")
       (background-color . "black")
       (background-mode . dark)
@@ -174,7 +174,7 @@
      (emms-stream-url-face ((t (:foreground "LightSteelBlue"))))
      (error ((t (:bold t :foreground "Red1" :weight bold))))
      (escape-glyph ((t (:foreground "cyan"))))
-     (ffap ((t (:background "DarkRed" :foreground "White"))))
+
      (file-name-shadow ((t (:foreground "grey70"))))
      (font-lock-builtin-face ((t (:foreground "#A6E22E"))))
      (font-lock-comment-face ((t (:foreground "#869497" :slant italic))))
@@ -293,11 +293,7 @@
      (moccur-edit-file-face ((t (:background "Steelblue1" :foreground "black"))))
      (moccur-edit-reject-face ((t (:foreground "hot pink"))))
      (moccur-face ((t (:background "yellow2" :foreground "black"))))
-     (mode-line ((t (:background "DarkRed" :foreground "white" :height 0.92 :box (:line-width -1 :style released-button)))))
-     (mode-line-buffer-id ((t (:bold t :weight bold))))
-     (mode-line-emphasis ((t (:bold t :weight bold))))
-     (mode-line-highlight ((t (:box (:line-width -1 :color "DarkRed" :style released-button)))))
-     (mode-line-inactive ((t (:background "grey30" :foreground "white" :height 0.91 :box (:line-width -1 :color "grey30" :style released-button)))))
+
      (mouse ((t (nil))))
      (next-error ((t (:background "grey20" :foreground "red"))))
      (nobreak-space ((t (:foreground "brown" :underline t))))
@@ -334,7 +330,7 @@
      (org-date ((t (:foreground "RoyalBlue1" :underline t :weight normal))))
      (org-document-info ((t (:foreground "pale turquoise"))))
      (org-document-info-keyword ((t (:foreground "grey70"))))
-     (org-document-title ((t (:foreground "pale turquoise" :weight normal :height 144))))
+     (org-document-title ((t (:foreground "pale turquoise" :weight normal))))
      (org-done ((t (:foreground "Green2" :weight normal :height 130))))
      (org-drawer ((t (:foreground "LightSkyBlue"))))
      (org-ellipsis ((t (:foreground "LightGoldenrod" :underline t))))
@@ -344,14 +340,14 @@
      (org-hide ((t (:foreground "black"))))
      (org-indent ((t (nil))))
      (org-latex-and-export-specials ((t (:foreground "burlywood"))))
-     (org-level-1 ((t (:foreground "red2" :weight normal :height 130))))
-     (org-level-2 ((t (:foreground "DeepPink" :weight normal :height 125))))
-     (org-level-3 ((t (:foreground "RoyalBlue1" :weight normal :height 120))))
-     (org-level-4 ((t (:foreground "red" :height 115))))
-     (org-level-5 ((t (:foreground "SpringGreen1" :height 110))))
-     (org-level-6 ((t (:foreground "cyan"))))
-     (org-level-7 ((t (:foreground "yellow"))))
-     (org-level-8 ((t (:foreground "Deep Pink"))))
+     (org-level-1 ((t (:foreground "Red2"))))
+     (org-level-2 ((t (:foreground "DeepPink"))))
+     (org-level-3 ((t (:foreground "RoyalBlue1"))))
+     (org-level-4 ((t (:foreground "Red"))))
+     (org-level-5 ((t (:foreground "SpringGreen1"))))
+     (org-level-6 ((t (:foreground "Cyan"))))
+     (org-level-7 ((t (:foreground "Yellow"))))
+     (org-level-8 ((t (:foreground "DeepPink"))))
      (org-link ((t (:foreground "cyan1" :underline t))))
      (org-meta-line ((t (:foreground "red2"))))
      (org-mode-line-clock ((t (:family "Monospace" :background "DarkRed" :foreground "grey90" :box (:line-width -1 :style released-button) :height 0.8464))))
@@ -452,11 +448,11 @@
      (zjl-hl-operators-face ((t (:foreground "PaleGreen"))))
      (zjl-hl-parameters-reference-face ((t (:foreground "#009000")))))))
 
-(add-to-list 'color-themes '(color-theme-molokai "Emacs Molokai" "zhengyu li"))
+(add-to-list 'color-themes '(color-theme-lazycat "Emacs LazyCat" "zhengyu li"))
 
-(color-theme-molokai)
+;; (color-theme-lazycat)
 
 ;;; provide features
-(provide 'LzyTheme)
+(provide 'color-theme-lazycat)
 
 ;;; LzyTheme.el ends here

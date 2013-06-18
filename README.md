@@ -15,3 +15,6 @@ all the files needed.
 
 # Directory structure
 etc -- configuration file used by system like .bashrc
+# Problems
+- w3m buffer need to be renamed, but if rename, will cause desktop do not work at emacs startup.
+- emms-dump, using emms-start will not highlight current playing songs.

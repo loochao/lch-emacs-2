@@ -34,9 +34,10 @@
    ("s-." . next-buffer)
    ("s-=" . text-scale-increase)
    ("s--" . text-scale-decrease)
-   
+
    ("s-k" . kill-this-buffer)
    ("s-s" . one-key-menu-w3m-search)
+   ("s-u" . undo-kill-buffer)
    ("s-w" . kill-this-buffer)
    ))
 ;; One-key-menu-super
@@ -87,9 +88,9 @@
         (("<down>" . "outline-next-heading") . outline-next-heading)            ;; => lch-elisp.el
         (("<SPC>" . "anything") . anything)                                     ;; => lch-elisp.el
         (("/" . "dabbrev") . dabbrev-expand)                                    ;; => emacs-defaults
-        (("'" . "yasnippet") . yas-expand)                                      ;; => lch-elisp.el        
+        (("'" . "yasnippet") . yas-expand)                                      ;; => lch-elisp.el
         (("1" . "shell") . shell)                                               ;; => lch-binding.el
-        (("2" . "term") . lch-create-switch-term)                               ;; => lch-binding.el
+        (("2" . "term-popup") . multi-term-dedicated-toggle)                    ;; => lch-binding.el
         (("4" . "thing-edit") . one-key-menu-edit)                              ;; => lch-one-key.el
         (("6" . "erc-switch") . one-key-menu-irc-channel)                       ;; => lch-web.el
         (("8" . "org-agenda") . org-agenda)                                     ;; => lch-org.el
@@ -222,6 +223,7 @@
 (setq one-key-menu-ctrl-c-alist
       '(
         (("." . "repeat-complex-command") . repeat-complex-command)             ;; => lch-binding.el
+        (("/" . "switch-to-message") . lch-switch-to-message)                   ;; => lch-util.el
         (("a" . "toggle-archive") . lch-toggle-archive)                         ;; => lch-util.el
         (("c" . "comment-region") . comment-region)                             ;; => lch-binding.el
         (("e" . "eval-buffer") . lch-eval-buffer)                               ;; => lch-util.el
@@ -260,7 +262,7 @@
   (one-key-menu "CTRL-Z" one-key-menu-ctrl-z-alist t))
 (define-key global-map (kbd "C-z m") 'one-key-menu-ctrl-z)
 
-;;; Fn: (command-map)
+;;; Fn:  (command-map)
 (lch-set-key
  '(
    ("<f4> <f4>" . kill-this-buffer)
@@ -268,18 +270,23 @@
 (defvar one-key-menu-fn-alist nil "")
 (setq one-key-menu-fn-alist
       '(
+        (("<f1>" . "display-fn-keys") . lch-tip-of-the-day)                     ;; => lch-binding
         (("<f2>" . "goto-last-change") . goto-last-change)                      ;; => lch-elisp.el
         (("<f3>" . "w3m") . lch-w3m-init)                                       ;; => lch-web.el
         (("<f4>" . "kill-buffer") . kill-this-buffer)                           ;; => lch-binding.el
+        (("<f5>" . "bc-set") . bc-set)                                          ;; => lch-bmk.el
+        (("<f6>" . "erc") . lch-erc-init)                                       ;; => lch-network.el
         (("<f7>" . "dictionary") . dictionary-search)                           ;; => lch-elisp.el
-        (("<f8>" . "org-agenda") . org-agenda)                                  ;; => lch-org.el
         (("<f9>" . "lch-start-file-browser") . lch-start-file-browser)          ;; => lch-util.el
+        (("<f10>" . "open-dirs-w-emacs") . one-key-menu-f10s)                   ;; => lch-binding.el
         (("<f12>" . "emms") . lch-emms-init)                                    ;; => lch-emms.el
-        (("M-<f9>" . "dired-single-magic") . dired-single-magic-buffer)         ;; => lch-dired.el
+        (("C-<f9>" . "dired-single-magic") . dired-single-magic-buffer)         ;; => lch-dired.el
         (("M-<f12>" . "douban-music") . douban-music)                           ;; => lch-elisp.el
+        (("<f1> <f2>" . "start-terminal") . lch-start-terminal)                 ;; => lch-util.el
+        (("<f9> <f10>" . "open-dirs-w-finder") . one-key-menu-df)               ;; => lch-binding.el
         (("Shift+ [l,r,u,d] ->" . "windmove") . zone)                           ;; => lch-elisp.el
         (("C-[mouse-scroll]" . "text-scale(+/-)") . zone)                       ;; => lch-binding.el
-      ))
+        ))
 
 (defun one-key-menu-fn ()
   "The `one-key' menu for FN."
@@ -287,7 +294,7 @@
   (one-key-menu "FN" one-key-menu-fn-alist t))
 (define-key global-map (kbd "<f1> <f1>") 'one-key-menu-fn)
 
-;;; F1: (command-map)
+;;; F1:  (command-map)
 (lch-set-key
  '(
    ("<f1> r" . re-builder)
@@ -300,10 +307,12 @@
 (setq one-key-menu-command-alist
       '(
         (("<f2>" . "start-terminal") . lch-start-terminal)                   ;; => lch-util.el
+        (("c" . "smart-compile") . smart-compile)                            ;; => lch-elisp.el
         (("f" . "fortune") . lch-cowsay-fortune)                             ;; => lch-elisp.el
         (("l" . "locate") . locate)                                          ;; => lch-binding.el
         (("o" . "textmate") . lch-open-with-mate)                            ;; => lch-util.el
         (("r" . "re-builder") . re-builder)                                  ;; => lch-binding.el
+        (("t" . "start-terminal") . lch-start-terminal)                      ;; => lch-util.el
         (("z" . "zone") . zone)                                              ;; => lch-binding.el
         ))
 
@@ -313,7 +322,7 @@
   (one-key-menu "COMMAND" one-key-menu-command-alist t))
 (define-key global-map (kbd "<f1> m") 'one-key-menu-command)
 
-;;; F2: (mode-map)
+;;; F2:  (mode-map)
 (lch-set-key
  '(
    ("<f2> a" . auto-complete-mode)
@@ -350,7 +359,7 @@
   (interactive)
   (one-key-menu "MODE" one-key-menu-mode-alist t))
 (define-key global-map (kbd "<f2> m") 'one-key-menu-mode)
-;;; F3: (web-map)
+;;; F3:  (web-map)
 ;; W3m and webpage related.
 (defvar one-key-menu-web-alist nil
   "The `one-key' menu alist for WEB.")
@@ -358,6 +367,7 @@
 (setq one-key-menu-web-alist
       '(
         (("<f3>" . "w3m-init") . lch-w3m-init)                             ;; => lch-web.el
+        (("<f4>" . "wget") . wget)                                         ;; => lch-web.el
         (("g" . "google") . lch-google)                                    ;; => lch-web.el
         (("s" . "w3m-search") . one-key-menu-w3m-search)                   ;; => lch-web.el
         ))
@@ -368,7 +378,7 @@
   (one-key-menu "WEB" one-key-menu-web-alist t))
 (define-key global-map (kbd "<f3> m") 'one-key-menu-web)
 
-;;; F4: (buffer-edit-map)
+;;; F4:  (buffer-edit-map)
 (lch-set-key
  '(
    ("<f4> f" . fill-region)
@@ -394,7 +404,7 @@
   (one-key-menu "EDIT" one-key-menu-edit-alist t))
 (define-key global-map (kbd "<f4> m") 'one-key-menu-edit)
 
-;;; F5: (bookmark-map)
+;;; F5:  (bookmark-map)
 (defvar one-key-menu-bmk-alist nil
   "The `one-key' menu alist for BMK.")
 
@@ -420,7 +430,7 @@
   (one-key-menu "BMK" one-key-menu-bmk-alist t))
 (define-key global-map (kbd "<f5> m") 'one-key-menu-bmk)
 
-;;; F6: (network-map)
+;;; F6:  (network-map)
 ;; Network apps like erc related.
 (defvar one-key-menu-network-alist nil
   "The `one-key' menu alist for NETWORK.")
@@ -438,7 +448,7 @@
   (one-key-menu "NETWORK" one-key-menu-network-alist t))
 (define-key global-map (kbd "<f6> m") 'one-key-menu-network)
 
-;;; F7: (dictionary-map)
+;;; F7:  (dictionary-map)
 (defvar one-key-menu-dict-alist nil
   "The `one-key' menu alist for DICT.")
 
@@ -455,8 +465,8 @@
   (one-key-menu "DICT" one-key-menu-dict-alist t))
 (define-key global-map (kbd "<f7> m") 'one-key-menu-dict)
 
-;;; F8: 
-;;; F9: (file-map)
+;;; F8:
+;;; F9:  (file-map)
 (define-key global-map (kbd "<f9> 1") (lambda() (interactive) (dired org-source-dir)))
 
 (define-key global-map (kbd "<f9> a") (lambda() (interactive) (find-file (concat org-source-dir "/Art-Ent.org"))))
@@ -497,31 +507,22 @@
 (define-key global-map (kbd "<f9> S") (lambda() (interactive) (find-file (concat org-source-dir "/Sitemap.org"))))
 (define-key global-map (kbd "<f9> u") (lambda() (interactive) (find-file (concat org-source-dir "/Unix.org"))))
 (define-key global-map (kbd "<f9> W") (lambda() (interactive) (dired (concat dropbox-path "/GIT/Worg"))))
-;; F9-ends
-(defun lch-f9-menu-prompt ()
+
+;;; F9s: (dir-finder-map)
+(defvar one-key-menu-df-alist nil "")
+(setq one-key-menu-df-alist
+      '(
+        (("l" . "libns-finder") . lch-open-libns-finder)
+        (("s" . "scaned-notes-finder") . lch-open-pu-finder)
+        ))
+
+(defun one-key-menu-df ()
+  "The `one-key' menu for dired-w-finder."
   (interactive)
-  (let ( (begin 0) )
-    (message "Too many to prompt. Please go to %s to find out." (concat emacs-rc-dir "/lch-binding.el"))
-    (sit-for 1)
-    (if  (yes-or-no-p "Would you like my opening binding-conf-file for you, my lord?")
-        (progn
-          (split-window-below)
-          (other-window 1)
-          (switch-to-buffer (get-buffer-create "*f9-menu*"))
-          (insert-file (concat emacs-rc-dir "/lch-binding.el"))
-          (search-forward "F9: (file-map)" nil t)
-          (setq begin (point))
-          (search-forward "F9-ends" nil t)
-          (forward-line -1)
-          (end-of-line)
-          (emacs-lisp-mode)
-          (narrow-to-region begin (point))
-          (goto-char (point-min)))
-      (progn
-        (message "Have a nice day!")))
-    ))
-(define-key global-map (kbd "<f9> m") 'lch-f9-menu-prompt)
-;;; F10 (file-map)
+  (one-key-menu "DF" one-key-menu-df-alist t))
+(define-key global-map (kbd "<f9> <f10>") 'one-key-menu-df)
+
+;;; F10: (file-map)
 (define-key global-map (kbd "<f10> 1") (lambda() (interactive) (dired (concat emacs-dir "/rc"))))
 (define-key global-map (kbd "<f10> 2") (lambda() (interactive) (dired dropbox-path)))
 (define-key global-map (kbd "<f10> 3") (lambda() (interactive) (dired "~/Downloads")))
@@ -547,68 +548,78 @@
 (define-key global-map (kbd "<f10> w") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-web.el"))))
 ;; F10-end
 
-(defun lch-f10-menu-generate ()
+;;; F10s (dir-map)
+(defvar remote-notes-root "/scpc:chaol@nobel.princeton.edu:/u/chaol/Scan")
+(defvar remote-lib-root "/scpc:loochao@loochao.synology.me:/")
+
+(defvar one-key-menu--alist nil "")
+(setq one-key-menu-rmt-alist
+      '(
+        (("c" . "computese-rmt") . (lambda () (interactive) (dired-x-find-file (concat remote-notes-root "/ComputerSE/"))))
+        (("e" . "emacs-rmt") . (lambda () (interactive) (dired-x-find-file (concat remote-notes-root "/ComputerSE/Emacs/"))))
+        (("p" . "programming-rmt") . (lambda () (interactive) (dired-x-find-file (concat remote-notes-root "/Programming/"))))
+        (("s" . "scaned_notes") . (lambda () (interactive) (dired-x-find-file remote-notes-root)))
+        ))
+
+(defun one-key-menu-rmt ()
+  "The `one-key' menu for Remote Notes."
   (interactive)
-  (split-window-vertically)
-  (other-window 1)
-  (switch-to-buffer (get-buffer-create "*f10-menu*"))
-  (insert-file (concat emacs-rc-dir "/lch-binding.el"))
-  (emacs-lisp-mode)
-  (outline-minor-mode -1)
-  (goto-char (point-min))
-  (search-forward ";;; F10 (file-map)")
-  (forward-line 1)
-  (beginning-of-line)
-  (delete-region (point-min) (point))
-  (search-forward ";; F10-end")
-  (forward-line -1)
-  (end-of-line)
-  (kill-region (point) (point-max))
-  (goto-char (point-min))
-  (while (search-forward "(define-key global-map (kbd " nil t)
-    (replace-match "("))
-  (goto-char (point-min))
-  (while (search-forward " (lambda() (interactive) " nil t)
-    (replace-match " \t <-> \t"))
-  (goto-char (point-min))
-  (while (re-search-forward "dired \\|find-file " nil t)
-    (replace-match ""))
-  (goto-char (point-min))
-  (while (search-forward "(concat emacs-dir " nil t)
-    (replace-match ""))
-  (goto-char (point-min))
-  (while (re-search-forward ")+" nil t)
-    (replace-match ")"))
-  (goto-char (point-min))
-  (other-window 1))
+  (one-key-menu "RMT" one-key-menu-rmt-alist t))
 
-(define-key global-map (kbd "<f10> m") 'lch-f10-menu-generate)
+(defvar one-key-menu-f10s-alist nil "")
+(setq one-key-menu-f10s-alist
+      '(
+        (("<f10>" . "remote-notes-menu") . one-key-menu-rmt)
 
-;;; F11 (ui-map)
+        (("d" . "downloads") . (lambda () (interactive) (dired-x-find-file "~/Downloads")))
+        (("e" . ".emacs.lib") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/.emacs.lib/")))
+        (("f" . "flv") . (lambda () (interactive) (dired-x-find-file "/Volumes/DATA/Flv/")))
+        (("h" . "public_html") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Org/public_html/")))
+        (("l" . "library") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Library/")))
+        (("m" . "music") . (lambda () (interactive) (dired-x-find-file "/Volumes/DATA/Music/")))
+        (("p" . "paper") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Research/Papers2/Articles/")))
+        (("s" . "remote-notes") . (lambda () (interactive) (dired-x-find-file remote-notes-root)))
+        (("r" . "research") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Research/")))
+        (("v" . "video") . (lambda () (interactive) (dired-x-find-file "/Volumes/DATA/Video/")))
+        (("V" . "flv") . (lambda () (interactive) (dired-x-find-file "/Volumes/DATA/Flv/")))
+        ))
+
+(defun one-key-menu-f10s ()
+  "The `one-key' menu for F10S."
+  (interactive)
+  (one-key-menu "F10S" one-key-menu-f10s-alist t))
+(define-key global-map (kbd "<f10> <f10>") 'one-key-menu-f10s)
+;;; F11: (ui-map)
 (lch-set-key
  '(
+   ("<f11> $" . toggle-truncate-lines)
    ("<f11> /" . eyedropper-foreground)
    ("<f11> b" . eyedropper-background)
-   ("<f11> f" . eyedropper-foreground)
-   ("<f11> l" . global-hl-line-mode)
-   ("<f11> L" . setnu-mode)
+   ("<f11> h" . global-hl-line-mode)
+   ("<f11> l" . setnu-mode)
+   ("<f11> L" . toggle-truncate-lines)
    ("<f11> t" . tool-bar-mode)
    ))
+
 ;; One-key-menu-ui
 (defvar one-key-menu-ui-alist nil "")
 (setq one-key-menu-ui-alist
       '(
+        (("$" . "line-truncate") . toggle-truncate-lines)                       ;; => lch-binding.el
+        (("<f2>" . "color-theme-loochao") . color-theme-loochao)                ;; => lch-ui.el
+        (("<f3>" . "color-theme-lazycat") . color-theme-lazycat)                ;; => lch-ui.el
         (("1" . "cycle-fg-forward") . lch-cycle-fg-color-forward)               ;; => lch-ui.el
         (("2" . "cycle-bg-forward") . lch-cycle-bg-color-forward)               ;; => lch-ui.el
         (("3" . "frame-bg-pink") . lch-frame-pink)                              ;; => lch-ui.el
         (("4" . "frame-bg-black") . lch-frame-black)                            ;; => lch-ui.el
-        (("/" . "eyedropper foreground") . eyedropper-foreground)
-        (("b" . "eyedropper background") . eyedropper-background)
-        (("f" . "eyedropper foreground") . eyedropper-foreground)
-        (("l" . "highlight-line") . global-hl-line-mode)                        ;; => lch-binding.el
-        (("L" . "setnu-mode") . setnu-mode)                                     ;; => lch-binding.el
-        (("r" . "rainbow-delimiter") . rainbow-delimiters-mode)                 ;; => lch-ui.el
-        (("R" . "rainbow-mode") . rainbow-mode)                                 ;; => lch-ui.el
+        (("/" . "eyedropper foreground") . eyedropper-foreground)               ;; => lch-binding.el
+        (("b" . "eyedropper background") . eyedropper-background)               ;; => lch-binding.el
+        (("a" . "ascii-on") . ascii-on)                                         ;; => lch-elisp.el
+        (("A" . "ascii-off") . ascii-off)                                       ;; => lch-elisp.el
+        (("h" . "highlight-line") . global-hl-line-mode)                        ;; => lch-binding.el
+        (("l" . "setnu-mode") . setnu-mode)                                     ;; => lch-binding.el
+        (("L" . "line-truncate") . toggle-truncate-lines)                       ;; => lch-binding.el
+        (("r" . "rainbow-mode") . rainbow-mode)                                 ;; => lch-ui.el
         (("t" . "tool-bar-mode") . tool-bar-mode)                               ;; => lch-binding.el
         ))
 
@@ -618,7 +629,7 @@
   (one-key-menu "UI" one-key-menu-ui-alist t))
 (define-key global-map (kbd "<f11> m") 'one-key-menu-ui)
 
-;;; F12 (emms-map)
+;;; F12: (emms-map)
 
 ;; One-key-menu-emms
 (defvar one-key-menu-emms-alist nil

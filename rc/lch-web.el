@@ -129,24 +129,24 @@ Argument STRING the string that need beauty."
 
 ;;; Desktop
 ;; Use desktop to save w3m buffer between sessions.
-(defun w3m-register-desktop-save ()
-  "Set `desktop-save-buffer' to a function returning the current URL."
-  (setq desktop-save-buffer (lambda (desktop-dirname) w3m-current-url)))
+;; (defun w3m-register-desktop-save ()
+;;   "Set `desktop-save-buffer' to a function returning the current URL."
+;;   (setq desktop-save-buffer (lambda (desktop-dirname) w3m-current-url)))
 
-(add-hook 'w3m-mode-hook 'w3m-register-desktop-save)
+;; (add-hook 'w3m-mode-hook 'w3m-register-desktop-save)
 
-(defun w3m-restore-desktop-buffer (d-b-file-name d-b-name d-b-misc)
-  "Restore a `w3m' buffer on `desktop' load."
-  (when (eq 'w3m-mode desktop-buffer-major-mode)
-    (let ((url d-b-misc))
-      (when url
-        (require 'w3m)
-        (if (string-match "^file" url)
-            (w3m-find-file (substring url 7))
-          (w3m-goto-url-new-session url))
-        (current-buffer)))))
+;; (defun w3m-restore-desktop-buffer (d-b-file-name d-b-name d-b-misc)
+;;   "Restore a `w3m' buffer on `desktop' load."
+;;   (when (eq 'w3m-mode desktop-buffer-major-mode)
+;;     (let ((url d-b-misc))
+;;       (when url
+;;         (require 'w3m)
+;;         (if (string-match "^file" url)
+;;             (w3m-find-file (substring url 7))
+;;           (w3m-goto-url-new-session url))
+;;         (current-buffer)))))
 
-(add-to-list 'desktop-buffer-mode-handlers '(w3m-mode . w3m-restore-desktop-buffer))
+;; (add-to-list 'desktop-buffer-mode-handlers '(w3m-mode . w3m-restore-desktop-buffer))
 ;;; Binding
 (lch-set-key
  '(
@@ -154,6 +154,9 @@ Argument STRING the string that need beauty."
 
    ("C-6" . w3m-view-parent-page)
    ("^" . w3m-view-parent-page)
+
+   ("1" . w3m-session-save)
+   ("2" . w3m-session-select)
 
    ("7" . w3m-previous-buffer)
    ("8" . w3m-next-buffer)
@@ -232,6 +235,27 @@ Argument STRING the string that need beauty."
                    (unless (eq major-mode 'w3m-mode)
                      (w3m)))))
 (define-key global-map (kbd "<f3> s") 'one-key-menu-w3m-search)
+;;; Wget
+(eval-after-load "wget"
+  '(progn
+     (setq wget-download-directory
+           '(("\\.\\([jP][pP][eE]?[gG]\\|[pP][nN][gG]\\|[gG][iI][fF]\\|[bB][mM][pP]\\)$" . "~/Downloads/Picture")
+             ("\\.\\([mM][pP]3\\|[fF][lL][aA][cC]\\|[aA][pP][eE]\\|[wW][mM][aA]\\|[mM][pP]4\\)$" . "~/Downloads/Music")
+             ("\\.\\([rR][mM]?[vV][bB]\\|[v][V][oO][bB]\\|[aA][vV][iI]\\|[dD][vV][dD]\\)$" . "~/Downloads/Video/")
+             ("\\.\\(el\\|sh\\|perl\\|py\\|[cC]\\|[cC][pP][pP]\\|[jJ][aA][vV][aA]\\|[hH][sS]\\|[tT][xX][tT]\\)$" . "~/Downloads/Source/")
+             ("\\.\\([dD][oO][cC]\\|[pP][dD][fF]\\|[xX][mM][lL]\\|[xX][lL][sS]\\)$" . "~/Downloads/Documents/")
+             ("\\.\\(tar\\|gz\\|zip\\|bz2\\|rar\\|msi\\|exe\\|iso\\|torrent\\)$" . "~/Downloads/")
+             ("." . "~/.emacs.d/W3M/DownloadPages/")))
+     (setq wget-download-directory-filter
+           'wget-download-dir-filter-regexp)))
+
+(autoload 'wget "wget"
+  "Wget interface to download URI asynchronously" t)
+(autoload 'wget-web-page "wget"
+  "Wget interface to download URI asynchronously" t)
+(define-key global-map (kbd "<f3> <f4>") 'wget)
+(define-key global-map (kbd "<f3> d") 'wget)
+
 ;;; PROVIDE
 (provide 'lch-web)
 (message "~~ lch-web: done.")

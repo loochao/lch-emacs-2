@@ -201,14 +201,7 @@
 ;; (add-hook 'diary-hook 'appt-make-list)
 ;; (setq diary-mail-addr "loochao@gmail.com")
 
-;;; Auto fill
-;; Turn on auto-fill mode for all major modes
-;; (setq-default auto-fill-function 'do-auto-fill)
-;; Lines should be 80 characters wide, not 72
-(setq-default fill-column 80)
-;; Automatically turn on auto-fill-mode when editing text files
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'tex-mode-hook 'turn-on-auto-fill)
+
 
 
 ;; Toggles between line wrapping in the current buffer.

@@ -42,6 +42,13 @@
 	emms-player-timidity
         emms-player-mpg321
         emms-player-ogg123))
+
+(define-emms-simple-player mplayer '(file url)
+      (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+                    ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+                    ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+      "mplayer" "-slave" "-quiet" "-really-quiet")
+
 (setq emms-player-mplayer-parameters (list "-slave" "-quiet" "-really-quiet"))
 
 (setq emms-repeat-playlist t)
@@ -60,7 +67,7 @@
 
 ;; Don't show current track name on modeline.
 (emms-mode-line-disable)
-
+;; (require 'emms-mode-line-icon)
 
 ;; Display playing time
 ;; (setq emms-playing-time-style 'bar)
@@ -203,9 +210,10 @@
 	(with-current-emms-playlist
 	  (save-excursion
 	    (emms-playlist-mode-center-current)
-	    (emms-playlist-mode-kill-entire-track)))
+	    (emms-playlist-mode-kill-entire-track)
+            (setq kill-ring (cdr kill-ring))))
         (dired-delete-file music-file)
-        (emms-next)
+        (emms-start)
         (message (format "%s has been checked in~" music-file))
         (sit-for 1.5)
         (emms-show)
@@ -220,9 +228,10 @@
       (with-current-emms-playlist
 	;; (save-excursion
 	  (emms-playlist-mode-center-current)
-	  (emms-playlist-mode-kill-entire-track))
+	  (emms-playlist-mode-kill-entire-track)
+          (setq kill-ring (cdr kill-ring)))
       (dired-delete-file music-file)
-      (emms-next)
+      (emms-start)
       (message (format "%s has deleted~" music-file))
       (sit-for 2)
       (emms-show)

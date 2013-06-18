@@ -36,13 +36,13 @@
 ;;        ))
 
 ;; Automatically add all the elisp in emacs.d/lisp into load-path
-(defun my-add-subdirs-to-load-path (dir)
+(defun lch-add-subdirs-to-load-path (dir)
  (let ((default-directory (concat dir "/")))
   (setq load-path (cons dir load-path))
   (normal-top-level-add-subdirs-to-load-path)))
 
-(my-add-subdirs-to-load-path emacs-lisp-dir)
-(my-add-subdirs-to-load-path emacs-rc-dir)
+(lch-add-subdirs-to-load-path emacs-lisp-dir)
+(lch-add-subdirs-to-load-path emacs-rc-dir)
 
 (when lch-mac-p
     (progn
