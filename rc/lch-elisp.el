@@ -20,6 +20,7 @@
 (define-key global-map (kbd "M-n") 'multi-term)
 (define-key global-map (kbd "M-[") 'multi-term-prev)
 (define-key global-map (kbd "M-]") 'multi-term-next)
+(define-key global-map (kbd "M-2") 'multi-term)
 
 ;; One-key-menu-term-scratch
 (defvar one-key-menu-term-scratch-alist nil "")
@@ -35,6 +36,7 @@
         (("n" . "mterm") . multi-term)                                              ;; => lch-binding.el
         (("t" . "mterm-dedicated-toggle") . multi-term-dedicated-toggle)            ;; => lch-binding.el
         ))
+
 (defun one-key-menu-term-scratch ()
   "The `one-key' menu for TERM."
   (interactive)

@@ -211,6 +211,9 @@ See `cycle-color'."
 
 ;; (mode-line-setting)
 
+;;; Powerline
+(require 'powerline)
+(powerline-default-theme)
 ;;; PROVIDE
 (provide 'lch-ui)
 

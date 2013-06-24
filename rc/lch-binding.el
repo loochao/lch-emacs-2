@@ -91,6 +91,7 @@
         (("'" . "yasnippet") . yas-expand)                                      ;; => lch-elisp.el
         (("1" . "shell") . shell)                                               ;; => lch-binding.el
         (("2" . "term-popup") . multi-term-dedicated-toggle)                    ;; => lch-binding.el
+        (("3" . "multi-scratch-term") . one-key-menu-term-scratch)              ;; => lch-binding.el
         (("4" . "thing-edit") . one-key-menu-edit)                              ;; => lch-one-key.el
         (("6" . "erc-switch") . one-key-menu-irc-channel)                       ;; => lch-web.el
         (("8" . "org-agenda") . org-agenda)                                     ;; => lch-org.el
@@ -368,6 +369,7 @@
       '(
         (("<f3>" . "w3m-init") . lch-w3m-init)                             ;; => lch-web.el
         (("<f4>" . "wget") . wget)                                         ;; => lch-web.el
+        (("d" . "wget") . wget)                                            ;; => lch-web.el
         (("g" . "google") . lch-google)                                    ;; => lch-web.el
         (("s" . "w3m-search") . one-key-menu-w3m-search)                   ;; => lch-web.el
         ))
@@ -540,6 +542,7 @@
 (define-key global-map (kbd "<f10> i") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-init.el"))))
 (define-key global-map (kbd "<f10> n") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-network.el"))))
 (define-key global-map (kbd "<f10> o") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-org.el"))))
+(define-key global-map (kbd "<f10> x") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-ox.el"))))
 (define-key global-map (kbd "<f10> p") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-one-key.el"))))
 (define-key global-map (kbd "<f10> t") (lambda() (interactive) (find-file (concat emacs-dir "/rc/color-theme-loochao.el"))))
 (define-key global-map (kbd "<f10> u") (lambda() (interactive) (find-file (concat emacs-dir "/rc/lch-util.el"))))

@@ -1,0 +1,3 @@
+#!/usr/texbin/bash
+
+mplayer -nocache mms://livexwb.cri.com.cn/am846.wsx > /dev/null

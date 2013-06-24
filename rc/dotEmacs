@@ -116,31 +116,32 @@
 ;; (setq byte-compile-verbose nil)
 ;; (byte-recompile-directory (concat emacs-dir "/rc"))
 
-;;; Scratch message
-(defvar lch-welcome-messages
-      (if (user-login-name)
-          (list (concat "Hello " (user-login-name) ", somewhere in the world the sun is shining for you right now.\n")
-                (concat "Hello " (user-login-name) ", it's lovely to see you again. I do hope that you're well.\n")
-                (concat "Hello " (user-login-name) ", turn your head towards the sun and the shadows will fall behind you.\n"))
-        (list  "Hello, somewhere in the world the sun is shining for you right now."
-               "Hello, it's lovely to see you again. I do hope that you're well."
-               "Turn your head towards the sun and the shadows will fall behind you.")))
+;;; Scratch-message
+(setq initial-scratch-message nil)      
+;; (defvar lch-welcome-messages
+;;       (if (user-login-name)
+;;           (list (concat "Hello " (user-login-name) ", somewhere in the world the sun is shining for you right now.\n")
+;;                 (concat "Hello " (user-login-name) ", it's lovely to see you again. I do hope that you're well.\n")
+;;                 (concat "Hello " (user-login-name) ", turn your head towards the sun and the shadows will fall behind you.\n"))
+;;         (list  "Hello, somewhere in the world the sun is shining for you right now."
+;;                "Hello, it's lovely to see you again. I do hope that you're well."
+;;                "Turn your head towards the sun and the shadows will fall behind you.")))
 
 
-(defun lch-welcome-message ()
-  (nth (random (length lch-welcome-messages)) lch-welcome-messages))
+;; (defun lch-welcome-message ()
+;;   (nth (random (length lch-welcome-messages)) lch-welcome-messages))
 
-(setq initial-scratch-message (concat ";;
-;;     MM\"\"\"\"\"\"\"\"`M
-;;     MM  mmmmmmmM
-;;     M`      MMMM 88d8b.d8b. .d8888b. .d8888b. .d8888b.
-;;     MM  MMMMMMMM 88''88'`88 88'  `88 88'  `\"\" Y8ooooo.
-;;     MM  MMMMMMMM 88  88  88 88.  .88 88.  ...       88
-;;     MM        .M dP  dP  dP `88888P8 '88888P' '88888P'
-;;     MMMMMMMMMMMM
-;;
-;;"  " " (lch-welcome-message)
-))
+;; (setq initial-scratch-message (concat ";;
+;; ;;     MM\"\"\"\"\"\"\"\"`M
+;; ;;     MM  mmmmmmmM
+;; ;;     M`      MMMM 88d8b.d8b. .d8888b. .d8888b. .d8888b.
+;; ;;     MM  MMMMMMMM 88''88'`88 88'  `88 88'  `\"\" Y8ooooo.
+;; ;;     MM  MMMMMMMM 88  88  88 88.  .88 88.  ...       88
+;; ;;     MM        .M dP  dP  dP `88888P8 '88888P' '88888P'
+;; ;;     MMMMMMMMMMMM
+;; ;;
+;; ;;"  " " (lch-welcome-message)
+;; ))
 
 ;; (setq initial-scratch-message (concat ";; " (lch-welcome-message)))
 

@@ -179,13 +179,15 @@
   (message "Will shuffle current playlist."))
 
 ;; FIXME: how to skip the enter needed at the end of the input.
-(defun lch-emms-music-dir-switch (&optional dir)
-  (interactive "sWhich dir to play? (1) default (2) check-in: ")
+(defvar lch-emms-radio-playlist (concat emms-dir "/playlists/radio.pls"))
+(defun lch-emms-music-dir-switch (&optional option)
+  (interactive "sWhich dir to play? (1) default (2) check-in (3) radio: ")
   (emms-stop)
   (with-current-emms-playlist (emms-playlist-clear))
   (cond
-   ((string= dir "1") (emms-add-directory-tree emms-source-file-default-directory))
-   ((string= dir "2") (emms-add-directory-tree lch-music-check-in-dir))
+   ((string= option "1") (emms-add-directory-tree emms-source-file-default-directory))
+   ((string= option "2") (emms-add-directory-tree lch-music-check-in-dir))
+   ((string= option "3") (emms-add-playlist lch-emms-radio-playlist))
    (t (emms-add-directory-tree lch-music-check-in-dir)))
   (emms-shuffle)
   (emms-playlist-mode-go)
@@ -208,12 +210,12 @@
     (when (y-or-n-p (format "Check in %s? " music-file))
         (copy-file (concat (format "%s" music-file)) (format "%s" lch-music-check-in-dir))
 	(with-current-emms-playlist
-	  (save-excursion
-	    (emms-playlist-mode-center-current)
-	    (emms-playlist-mode-kill-entire-track)
-            (setq kill-ring (cdr kill-ring))))
+          (emms-playlist-mode-center-current)
+          (emms-playlist-mode-kill-entire-track)
+          (setq kill-ring (cdr kill-ring))
+          (emms-playlist-mode-play-smart)
+          )
         (dired-delete-file music-file)
-        (emms-start)
         (message (format "%s has been checked in~" music-file))
         (sit-for 1.5)
         (emms-show)
@@ -226,16 +228,15 @@
          (music-folder (file-name-directory music-file))) ;get playing music directory
     (when (y-or-n-p (format "DUMP %s? " music-file))
       (with-current-emms-playlist
-	;; (save-excursion
-	  (emms-playlist-mode-center-current)
-	  (emms-playlist-mode-kill-entire-track)
-          (setq kill-ring (cdr kill-ring)))
+        (emms-playlist-mode-center-current)
+        (emms-playlist-mode-kill-entire-track)
+        (setq kill-ring (cdr kill-ring))
+        (emms-playlist-mode-play-smart)
+        )
       (dired-delete-file music-file)
-      (emms-start)
       (message (format "%s has deleted~" music-file))
       (sit-for 2)
-      (emms-show)
-      )))
+      (emms-show))))
 
 ;;; Keymap
 ;; q -- only bury the emms playlist buffer, emms is still there.

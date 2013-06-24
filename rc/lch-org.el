@@ -28,7 +28,9 @@
 
 ;;; Setting
 ;; Org now part of GNU Emacs
-(require 'org-install)
+;;(require 'org-install)
+(require 'org)
+;; (load "org-loaddefs")
 
 (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 (add-to-list 'auto-mode-alist '("README$" . org-mode))

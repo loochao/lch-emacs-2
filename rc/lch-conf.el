@@ -24,7 +24,7 @@
 (require 'lch-auto-complete)
 (require 'lch-dired)
 (require 'lch-org)
-;; (require 'lch-org-export)
+(require 'lch-ox)
 (require 'lch-web)
 (require 'lch-network)
 (require 'lch-emms)
