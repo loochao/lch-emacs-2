@@ -83,7 +83,7 @@
      ;; Org
      (org-document-title ((t (:foreground "Pale Turquoise" :weight normal :height 1.2))))
 
-     (org-level-1 ((t (:foreground "LightSkyBlue"))))
+     (org-level-1 ((t (:foreground "Pink"))))
      (org-level-2 ((t (:foreground "DarkSeaGreen"))))
      (org-level-3 ((t (:foreground "LightSteelBlue"))))
      (org-level-4 ((t (:foreground "LightGoldenrod"))))

@@ -14,24 +14,33 @@
 ;;; CODE
 (message "=> lch-elisp: loading...")
 
+;;; Python-mode
+(setq py-install-directory (concat emacs-lisp-dir "/python-mode/"))
+(require 'python-mode)
+
 ;;; Multi-term/scratch
 (require 'multi-term)
 (require 'multi-scratch)
 (define-key global-map (kbd "M-n") 'multi-term)
 (define-key global-map (kbd "M-[") 'multi-term-prev)
 (define-key global-map (kbd "M-]") 'multi-term-next)
-(define-key global-map (kbd "M-2") 'multi-term)
+(define-key global-map (kbd "M-2") 'multi-term-dedicated-select)
 
 ;; One-key-menu-term-scratch
 (defvar one-key-menu-term-scratch-alist nil "")
 (setq one-key-menu-term-scratch-alist
       '(
+        (("3" . "mterm-dedicated-select") . multi-term-dedicated-select)            ;; => lch-binding.el
+
         (("[" . "mterm-prev") . multi-term-prev)                                    ;; => lch-binding.el
         (("]" . "mterm-next") . multi-term-next)                                    ;; => lch-binding.el
 
         (("," . "scratch-prev") . multi-scratch-prev)                               ;; => lch-binding.el
         (("." . "scratch-next") . multi-scratch-next)                               ;; => lch-binding.el
         (("s" . "scratch-new") . multi-scratch-new)                                 ;; => lch-binding.el
+
+        (("c" . "mterm-dedicated-close") . multi-term-dedicated-close)              ;; => lch-binding.el
+        (("o" . "mterm-dedicated-open") . multi-term-dedicated-open)                ;; => lch-binding.el
 
         (("n" . "mterm") . multi-term)                                              ;; => lch-binding.el
         (("t" . "mterm-dedicated-toggle") . multi-term-dedicated-toggle)            ;; => lch-binding.el

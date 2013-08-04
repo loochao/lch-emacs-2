@@ -30,6 +30,9 @@
 ;;; Super (command-map)
 (lch-set-key
  '(
+   ("s-<f1>" . py-shell)
+   ("s-<f2>" . matlab-shell)
+   ("s-<f3>" . R)
    ("s-," . previous-buffer)
    ("s-." . next-buffer)
    ("s-=" . text-scale-increase)
@@ -44,6 +47,10 @@
 (defvar one-key-menu-super-alist nil "")
 (setq one-key-menu-super-alist
       '(
+        (("<f1>" . "python-shell") . py-shell)                                  ;; => lch-binding.el
+        (("<f2>" . "matlab-shell") . matlab-shell)                              ;; => lch-binding.el
+        (("<f3>" . "R") . R)                                                    ;; => lch-binding.el
+
         (("," . "prev-buffer") . previous-buffer)                               ;; => lch-binding.el
         (("." . "next-buffer") . next-buffer)                                   ;; => lch-binding.el
 
@@ -159,6 +166,9 @@
  '(
    ("C-=" . text-scale-increase)
    ("C--" . text-scale-decrease)
+   ("C-<f1>" . multi-term)
+   ("C-<f2>" . multi-term-dedicated-toggle)
+   ("C-<f3>" . multi-term-dedicated-select)
    ("C-2" . set-mark-command)
    ("C-o" . occur)
    ))
@@ -168,6 +178,10 @@
       '(
         (("=" . "magnify-font") . text-scale-increase)                          ;; => lch-binding.el
         (("-" . "demagnify-font") . text-scale-decrease)                        ;; => lch-binding.el
+        (("<f1>" . "multi-term") . multi-term)                                  ;; => lch-binding.el
+        (("<f2>" . "mterm-dedicated-toggle") . multi-term-dedicated-toggle)     ;; => lch-binding.el
+        (("<f3>" . "mterm-dedicated-select") . multi-term-dedicated-select)     ;; => lch-binding.el
+
         (("2" . "set-mark-command") . set-mark-command)                         ;; => lch-binding.el
         (("6" . "dired-jump") . dired-jump)                                     ;; => lch-dired.el
         (("o" . "occur") . occur)                                               ;; => lch-binding.el
@@ -580,7 +594,8 @@
         (("h" . "public_html") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Org/public_html/")))
         (("l" . "library") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Library/")))
         (("m" . "music") . (lambda () (interactive) (dired-x-find-file "/Volumes/DATA/Music/")))
-        (("p" . "paper") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Research/Papers2/Articles/")))
+        (("p" . "code") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Programming")))
+        (("P" . "paper") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Research/Papers2/Articles/")))
         (("s" . "remote-notes") . (lambda () (interactive) (dired-x-find-file remote-notes-root)))
         (("r" . "research") . (lambda () (interactive) (dired-x-find-file "~/Dropbox/Research/")))
         (("v" . "video") . (lambda () (interactive) (dired-x-find-file "/Volumes/DATA/Video/")))

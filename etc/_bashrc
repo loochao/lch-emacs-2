@@ -179,6 +179,7 @@ alias lal="ls -alh"
 alias ec="emacsclient"
 alias cde="cd /Volumes/DATA/Dropbox/.emacs.d"
 alias ls="ls -G -v"     # -v to display chs
+alias tecplot="/Applications/Tec360_2009/bin/tec360"
 #alias emacs="emacs -nw"
 
 #-- Make the sort program behave in the traditional way.

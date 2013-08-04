@@ -1,13 +1,14 @@
 ;;; w3m-cookie  -*- mode: emacs-lisp; coding: iso-2022-7bit -*-
 ;; This file is generated automatically by emacs-w3m v1.4.338.
 
-(["http://www.emacswiki.com/" "www.emacswiki.com" nil "uid" "www51a9a674c56630.38418409" "/" 0 "Mon, 01-Jul-2013 16:30:34 GMT" nil]
+(["http://store.apple.com/us/product/MD098" ".apple.com" nil "max-age" "31536000" "/" 0 "Fri, 25-Jul-2014 23:22:03 GMT" nil]
+["http://store.apple.com/us/product/MD098" ".apple.com" nil "version" "1" "/" 0 "Fri, 25-Jul-2014 23:22:03 GMT" nil]
+["http://store.apple.com/us/product/MD098" ".apple.com" nil "dssid2" "7e47e25c-1020-4eed-8060-5f442593354e" "/" 0 "Fri, 25-Jul-2014 23:22:03 GMT" nil]
 ["http://www.google.com/" ".google.com" nil "PREF" "ID=48cf28a96c35e5de:U=ab21585835f5716a:FF=0:TM=1369969404:LM=1369969405:S=oOZgFm_EqqTkEWIi" "/" 0 "Sun, 31-May-2015 03:03:25 GMT" nil]
-["http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=www.google.com" ".google.com" nil "NID" "67=dswz_5exIKQYA2zPyyTBREX2UrfaSVUP6RIyogdZGdMCPj6KtAeid8Yw3x4diH4ANXm0XbkCdMUpP2nFS41O-kcSx_jJConJ1ASfGYvaS_ZY2tc9RdZQ9BEJ1Y-L2dEN" "/" 0 "Sat, 30-Nov-2013 03:03:24 GMT" nil]
-["http://www.baidu.com/" ".baidu.com" nil "BAIDUID" "A8B7796F0579AE448A05819737E12692:FG=1" "/" 0 "Fri, 31-May-43 09:41:07 GMT" nil]
 ["http://dict.cn/search/?q=thesaurus" ".dict.cn" nil "uvid" "UamptoTRpv3E" "/" 0 "Thu, 31-Dec-37 23:55:55 GMT" nil]
 ["https://github.com/jaalto/project--emacs-tiny-tools" ".github.com" nil "logged_in" "no" "/" 0 "Wed, 01-Jun-2033 07:59:50 GMT" nil]
 ["https://github.com/jaalto/project--emacs-tiny-tools" ".github.com" nil "HttpOnly" nil "/" 0 "Wed, 01-Jun-2033 07:59:50 GMT" nil]
 ["https://github.com/jaalto/project--emacs-tiny-tools" "github.com" t "_gh_sess" "BAh7BzoPc2Vzc2lvbl9pZCIlNDc0M2NlYzFhMjljNzI5NTE1OTkxM2FkOGU5NzRiMjQ6EF9jc3JmX3Rva2VuSSIxQTI5bk5Ib0FCbUN6WEpyREkyeVlTT1lSV3FIYm5tVkZPT1BuQ0liWG9YTT0GOgZFRg%3D%3D--7dc5a93a3f680d039bc5f503744db6093d3bfaa3" "/" 0 "Sun, 01-Jan-2023 00:00:00 GMT" nil]
 ["https://github.com/jaalto/project--emacs-tiny-tools" "github.com" t "HttpOnly" nil "/" 0 "Sun, 01-Jan-2023 00:00:00 GMT" nil]
-["http://www.baidu.com/s?wd=fuck&ie=utf-8&nojs=1&bqid=9d7d00f80760a5be" "www.baidu.com" nil "NOJS" "1" "/" 0 "Sun, 09-Jun-43 11:22:44 GMT" nil])
+["http://www.google.com/search?btnI=I%27m+Feeling+Lucky&ie=UTF-8&oe=UTF-8&q=www.google.com" ".google.com" nil "NID" "67=Pw-X2DgYDLKMSNZ394TZfDlUsCxha5dkSzx4lTFnqOAG9UtEGhRcyrSfhypXmbA5f5pUoZtCIB4n9quIG7vZ5tXsultzwQVTJfk6w7l2CF3kn3RibldKG9lSnd4SV7Gr" "/" 0 "Mon, 03-Feb-2014 00:28:25 GMT" nil]
+["http://www.youtube.com/" ".youtube.com" nil "VISITOR_INFO1_LIVE" "tQuPui45nOw" "/" 0 "Fri, 04-Apr-2014 12:22:33 GMT" nil])
