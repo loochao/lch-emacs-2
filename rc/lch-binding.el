@@ -33,6 +33,7 @@
    ("s-<f1>" . py-shell)
    ("s-<f2>" . matlab-shell)
    ("s-<f3>" . R)
+
    ("s-," . previous-buffer)
    ("s-." . next-buffer)
    ("s-=" . text-scale-increase)
@@ -227,9 +228,10 @@
    ("C-c ." . repeat-complex-command)
    ("C-c c" . comment-region)                                                   ;; Shift+4 == $
    ("C-c g" . grep-find)
+   ("C-c l" . less-minor-mode)
    ("C-c o" . occur)
    ("C-c u" . uncomment-region)
-   ("C-c v" . less-minor-mode)
+   ("C-c v" . toggle-viper-mode)
    ("C-c C-b" . list-bookmarks)
    ))
 
@@ -245,10 +247,11 @@
         (("g" . "grep-find") . grep-find)                                       ;; => lch-binding.el
         (("i" . "indent-buffer-or-region") . lch-indent-region-or-buffer)       ;; => lch-util.el
         (("j" . "ace-jump") . ace-jump-mode)                                    ;; => lch-binding.el
+        (("l" . "less") . less-minor-mode)                                      ;; => lch-binding.el
         (("o" . "occur") . occur)                                               ;; => lch-binding.el
         (("s" . "-> scratch") . lch-create-switch-scratch)                      ;; => lch-util.el
         (("u" . "uncomment-region") . uncomment-region)                         ;; => lch-binding.el
-        (("v" . "less") . less-minor-mode)                                      ;; => lch-binding.el
+        (("v" . "viper") . toggle-viper-mode)                                   ;; => lch-binding.el
         (("C-b" . "list-bookmarks") . list-bookmarks)                           ;; => lch-binding.el
         (("C-f" . "lch-sudo-edit") . lch-sudo-edit)                             ;; => lch-network.el
         ))

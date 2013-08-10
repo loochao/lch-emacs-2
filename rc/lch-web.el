@@ -18,7 +18,12 @@
 
 (require 'lch-key-util)
 ;;; W3M
-(require 'w3m)
+;; (require 'w3m)
+(when (locate-library "w3m")
+  (autoload 'w3m "w3m" nil t)
+  (autoload 'w3m-goto-url "w3m" nil t)
+  (autoload 'w3m-region "w3m"))
+
 ;; (setq w3-default-stylesheet "~/.default.css")
 ;; (defvar w3m-buffer-name-prefix "*w3m" "Name prefix of w3m buffer")
 ;; (defvar w3m-buffer-name (concat w3m-buffer-name-prefix "*") "Name of w3m buffer")
@@ -31,15 +36,25 @@
 (setq w3m-default-save-directory "~/Downloads")
 
 (setq w3m-use-cookies t)
-(setq w3m-home-page "http://www.princeton.edu/~chaol")
+(setq w3m-cookie-accept-bad-cookies t)
+(setq w3m-home-page
+      (if (file-readable-p "~/html/home.html")
+          (concat "file://" (expand-file-name "~/html/home.html"))
+        "http://www.princeton.edu/~chaol"))
 (setq w3m-use-favicon nil)
+
+(setq w3m-search-default-engine "google")
+
+(setq w3m-use-toolbar t
+      w3m-use-tab     nil)
+;; (setq w3m-key-binding 'info)
 
 (setq w3m-bookmark-file (concat w3m-dir "/w3m-bookmark.html"))
 (setq w3m-cookie-file (concat w3m-dir "/w3m-cookie"))
 (setq w3m-session-file (concat w3m-dir "/w3m-session"))
 
-(setq w3m-session-load-crashed-sessions t)              
-(setq w3m-session-deleted-save nil)                     
+(setq w3m-session-load-crashed-sessions t)
+(setq w3m-session-deleted-save nil)
 (setq w3m-session-time-format "%Y-%m-%d (%a) %H:%M")
 (setq w3m-use-header-line-title t)
 (add-hook 'w3m-display-hook
@@ -66,7 +81,7 @@
   (do-applescript
    (format
     "tell application \"Safari\"
-	open location \"%s\"
+        open location \"%s\"
 end tell"
     url)))
 
@@ -82,7 +97,7 @@ end tell"
   (let ((buf (get-buffer "*w3m*")))
     (if buf
         (switch-to-buffer buf)
-      (progn 
+      (progn
         (w3m)
         ;; (w3m-bookmark-view)
         )
@@ -182,7 +197,7 @@ Argument STRING the string that need beauty."
 
    ("n" . w3m-next-anchor)
    ("p" . w3m-previous-anchor)
-   
+
    ("o" . w3m-goto-url)
    ("C-o" . lch-view-current-url-external)
 

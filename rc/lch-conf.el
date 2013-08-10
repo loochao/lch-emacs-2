@@ -34,7 +34,7 @@
 (require 'lch-pgm)
 (require 'lch-var)
 
-;;; System-related
+;; System-related
 (if lch-win32-p (require 'lch-w32))
 (if lch-mac-p (require 'lch-mac))
 (if (and lch-mac-p lch-aquamacs-p) (require 'lch-aquamacs))
