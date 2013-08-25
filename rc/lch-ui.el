@@ -39,6 +39,7 @@
   (lambda () (interactive) (color-theme-lazycat) (message "Color-theme-lazycat loaded.")))
 
 ;;; Fonts
+(if lch-linux-p (set-face-attribute 'default nil :height 160))
 ;;; Tabbar
 (require 'tabbar)
 (tabbar-mode 1)
@@ -138,8 +139,6 @@ See `cycle-color'."
   (redraw-frame (selected-frame)))
 (define-key global-map (kbd "<f11> 4") 'lch-frame-pink)
 
-(message "~~ lch-ui: done.")
-
 
 ;;; Modeline
 ;; (defun get-lines-4-mode-line ()
@@ -212,11 +211,14 @@ See `cycle-color'."
 ;; (mode-line-setting)
 
 ;;; Powerline
-(require 'powerline)
-(powerline-default-theme)
+(when (and (>= emacs-major-version 24) (>= emacs-minor-version 3))
+    (require 'powerline)
+    (powerline-default-theme))
+
 ;;; PROVIDE
 (provide 'lch-ui)
 
+(message "~~ lch-ui: done.")
 ;; Local Variables:
 ;; mode: emacs-lisp
 ;; mode: outline-minor

@@ -35,6 +35,17 @@
 
 (require 'lazy-set-key)
 
+;;; Douban-fm
+(defun douban-music-mode-setting ()
+  "Settings for douban fm"
+  (setq douban-music-default-channel 9))
+
+(eval-after-load "douban-music-mode"
+  '(douban-music-mode-setting))
+
+(autoload 'douban-music "douban-music-mode" nil t)
+(define-key global-map (kbd "M-<f12>") 'douban-music)
+
 ;;; Viper
 ;;(setq viper-mode t)
 ;;(require 'viper)

@@ -146,7 +146,7 @@
         ("BIB" . (:foreground "DeepSkyBlue" :background "OldLace" :weight bold))
         ("STAR3" . (:foreground "Black" :background "Grey" :weight bold))
         ("STAR4" . (:foreground "Black" :background "SandyBrown" :weight bold))
-        ("STAR5" . (:foreground "Black" :background "MistyRose" :weight bold))
+        ("STAR5" . (:foreground "Black" :background "MistyRose" :weight bold :box (:line-width 1 :style none)))
 
         ("Library" . (:foreground "LightCyan" :weight bold))
         ("Mathematics" . (:foreground "Tomato" :weight bold))
@@ -162,6 +162,7 @@
         ("#C" . (:foreground "Light Green" :weight bold))
         ("QUEUE" . (:foreground "Lavender" :weight bold))
         ("ACTIVE" . (:foreground "Cyan" :weight bold))
+        ("T" . (:foreground "Cyan" :weight bold))
         ("DONE" . (:foreground "PeachPuff2" :weight bold))
 
         ("AUDIO" . (:foreground "Cyan" :weight bold))
@@ -260,6 +261,7 @@
          (
           ;; (tags "PLAN/ACTIVE" ((org-agenda-overriding-header
           ;; ";>--------PLAN--------<;")))
+          (tags "#E/ACTIVE")
 	  (tags "#A/ACTIVE|WAITING" ((org-agenda-overriding-header
                                       ";>--------ACTIVE & #A TASKs--------<;")))
 	  (agenda "Week Agenda" ((org-agenda-ndays 12)
@@ -274,9 +276,9 @@
 	 ("2" "ACTIVE BLOCKS"
 	  (
            (tags "MOBILE|AUDIO|CAR/ACTIVE")
-           (tags "DAILY|DUALLY|WEEKLY/ACTIVE")
+           (tags "DAILY&T|DUALLY&T|WEEKLY/ACTIVE")
            (tags "#B|OBTAIN/ACTIVE")
-           (tags "#C/ACTIVE")
+           ;; (tags "#C/ACTIVE")
 	   )
 	  )
  	 ("3" "RECUR ACTIVE"
@@ -286,11 +288,11 @@
 	   (tags "WEEKLY/ACTIVE")
 	   ;; (tags "RECUR/ACTIVE")
 	   ))
-         ("4" "RECUR TOFNSH"
-          (
-           (tags "DAILY|DUALLY|WEEKLY/TOFNSH")
-           ))
-	 ("5" "FUN ITEMS" tags "FUN")
+         ;; ("4" "RECUR TOFNSH"
+         ;;  (
+         ;;   (tags "DAILY|DUALLY|WEEKLY/TOFNSH")
+         ;;   ))
+	 ;; ("5" "FUN ITEMS" tags "FUN")
          ("0" .  "MISCITEMS")
 	 ("01" "TODO-#A QUEUE" tags "#A-ACTIVE")
 	 ("02" "TODO-#B/#C/OBT QUEUE" tags "#B|OBTAIN|#C/QUEUE")
@@ -338,6 +340,9 @@
 		 (org-agenda-remove-tags t)))
 	("te" "Emacs #B" tags "#B" ((org-agenda-files (list (concat org-source-dir "/iPrv.org")))))
         ))
+;;; Key-binding
+(define-key org-mode-map (kbd "M-<left>") 'hide-body)
+(define-key org-mode-map (kbd "M-<right>") 'show-all)
 ;;; PROVIDE
 (provide 'lch-org)
 (message "~~ lch-org: done.")

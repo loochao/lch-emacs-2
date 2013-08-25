@@ -122,16 +122,6 @@
 
 (define-key global-map (kbd "<f4> t") 'template-expand-template)
 
-;;; Douban-fm
-(defun douban-music-mode-setting ()
-  "Settings for douban fm"
-  (setq douban-music-default-channel 9))
-
-(eval-after-load "douban-music-mode"
-  '(douban-music-mode-setting))
-
-(autoload 'douban-music "douban-music-mode" nil t)
-(define-key global-map (kbd "M-<f12>") 'douban-music)
 ;;; Smooth-scroll
 ;; Feel better when you use C-v.
 (require 'smooth-scroll)

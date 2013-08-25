@@ -17,72 +17,47 @@
 (message "=> lch-util: loading...")
 
 ;;; Punctuation-substitution
-(defun lch-punctuate-buffer ()
-  "Substitute Chinese punctuation to English ones"
-  (interactive)
+(defun lch-punctuate (pct)
+  "pct:(a b); sub all the a in buffer with b"
   (save-excursion
     (goto-char (point-min))
-    (while (search-forward "。" nil t)
-      (replace-match ". " nil t))
-    (goto-char (point-min))
-    (while (search-forward "，" nil t)
-      (replace-match ", " nil t))
-    (goto-char (point-min))
-    (while (search-forward "“" nil t)
-      (replace-match "\"" nil t))
-    (goto-char (point-min))
-    (while (search-forward "”" nil t)
-      (replace-match "\"" nil t))
-    (goto-char (point-min))
-    (while (search-forward "：" nil t)
-      (replace-match ": " nil t))
-    (goto-char (point-min))
-    (while (search-forward "（" nil t)
-      (replace-match "(" nil t))
-    (goto-char (point-min))
-    (while (search-forward "）" nil t)
-      (replace-match ")" nil t))
-    (goto-char (point-min))
-    (while (search-forward "；" nil t)
-      (replace-match ";" nil t))
-    (goto-char (point-min))
-    (while (search-forward "！" nil t)
-      (replace-match "! " nil t))
-    (goto-char (point-min))
-    (while (search-forward "、" nil t)
-      (replace-match ", " nil t))
-    (goto-char (point-min))
-    (while (search-forward "？" nil t)
-      (replace-match "? " nil t))
-    (goto-char (point-min))
-    (while (search-forward "【" nil t)
-      (replace-match "[" nil t))
-    (goto-char (point-min))
-    (while (search-forward "】" nil t)
-      (replace-match "]" nil t))
+    (while (search-forward (car pct) nil t)
+      (replace-match (cadr pct) nil t)))
+  )
+(defvar lch-punctuate-list
+  '(("。" ". ") ("，" ", ") ("；" ";") ("、" ". ")
+    ("“" "\"") ("”" "\"") ("（" "(") ("）" ")")
+    ("【" "[") ("】" "]") ("《" "<") ("》" ">")
+    ("…" "...") ("～" "~") ("——" "--")
+    ("：" ":") ("！" "!") ("？" "?")
     ))
+
+(defun lch-punctuate-buffer ()
+  (interactive)
+  (mapc 'lch-punctuate lch-punctuate-list))
+(define-key global-map (kbd "<f4> p") 'lch-punctuate-buffer)
 ;;; Interaction-with-macosx
 ;; Open-remotes-with-finder
 (defun lch-open-libns-finder ()
-"Make iTunes either pause or play"
-(interactive)
-(setq apscript "
+  "Make iTunes either pause or play"
+  (interactive)
+  (setq apscript "
 tell app \"Finder\" to open location \"afp://loochao@loochao.synology.me:/LIBNS/\"
 "
-)
-(do-applescript apscript)
-)
+        )
+  (do-applescript apscript)
+  )
 
 (defun lch-open-pu-finder ()
-"Make iTunes either pause or play"
-(interactive)
-(setq apscript "
+  "Make iTunes either pause or play"
+  (interactive)
+  (setq apscript "
 tell app \"Finder\" to open location \"smb://chaol@files.princeton.edu:/chaol/Scan\"
 activate
 "
-)
-(do-applescript apscript)
-)
+        )
+  (do-applescript apscript)
+  )
 
 ;; Open-with-textmate
 (defun lch-open-with-mate ()

@@ -413,6 +413,7 @@
         (("d" . "delete-buffer-n-file") . lch-delete-file-and-buffer)      ;; => lch-util.el
         (("f" . "fill-region") . fill-region)                              ;; => lch-binding.el
         (("k" . "kill-all-buffers") . kill-all-buffers)                    ;; => lch-util.el
+        (("p" . "punctuate-buffer") . lch-punctuate-buffer)                ;; => lch-util.el
         (("r" . "rename-buffer-n-file") . lch-rename-file-and-buffer)      ;; => lch-util.el
         (("t" . "insert-template") . template-expand-template)             ;; => lch-elisp.el
         ))
@@ -489,8 +490,9 @@
 (define-key global-map (kbd "<f9> 1") (lambda() (interactive) (dired org-source-dir)))
 
 (define-key global-map (kbd "<f9> a") (lambda() (interactive) (find-file (concat org-source-dir "/Art-Ent.org"))))
-(define-key global-map (kbd "<f9> b") (lambda() (interactive) (find-file (concat org-source-dir "/Bib-Edu.org"))))
-(define-key global-map (kbd "<f9> C") (lambda() (interactive) (find-file (concat org-source-dir "/Culture.org"))))
+(define-key global-map (kbd "<f9> b") (lambda() (interactive) (find-file (concat org-source-dir "/Bookmark.org"))))
+(define-key global-map (kbd "<f9> B") (lambda() (interactive) (find-file (concat org-source-dir "/Bib-Edu.org"))))
+(define-key global-map (kbd "<f9> c") (lambda() (interactive) (find-file (concat org-source-dir "/Culture.org"))))
 (define-key global-map (kbd "<f9> C-c") (lambda() (interactive) (find-file (concat org-source-dir "/ComputerSE.org"))))
 (define-key global-map (kbd "<f9> d") (lambda() (interactive) (find-file (concat emacs-doc-dir "/loochao-cheat-sheet.tex"))))
 (define-key global-map (kbd "<f9> e") (lambda() (interactive) (find-file (concat org-source-dir "/Emacs.org"))))
@@ -509,12 +511,12 @@
 (define-key global-map (kbd "<f9> i s") (lambda() (interactive) (find-file (concat org-private-dir "/iStuff.org"))))
 (define-key global-map (kbd "<f9> i p") (lambda() (interactive) (find-file (concat org-private-dir "/iPrv.org"))))
 
-(define-key global-map (kbd "<f9> l") (lambda() (interactive) (find-file (concat dropbox-path "/Library/Library.bib"))))
-(define-key global-map (kbd "<f9> L") (lambda() (interactive) (find-file (concat org-source-dir "/Life.org"))))
+(define-key global-map (kbd "<f9> l") (lambda() (interactive) (find-file (concat org-source-dir "/Life.org"))))
+(define-key global-map (kbd "<f9> L") (lambda() (interactive) (find-file (concat dropbox-path "/Library/Library.bib"))))
 (define-key global-map (kbd "<f9> C-l") (lambda() (interactive) (find-file (concat org-source-dir "/Library.org"))))
+(define-key global-map (kbd "<f9> m") (lambda() (interactive) (find-file (concat org-source-dir "/Methodology.org"))))
 (define-key global-map (kbd "<f9> M") (lambda() (interactive) (find-file (concat org-source-dir "/Mathematics.org"))))
 (define-key global-map (kbd "<f9> C-m") (lambda() (interactive) (find-file (concat org-source-dir "/Miscellaneous.org"))))
-(define-key global-map (kbd "<f9> M-m") (lambda() (interactive) (find-file (concat org-source-dir "/Methodology.org"))))
 (define-key global-map (kbd "<f9> O") (lambda() (interactive) (find-file (concat org-source-dir "/Opera.org"))))
 (define-key global-map (kbd "<f9> p") (lambda() (interactive) (find-file (concat org-source-dir "/Pearl.org"))))
 (define-key global-map (kbd "<f9> P") (lambda() (interactive) (find-file (concat org-source-dir "/Programming.org"))))
@@ -523,6 +525,7 @@
 (define-key global-map (kbd "<f9> r") (lambda() (interactive) (find-file (concat dropbox-path "/Research/Research.bib"))))
 (define-key global-map (kbd "<f9> R") (lambda() (interactive) (find-file (concat org-source-dir "/Refile.org"))))
 (define-key global-map (kbd "<f9> s") (lambda() (interactive) (find-file (concat org-source-dir "/Softip.org"))))
+(define-key global-map (kbd "<f9> t") (lambda() (interactive) (find-file (concat org-source-dir "/Travel.org"))))
 (define-key global-map (kbd "<f9> S") (lambda() (interactive) (find-file (concat org-source-dir "/Sitemap.org"))))
 (define-key global-map (kbd "<f9> u") (lambda() (interactive) (find-file (concat org-source-dir "/Unix.org"))))
 (define-key global-map (kbd "<f9> W") (lambda() (interactive) (dired (concat dropbox-path "/GIT/Worg"))))
@@ -633,8 +636,8 @@
         (("2" . "cycle-bg-forward") . lch-cycle-bg-color-forward)               ;; => lch-ui.el
         (("3" . "frame-bg-pink") . lch-frame-pink)                              ;; => lch-ui.el
         (("4" . "frame-bg-black") . lch-frame-black)                            ;; => lch-ui.el
-        (("/" . "eyedropper foreground") . eyedropper-foreground)               ;; => lch-binding.el
-        (("b" . "eyedropper background") . eyedropper-background)               ;; => lch-binding.el
+        (("/" . "eyedropper-foreground") . eyedropper-foreground)               ;; => lch-binding.el
+        (("b" . "eyedropper-background") . eyedropper-background)               ;; => lch-binding.el
         (("a" . "ascii-on") . ascii-on)                                         ;; => lch-elisp.el
         (("A" . "ascii-off") . ascii-off)                                       ;; => lch-elisp.el
         (("h" . "highlight-line") . global-hl-line-mode)                        ;; => lch-binding.el
@@ -662,6 +665,7 @@
         (("<f11>" . "emms-dir-switch") . lch-emms-music-dir-switch)
         (("<f10>" . "emms-add-dir") . lch-emms-add-dir)
         (("<f9>" . "emms-play-file") . emms-play-file)
+        (("<f8>" . "emms-add-playlist") . emms-add-playlist)
         (("SPC" . "toggle-playing") . lch-emms-toggle-playing)
         (("," . "emms-previous") . emms-previous)
         (("." . "emms-next") . emms-next)

@@ -163,6 +163,8 @@
 
 ;;; Zone
 (defvar lch-disable-zone nil)
+(if lch-linux-p
+    (setq lch-disable-zone t))
 (if (not lch-disable-zone)
     (add-hook 'term-setup-hook 'zone))
 (setq zone-programs [zone-pgm-putz-with-case zone-pgm-drip zone-pgm-five-oclock-swan-dive])
