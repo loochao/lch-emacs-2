@@ -40,6 +40,11 @@
 
 ;;; Fonts
 (if lch-linux-p (set-face-attribute 'default nil :height 160))
+(when lch-win32-p 
+  ;; (set-face-attribute 'default nil :height 160)
+  (set-default-font "Courier New:pixelsize=24"))
+
+
 ;;; Tabbar
 (require 'tabbar)
 (tabbar-mode 1)

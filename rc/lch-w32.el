@@ -29,18 +29,18 @@
              "/usr/bin" ";"
              (getenv "PATH")))
 
-    (setq exec-path
-          `(
-            "C:/Program Files/ErgoEmacs 1.8.1/msys/bin/"
-            ,cygwin-root
-            ,cygwin-bin
-            (concat cygwin-root "usr/bin/")
-            "C:/Program Files/Java/jdk1.6.0_14/bin/"
-            "C:/Program Files (x86)/Emacs/EmacsW32/gnuwin32/bin/"
-            "C:/Windows/system32/"
-            "C:/Windows/"
-            "C:/Windows/System32/Wbem/"
-            ))))
+    ;; (setq exec-path
+    ;;       `(
+    ;;         "C:/Program Files/ErgoEmacs 1.8.1/msys/bin/"
+    ;;         ,cygwin-root
+    ;;         ,cygwin-bin
+    ;;         (concat cygwin-root "usr/bin/")
+    ;;         "C:/Program Files/Java/jdk1.6.0_14/bin/"
+    ;;         "C:/Program Files (x86)/Emacs/EmacsW32/gnuwin32/bin/"
+    ;;         "C:/Windows/system32/"
+    ;;         "C:/Windows/"
+    ;;         "C:/Windows/System32/Wbem/")
+            ))
 
 ;;; Cygwin-mount
 ;; (require 'cygwin-mount)
@@ -53,7 +53,8 @@
       (define-key global-map (kbd "<f2> p") 'w32-winprint-print-buffer-htmlize)
       (define-key global-map (kbd "<f2> P") 'w32-winprint-print-buffer-notepad)))
 
-
+;;; No-Menu-bar
+(if lch-win32-p (menu-bar-mode -1))
 ;;; W32 max/restore frame
 ;; (if lch-win32-p
 ;;     (when (fboundp 'w32-send-sys-command)

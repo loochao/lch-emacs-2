@@ -14,7 +14,7 @@
  (position . 1065))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Org/org/iPrv.org")
- (front-context-string . "*** LIFT papers ")
+ (front-context-string . "*** Update resum")
  (rear-context-string . "TODO-#A\n  :END:\n")
- (position . 528))
+ (position . 658))
 )

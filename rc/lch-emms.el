@@ -35,7 +35,8 @@
 
 
 (setq emms-playlist-buffer-name "*Music*")
-(setq emms-source-file-default-directory "/Volumes/DATA/Music/INBOX/Xiami/Current")
+(if lch-mac-p (setq emms-source-file-default-directory "/Volumes/DATA/Music/INBOX/Xiami/Current"))
+(if lch-win32-p (setq emms-source-file-default-directory "~/Dropbox/Music/CHECKIN"))
 
 (setq emms-player-list
       '(emms-player-mplayer

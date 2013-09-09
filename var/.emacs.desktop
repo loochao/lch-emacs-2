@@ -2,7 +2,7 @@
 ;; --------------------------------------------------------------------------
 ;; Desktop File for Emacs
 ;; --------------------------------------------------------------------------
-;; Created Sat Aug  3 21:32:00 2013
+;; Created Mon Sep  9 18:14:24 2013
 ;; Desktop file format version 206
 ;; Emacs version 24.3.1
 
@@ -10,9 +10,262 @@
 (setq desktop-missing-file-warning nil)
 (setq tags-file-name nil)
 (setq tags-table-list nil)
-(setq search-ring '("menu-bar" "bib" "figure" "bib" "signi" "table" "as de" "table" "fluenc" "agree" "a section" "fit the" "asatryan" "in order to te" "the result" "the amp"))
+(setq search-ring '("g09.lo" "res" "equation" "mu" "doub" "conv" "font" "ui" "font" "eyedropper" "below" "in blu" "book" "ipr" "perl" "tex"))
 (setq regexp-search-ring nil)
-(setq register-alist (list (list 213465889 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (list 'lambda '() (list 'set-marker mk nil (get-buffer " *temp*")))) mk)) (list 213465879 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (list 'lambda '() (list 'set-marker mk nil (get-buffer " *temp*")))) mk))))
-(setq file-name-history '("/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/python-mode.el-6.1.1/INSTALL" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/.emacs.d/lisp/python-mode/python-mode.el" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/python-mode/README" "~/Downloads/" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/Aquamacs.app/Contents/Resources/lisp/aquamacs/edit-modes/info/dir" "/Users/LooChao/.wine/dosdevices/z:/Volumes/DATA/Dropbox/.emacs.d/lisp/auctex/v11.87" "~/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Silver/silver_note.tex" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Simulation/silver_np/main.c" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Silver/silver.tex" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Surface.Relief2/Submission/Second.Submission/Second.Submission.to.prl_seperate.bib/Makefile" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Surface.Relief2/Submission/Second.Submission/Second.Submission.to.prl_bib.in.tex/surface.bbl" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Surface.Relief2/Submission/Second.Submission/Second.Submission.to.prl_bib.in.tex/surface.tex" "/Users/LooChao/.wine/dosdevices/c:/users/LooChao/Temp/_tc/First.Submission.to.prl_bib.in.tex/surface.tex" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Surface.Relief2/Submission/Second.Submission/Second.Submission.to.prl_bib.in.file/surface.tex" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Surface.Relief2/Submission/Second.Submission/Second.Submission.to.prl_seperate.bib/surface.tex" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/Second.Submission/Second.Submission.to.prl_seperate_new.bib/surface.tex" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Surface.Relief2/Submission/Second.Submission/Second.Submission.to.prl_seperate.bib/surface.tex" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/Second.Submission/Second.Submission.to.prl_seperate_new.bib/surface.tex" "/Users/LooChao/.gnus" "/Users/LooChao/.gnus_bak" "/Users/LooChao/.gnus" "~/.newsrc" "/Users/LooChao/#.newsrc-dribble#" "/Users/LooChao/Dropbox/.emacs.d/rc/lch-gnus.el" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Library/Library.bib" "/Users/LooChao/Dropbox/Research/Simulation/silver_np/lch.pl" "/Users/LooChao/Dropbox/Org/org/iLog.org" "/Users/LooChao/Dropbox/Org/org/iHardware.org" "/Users/LooChao/Dropbox/Programming/Java/Scratch/LCGUI.java" "~/Dropbox/Programming"))
+(setq register-alist (list '(97 . "(setq viper-inhibit-startup-message 't)") (list 213465889 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (list 'lambda '() (list 'set-marker mk nil (get-buffer " *temp*")))) mk)) (list 213465879 "Unprintable entity" (let ((mk (make-marker))) (add-hook 'desktop-delay-hook (list 'lambda '() (list 'set-marker mk nil (get-buffer " *temp*")))) mk))))
+(setq file-name-history '("/Users/LooChao/Downloads/main.c" "~/Downloads/kaka" "~/Downloads/Contents.txt" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/‘Àí‘ÂÛ‘Îï‘Àí‘Ò»‘ÔÂ‘ÌØ‘Ñµ‘°à‘±Ê‘¼Ç/01‘¸ß‘µÈ‘Êý‘Ñ§_‘Ïß‘ÐÔ‘´ú‘Êý_‘¼ò‘µ¥‘µÄ‘±ä‘·Ö‘·¨_‘Ïò‘Á¿‘³¡‘ÂÛ‘¼ò‘½é.pdf" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/‘Àí‘ÂÛ‘Îï‘Àí‘Ò»‘ÔÂ‘ÌØ‘Ñµ‘°à‘±Ê‘¼Ç/01_‘¸ß‘µÈ‘Êý‘Ñ§_‘Ïß‘ÐÔ‘´ú‘Êý_‘¼ò‘µ¥‘µÄ‘±ä‘·Ö‘·¨_‘Ïò‘Á¿‘³¡‘ÂÛ‘¼ò‘½é.pdf" "/Users/LooChao/.login" "/Users/LooChao/.wine/dosdevices/z:/Volumes/DATA/Dropbox/Research/Data/Picosecond_Laser/energy_vs_delay_ps.m" "/Users/LooChao/.wine/dosdevices/z:/Volumes/DATA/Dropbox/Research/Data/Nanosecond_Laser/PowerVSDelay/energy_vs_delay.m" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Template/Makefile" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Template/references.bib" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Template/unified.tex" "/Users/LooChao/.wine/dosdevices/z:/Volumes/DATA/Dropbox/Research/Menuscript/Polarization/notes.bib" "/Users/LooChao/.wine/dosdevices/z:/Volumes/DATA/Dropbox/Research/Menuscript/Unified_Model/references.bib" "/Volumes/DATA/Music/INBOX/Xiami/\221\260\265\221\260\327FM/" "/home/loochao/Downloads/lch.sh" "/home/loochao/Downloads/lch.cpp" "/home/loochao/Downloads/lch2.rb" "/home/loochao/Dropbox/Music/CHECKIN_to.sort/" "~/Downloads/" "/home/loochao/Dropbox/.emacs.d/rc/archive/lch-elisp.el_archive" "/home/loochao/Dropbox/.emacs.d/rc/lch-conf.el" "/home/loochao/Dropbox/.emacs.d/rc/lch-ui.el" "/Users/LooChao/Dropbox/Org/org/Movie.org" "/Users/LooChao/.wine/dosdevices/z:/Volumes/NO" "/Volumes/NO NAME/NAME/\221\241\266\221\276\374\221\273 \272\221\234\364\245\265\221\234\364\245\265\221\304\224\252\234\364\253\314\311\221\311\361\221\234\364\251\373\221\321\371\221\265\202\360\304\214\261\310\227\253\326\303\224\252\325\241\267.epub._annot_2012-1-4_2-25-44.txt" "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/2013\221\317\361\221\234\364\241\354.exe" "/Users/LooChao/.wine/dosdevices/z:/Volumes/DATA/Research/Simulation/Surface_Peak.to.Valley/2_Final.Fit/surface_plot.m" "/Users/LooChao/.wine/dosdevices/z:/Volumes/DATA/Research/Simulation/Surface_Var.Material/surface_plot.m" "/Users/LooChao/.wine/dosdevices/z:/Volumes/DATA/Dropbox/Research/Menuscript/Surface.Relief2/Proof/proof.tex" "/Volumes/DATA/Music/INBOX/Xiami/\221\260\265\221\260\327FM/9 \221\274\207\361\312\234\363\326\331\342/"))
 
 ;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/Users/LooChao/Dropbox/Org/org/Humor.org"
+  "Humor.org"
+  'org-mode
+  '(auto-fill-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  1261
+  '(1117 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Polarization/polarization.tex"
+  "polarization.tex"
+  'latex-mode
+  '(auto-fill-mode abbrev-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode)
+  2161
+  '(5522 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix) (case-fold-search . t)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Surface.Relief2/Submission/Second.Submission/Second.Submission.to.prl_seperate.bib/surface.tex"
+  "surface.tex"
+  'latex-mode
+  '(auto-fill-mode abbrev-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode)
+  19000
+  '(18983 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  nil
+  "Second.Submission.to.prl_seperate.bib"
+  'dired-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  1049
+  '(nil nil)
+  t
+  '("/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Surface.Relief2/Submission/Second.Submission/Second.Submission.to.prl_seperate.bib/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "Polarization"
+  'dired-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  528
+  '(nil nil)
+  t
+  '("/Users/LooChao/Dropbox/Research/Menuscript/Polarization/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "org"
+  'dired-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  261
+  '(nil nil)
+  t
+  '("/Users/LooChao/Dropbox/Org/org/")
+  nil)
+
+(desktop-create-buffer 206
+  "/Users/LooChao/Dropbox/Org/org/Pearl.org"
+  "Pearl.org"
+  'org-mode
+  '(auto-fill-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  278
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/Dropbox/Org/org/iPrv.org"
+  "iPrv.org"
+  'org-mode
+  '(auto-fill-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  324
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/Downloads/main.c"
+  "main.c"
+  'c-mode
+  '(abbrev-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  216
+  '(197 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  nil
+  "Downloads"
+  'dired-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  969
+  '(nil nil)
+  t
+  '("/Users/LooChao/Downloads/")
+  nil)
+
+(desktop-create-buffer 206
+  nil
+  "public_html"
+  'dired-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  257
+  '(nil nil)
+  t
+  '("/Users/LooChao/Dropbox/Org/public_html/")
+  nil)
+
+(desktop-create-buffer 206
+  "/Users/LooChao/Dropbox/Org/public_html/Art-Ent.html"
+  "Art-Ent.html"
+  'html-mode
+  '(auto-fill-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  38255
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/Dropbox/Org/org/Art-Ent.org"
+  "Art-Ent.org"
+  'org-mode
+  '(auto-fill-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/Dropbox/Org/org/Emacs.org"
+  "Emacs.org"
+  'org-mode
+  '(auto-fill-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/Downloads/kaka"
+  "kaka"
+  'fundamental-mode
+  '(global-auto-revert-mode smooth-scroll-mode volatile-highlights-mode)
+  105
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/Downloads/Contents.txt"
+  "Contents.txt"
+  'org-mode
+  '(auto-fill-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  169
+  '(165 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix) (truncate-lines . t)))
+
+(desktop-create-buffer 206
+  nil
+  "‘Àí‘ÂÛ‘Îï‘Àí‘Ò»‘ÔÂ‘ÌØ‘Ñµ‘°à‘±Ê‘¼Ç"
+  'dired-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  442
+  '(1 nil)
+  t
+  '("/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Downloads/‘Àí‘ÂÛ‘Îï‘Àí‘Ò»‘ÔÂ‘ÌØ‘Ñµ‘°à‘±Ê‘¼Ç/")
+  nil)
+
+(desktop-create-buffer 206
+  "/Applications/Research/g09/bsd/g09.login"
+  "g09.login"
+  'fundamental-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode undo-tree-mode yas-minor-mode)
+  3689
+  '(nil nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  nil
+  "bsd"
+  'dired-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  2958
+  '(249 nil)
+  t
+  '("/Applications/Research/g09/bsd/")
+  nil)
+
+(desktop-create-buffer 206
+  "/Users/LooChao/.login"
+  ".login"
+  'sh-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  73
+  '(1 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  nil
+  "Research"
+  'dired-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode yas-minor-mode)
+  236
+  '(nil nil)
+  t
+  '("/Applications/Research/")
+  nil)
+
+(desktop-create-buffer 206
+  "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Polarization/polarization_note.tex"
+  "polarization_note.tex"
+  'latex-mode
+  '(auto-fill-mode abbrev-mode global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode flyspell-mode outline-minor-mode undo-tree-mode yas-minor-mode)
+  1566
+  '(1543 nil)
+  nil
+  nil
+  '((indent-tabs-mode) (buffer-file-coding-system . utf-8-unix)))
+
+(desktop-create-buffer 206
+  "/Users/LooChao/.wine/dosdevices/z:/Users/LooChao/Dropbox/Research/Menuscript/Template/Makefile"
+  "Makefile"
+  'makefile-mode
+  '(global-auto-revert-mode rainbow-delimiters-mode smooth-scroll-mode volatile-highlights-mode outline-minor-mode undo-tree-mode yas-minor-mode auto-complete-mode)
+  120
+  '(38 nil)
+  nil
+  nil
+  '((indent-tabs-mode . t) (buffer-file-coding-system . utf-8-unix)))
+
