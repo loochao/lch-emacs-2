@@ -15,6 +15,7 @@
 (message "=> lch-auto-complete: loading...")
 
 (require 'auto-complete-config)
+(require 'shell-command-extension)
 
 (defface popup-mouse-face
   '((t (nil)))

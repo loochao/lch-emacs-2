@@ -16,6 +16,17 @@
 ;;; CODE
 (message "=> lch-util: loading...")
 
+;;; View-clipboard
+(defun view-clipboard ()
+  (interactive)
+  (switch-to-buffer "*Clipboard*")
+  (let ((inhibit-read-only t))
+    (erase-buffer)
+    (clipboard-yank)
+    (goto-char (point-min))
+    (html-mode)
+    (view-mode)))
+(define-key global-map (kbd "C-z v") 'view-clipboard)
 ;;; Punctuation-substitution
 (defun lch-punctuate (pct)
   "pct:(a b); sub all the a in buffer with b"
@@ -351,7 +362,7 @@ Argument STRING the string that need pretty."
   (let ((face (or (get-char-property (point) 'read-face-name)
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
-(define-key global-map (kbd "<f11> f") 'lch-face-at-point)
+(define-key global-map (kbd "<f11> F") 'lch-face-at-point)
 
 ;;; Add-exec-permission-to-script
 (defun lch-chmod-x ()

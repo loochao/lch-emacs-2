@@ -27,10 +27,13 @@
 ;;; Code:
 (setq viper-inhibit-startup-message   t
       viper-expert-level              5        ; to do many customizations self
+      viper-ex-style-editing          nil      ; ex-style don't allow you move cross lines.
+      viper-ex-style-motion           nil
       viper-electric-mode             t
       viper-always                    t
       viper-want-ctl-h-help           t
       viper-want-emacs-keys-in-insert t
+      viper-vi-style-in-minibuffer    nil
       viper-want-emacs-keys-in-vi     t)
 
 (when (boundp 'viper-insert-global-user-map)
@@ -41,15 +44,17 @@
   (define-key viper-insert-global-user-map (kbd "C-w") 'kill-region))
 
 (when (boundp 'viper-vi-global-user-map)
-  (define-key viper-insert-global-user-map (kbd "C-d") 'delete-char)
   (define-key viper-vi-global-user-map (kbd "C-u") 'universal-argument)
 
   ;; These are shockingly cool.
   (define-key viper-vi-global-user-map (kbd "q") 'fill-paragraph)
   (define-key viper-vi-global-user-map (kbd "t") 'transpose-chars)
 
+  (define-key viper-vi-global-user-map (kbd "E") 'viper-change-state-to-emacs)
+  
   (define-key viper-vi-global-user-map (kbd "C-v") 'scroll-up)
-
+  (define-key viper-vi-global-user-map (kbd "SPC") 'scroll-up)
+  (define-key viper-vi-global-user-map (kbd "S-SPC") 'scroll-down)
   (define-key viper-vi-global-user-map (kbd "C-b") 'backward-char)
   (define-key viper-vi-global-user-map (kbd "C-f") 'forward-char)
   (define-key viper-vi-global-user-map (kbd "C-p") 'previous-line)

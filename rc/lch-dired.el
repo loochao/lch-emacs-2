@@ -84,7 +84,13 @@ Otherwise, just `dired-up-directory'."
    ("/."             . dired-filter-extension)
    ("C-<f12>"        . dired-filter-extension)
 
-   ("k"              . kill-this-buffer)
+   ("v"              . dired-x-find-file)
+   ("V"              . dired-view-file)
+   ("j"              . dired-next-line)
+   ("J"              . dired-goto-file)
+   ("k"              . dired-previous-line)
+   ("K"              . dired-do-kill-lines)
+
    ("r"              . wdired-change-to-wdired-mode)
    ("T"              . dired-tar-pack-unpack)
    )

@@ -16,6 +16,12 @@
 ;;; CODE
 (message "=> lch-init: loading...")
 
+(setq initial-scratch-message "ಠ_ಠ")
+(define-key global-map (kbd "RET") 'newline-and-indent)
+
+;; Show lots of *message*.
+(setq message-log-max 16384)               
+      
 ;; Parentheses
 ;; Paren color set in color-theme-lch.el
 (when (fboundp 'show-paren-mode)

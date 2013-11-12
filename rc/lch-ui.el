@@ -16,6 +16,27 @@
 ;;; CODE
 (message "=> lch-ui: loading...")
 (require 'lch-key-util)
+;;; Fullscreen
+(defun toggle-fullscreen (&optional f)
+  (interactive)
+  (let ((current-value (frame-parameter nil 'fullscreen)))
+       (set-frame-parameter nil 'fullscreen
+                            (if (equal 'fullboth current-value)
+                                (if (boundp 'old-fullscreen) old-fullscreen nil)
+                                (progn (setq old-fullscreen current-value)
+                                       'fullboth)))))
+(define-key global-map (kbd "<f11> <f11>") 'toggle-fullscreen)
+
+;;; Fill-column-indicator
+(require 'fill-column-indicator)
+(setq fci-rule-width 1)
+(setq fci-rule-color "pink")
+
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+;; (global-fci-mode 1)
+
+(define-key global-map (kbd "<f11> f") 'fci-mode)
+
 ;;; Rainbow-delimiter
 (require 'rainbow-delimiters)
 (global-rainbow-delimiters-mode)

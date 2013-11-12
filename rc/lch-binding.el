@@ -273,6 +273,7 @@
       '(
         (("c" . "count-words") . count-words)                                       ;; => lch-binding.el
         (("f" . "fortune") . lch-echo-fortune)                                      ;; => lch-util.el
+        (("v" . "clipboard") . view-clipboard)                                      ;; => lch-util.el
         ))
 (defun one-key-menu-ctrl-z ()
   "The `one-key' menu for CTRL-Z."
@@ -299,7 +300,6 @@
         (("<f10>" . "open-dirs-w-emacs") . one-key-menu-f10s)                   ;; => lch-binding.el
         (("<f12>" . "emms") . lch-emms-init)                                    ;; => lch-emms.el
         (("C-<f9>" . "dired-single-magic") . dired-single-magic-buffer)         ;; => lch-dired.el
-        (("M-<f12>" . "douban-music") . douban-music)                           ;; => lch-elisp.el
         (("<f1> <f2>" . "start-terminal") . lch-start-terminal)                 ;; => lch-util.el
         (("<f9> <f10>" . "open-dirs-w-finder") . one-key-menu-df)               ;; => lch-binding.el
         (("Shift+ [l,r,u,d] ->" . "windmove") . zone)                           ;; => lch-elisp.el
@@ -632,6 +632,7 @@
         (("$" . "line-truncate") . toggle-truncate-lines)                       ;; => lch-binding.el
         (("<f2>" . "color-theme-loochao") . color-theme-loochao)                ;; => lch-ui.el
         (("<f3>" . "color-theme-lazycat") . color-theme-lazycat)                ;; => lch-ui.el
+        (("<f11>" . "toggle-fullscreen") . toggle-fullscreen)                   ;; => lch-ui.el
         (("1" . "cycle-fg-forward") . lch-cycle-fg-color-forward)               ;; => lch-ui.el
         (("2" . "cycle-bg-forward") . lch-cycle-bg-color-forward)               ;; => lch-ui.el
         (("3" . "frame-bg-pink") . lch-frame-pink)                              ;; => lch-ui.el
@@ -640,6 +641,8 @@
         (("b" . "eyedropper-background") . eyedropper-background)               ;; => lch-binding.el
         (("a" . "ascii-on") . ascii-on)                                         ;; => lch-elisp.el
         (("A" . "ascii-off") . ascii-off)                                       ;; => lch-elisp.el
+        (("f" . "fill-column-indicator") . fci-mode)                            ;; => lch-ui.el
+        (("F" . "pick-face") . lch-face-at-point)                               ;; => lch-ui.el
         (("h" . "highlight-line") . global-hl-line-mode)                        ;; => lch-binding.el
         (("l" . "setnu-mode") . setnu-mode)                                     ;; => lch-binding.el
         (("L" . "line-truncate") . toggle-truncate-lines)                       ;; => lch-binding.el

@@ -250,12 +250,11 @@
 	 ;; ("1w" "RECUR WEEKLY" tags "WEEKLY/ACTIVE")
         ("`" "ALL TODO"
          (
-	  (tags "#A/ACTIVE|WAITING")
+	  (tags "#A/ACTIVE")
 	  (tags "#B|OBTAIN/ACTIVE")
-          (tags "DAILY/TOFNSH")
-	  (tags "DAILY|DUALLY|WEEKLY|RECUR/ACTIVE")
+	  (tags "DAILY&T|DUALLY&T|WEEKLY/ACTIVE")
           (tags "MOBILE|AUDIO|CAR/ACTIVE")
-	  (tags "#C/ACTIVE")
+	  (tags "DAILY|DUALLY/ACTIVE")
           ))
         ("1" "ACTIVE TODO-#A"
          (

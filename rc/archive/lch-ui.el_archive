@@ -1,5 +1,124 @@
 ;; -*- mode: emacs-lisp -*-
 
+;;; Cyberpunk Cursor
+
+(blink-cursor-mode 0)
+
+(defvar blink-cursor-colors (list  "#92c48f" "#6785c5" "#be369c" "#d9ca65")
+  "On each blink the cursor will cycle to the next color in this list.")
+
+(setq blink-cursor-count 0)
+
+(defun blink-cursor-timer-function ()
+  "Cyberpunk variant of timer `blink-cursor-timer'. OVERWRITES original version in `frame.el'.
+
+This one changes the cursor color on each blink. Define colors in `blink-cursor-colors'."
+  (when (not (internal-show-cursor-p))
+    (when (>= blink-cursor-count (length blink-cursor-colors))
+      (setq blink-cursor-count 0))
+    (set-cursor-color (nth blink-cursor-count blink-cursor-colors))
+    (setq blink-cursor-count (+ 1 blink-cursor-count))
+    )
+  (internal-show-cursor nil (not (internal-show-cursor-p)))
+  )
+;;; Frame-size
+(defun lch-set-frame-size ()
+  (interactive)
+  (set-frame-parameter (selected-frame) 'top 26)
+  (set-frame-parameter (selected-frame) 'left 2)
+  (set-frame-parameter (selected-frame) 'width
+                       (floor (/ (float (x-display-pixel-width)) 9.15)))
+  (if (= 1050 (x-display-pixel-height))
+      (set-frame-parameter (selected-frame) 'height
+                           (if (>= emacs-major-version 24)
+                               66
+                             55))
+    (set-frame-parameter (selected-frame) 'height
+                         (if (>= emacs-major-version 24)
+                             75
+                           64))))
+
+(defun emacs-toggle-size ()
+  (interactive)
+  (if (eq (cdr (assq 'fullscreen (frame-parameters))) nil)
+      (set-frame-parameter (selected-frame) 'fullscreen 'fullboth)
+    (set-frame-parameter (selected-frame) 'fullscreen 'nil))
+  (lch-set-frame-size))
+
+;; Positioning of frame when starting Emacs
+(setq default-frame-alist '(
+                            (height . 61) (width . 98)
+                            (top . 72) (left . 36)
+                            ))
+(setq initial-frame-alist '((top . 72) (left . 775)))
+
+(when window-system
+  ;; list of frame parameters for creating the initial frame
+  (setq initial-frame-alist '((top . 0) (left . 0)))
+
+  (setq initial-frame-alist
+        (append (list
+                 '(internal-border-width . 2)
+                 '(line-spacing          . 1))
+                initial-frame-alist))
+
+  ;; list of default values for frame creation
+  (setq default-frame-alist
+        (cond ((= (x-display-pixel-height) 1200)
+               '((left . 0) (height . 74)))
+
+              ((= (x-display-pixel-height) 1080)
+               '((left . 0) (height . 63)))
+
+              ((= (x-display-pixel-height) 800)
+               (cond (lch-win32-p
+                      '((left . 0) (height . 55)))
+                     (lch-linux-p
+                      '((left . 0) (height . 47)
+                        (vertical-scroll-bars . right)))))
+
+              ((= (x-display-pixel-height) 768)
+               '((left . 0) (height . 46)))))
+)
+
+
+(defvar emacs-min-top 26)
+(defvar emacs-min-left (- (x-display-pixel-width) 918))
+(defvar emacs-min-height (if (= 1050 (x-display-pixel-height)) 55 64))
+(defvar emacs-min-width 100)
+
+(defun lch-emacs-min ()
+  (interactive)
+  (set-frame-parameter (selected-frame) 'fullscreen nil)
+  (set-frame-parameter (selected-frame) 'vertical-scroll-bars nil)
+  (set-frame-parameter (selected-frame) 'horizontal-scroll-bars nil)
+  (set-frame-parameter (selected-frame) 'top emacs-min-top)
+  (set-frame-parameter (selected-frame) 'left emacs-min-left)
+  (set-frame-parameter (selected-frame) 'height emacs-min-height)
+  (set-frame-parameter (selected-frame) 'width emacs-min-width)
+)
+
+(defun lch-emacs-max ()
+  (interactive)
+  (progn
+    (set-frame-parameter (selected-frame) 'fullscreen 'fullboth)
+    (set-frame-parameter (selected-frame) 'vertical-scroll-bars nil)
+    (set-frame-parameter (selected-frame) 'horizontal-scroll-bars nil))
+  ;;(lch-set-frame-max-size)
+)
+
+(defun lch-emacs-regular ()
+  (interactive)
+  (progn
+    (set-frame-parameter (selected-frame) 'fullscreen 'nil)
+    (set-frame-parameter (selected-frame) 'vertical-scroll-bars nil)
+    (set-frame-parameter (selected-frame) 'horizontal-scroll-bars nil))
+  (lch-set-frame-max-size)
+)
+
+(define-key global-map (kbd "<f11> <f10>") 'lch-emacs-min)
+(define-key global-map (kbd "<f11> <f11>") 'lch-emacs-max)
+(define-key global-map (kbd "<f11> <f12>") 'lch-emacs-regular)
 ;; ;;; Frame parameters
 ;; (setq default-frame-alist
 ;;       (append

@@ -1,7 +1,7 @@
 
 ;; ----- smex-history -----
 (
- lch-cowsay-fortune
+ list-colors-display
  R
  cd
  5x5
@@ -12,5 +12,5 @@
 
 ;; ----- smex-data -----
 (
- (lch-cowsay-fortune . 1)
+ (list-colors-display . 1)
 )

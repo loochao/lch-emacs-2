@@ -14,7 +14,7 @@
  (position . 1065))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Org/org/iPrv.org")
- (front-context-string . "*** Update resum")
- (rear-context-string . "TODO-#A\n  :END:\n")
- (position . 658))
+ (front-context-string . "*** ACTIVE D700 ")
+ (rear-context-string . "ND:\n** TODO-#B-\n")
+ (position . 1663))
 )
