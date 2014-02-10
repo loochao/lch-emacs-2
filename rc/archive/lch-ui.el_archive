@@ -1,5 +1,24 @@
 ;; -*- mode: emacs-lisp -*-
 
+;;; maximize-frame
+(defun maybe-maximize-frame (&optional frame)
+  (with-selected-frame frame
+    (when (and window-system
+               (maximized-p frame))
+      (maximize-frame))))
+
+(defun within-p (a b delta)
+  (<= (abs (- b a)) delta))
+
+(defun maximized-p (&optional frame)
+  (or (not (with-selected-frame frame window-system))
+      (and (within-p (mf-max-display-pixel-width)
+                     (frame-pixel-width frame)
+                     (frame-char-width frame))
+           (within-p (mf-max-display-pixel-height)
+                     (+ mf-display-padding-height (frame-pixel-height frame))
+                     (frame-char-height frame)))))
+
 ;;; Cyberpunk Cursor
 
 (blink-cursor-mode 0)

@@ -411,9 +411,9 @@ Paredit behaves badly if parentheses are imbalanced, so exercise
    ("M-("       paredit-wrap-round
                 ("(foo |bar baz)"
                  "(foo (|bar) baz)"))
-   ("M-s"       paredit-splice-sexp
-                ("(foo (bar| baz) quux)"
-                 "(foo bar| baz quux)"))
+   ;; ("M-s"       paredit-splice-sexp
+   ;;              ("(foo (bar| baz) quux)"
+   ;;               "(foo bar| baz quux)"))
    (("M-<up>" "ESC <up>")
                 paredit-splice-sexp-killing-backward
                 ("(foo (let ((x 5)) |(sqrt n)) bar)"

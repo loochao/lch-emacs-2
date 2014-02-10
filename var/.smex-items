@@ -1,16 +1,24 @@
 
 ;; ----- smex-history -----
 (
- list-colors-display
- R
- cd
- 5x5
- arp
- dbx
- dig
+ keyfreq-mode
+ list-packages
+ lch-search-song-xiami
+ lch-indent-buffer
+ re-search-forward
+ regexp-builder
+ revert-buffer-with-coding-system
 )
 
 ;; ----- smex-data -----
 (
- (list-colors-display . 1)
+ (lch-indent-buffer . 2)
+ (wget . 1)
+ (wget-web-page . 1)
+ (revert-buffer-with-coding-system . 1)
+ (regexp-builder . 2)
+ (re-search-forward . 1)
+ (lch-search-song-xiami . 2)
+ (list-packages . 1)
+ (keyfreq-mode . 2)
 )

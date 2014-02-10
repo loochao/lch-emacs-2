@@ -16,6 +16,35 @@
 ;;; CODE
 (message "=> lch-util: loading...")
 
+;;; Invoke-interactives
+(define-key global-map (kbd "M-1") 'shell)
+
+(defun lch-matlab ()
+  (interactive)
+  (if (get-buffer "*MATLAB*")
+      (switch-to-buffer "*MATLAB*")
+    (matlab-shell)))
+(define-key global-map (kbd "M-2") 'lch-matlab)
+
+
+(defun lch-python ()
+  (interactive)
+  (if (get-buffer "*Python*")
+      (switch-to-buffer "*Python*")
+    (progn
+      (python)
+      (switch-to-buffer "*Python*")
+      (delete-other-windows))))
+(define-key global-map (kbd "M-3") 'lch-python)
+
+
+(defun lch-R ()
+  (interactive)
+  (if (get-buffer "*R*")
+      (switch-to-buffer "*R*")
+    (R)))
+(define-key global-map (kbd "M-4") 'lch-R)
+
 ;;; View-clipboard
 (defun view-clipboard ()
   (interactive)
@@ -261,8 +290,8 @@ kill all buffers with MODE except current buffer."
       '(
         (("M-k" . "kill-all-buffers") . kill-all-buffers)
         (("a" . "kill-all-buffers-except-current") . kill-all-buffers-except-current)
-        (("c" . "kill-current-mode-buffers") . kill-current-mode-buffers)
-        (("C" . "kill-current-mode-buffers-except-current") . kill-current-mode-buffers-except-current)
+        (("m" . "kill-current-mode-buffers") . kill-current-mode-buffers)
+        (("M" . "kill-current-mode-buffers-except-current") . kill-current-mode-buffers-except-current)
         (("o" . "kill-org-mode-buffers") . kill-org-mode-buffers)
         (("s" . "kill-special-mode-buffers") . kill-special-mode-buffers)
         ))

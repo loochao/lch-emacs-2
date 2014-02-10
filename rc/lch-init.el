@@ -16,7 +16,7 @@
 ;;; CODE
 (message "=> lch-init: loading...")
 
-(setq initial-scratch-message "ಠ_ಠ")
+;; (setq initial-scratch-message "ಠ_ಠ")
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;; Show lots of *message*.

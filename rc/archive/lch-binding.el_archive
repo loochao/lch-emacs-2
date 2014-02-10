@@ -13,6 +13,46 @@
 ;;; Require
 (require 'one-key-config)
 
+;;; <f2> + scratch mtime etc
+        (("<f1>" . "multi-term-prev") . multi-term-prev)                        ;; => lch-elisp.el
+        (("<f2>" . "multi-term") . multi-term)                                  ;; => lch-elisp.el
+        (("<f3>" . "multi-term-next") . multi-term-next)                        ;; => lch-elisp.el        
+        (("1" . "shell") . shell)                                               ;; => lch-util.el
+        (("2" . "lch-matlab") . lch-matlab)                                     ;; => lch-util.el
+        (("3" . "lch-python") . lch-python)                                     ;; => lch-util.el        
+        (("4" . "lch-R") . lch-R)                                               ;; => lch-util.el
+
+        (("," . "scratch-prev") . multi-scratch-prev)                           ;; => lch-elisp.el
+        (("." . "scratch-next") . multi-scratch-next)                           ;; => lch-elisp.el
+        (("s" . "scratch-new") . multi-scratch-new)                             ;; => lch-elisp.el
+        
+        (("[" . "multi-term-prev") . multi-term-prev)                           ;; => lch-elisp.el
+        (("]" . "multi-term-prev") . multi-term-prev)                           ;; => lch-elisp.el
+        (("n" . "multi-term") . multi-term)                                     ;; => lch-elisp.el        
+
+        (("M" . "lch-matlab") . lch-matlab)                                     ;; => lch-elisp.el        
+        (("P" . "lch-python") . lch-python)                                     ;; => lch-elisp.el
+        (("R" . "lch-R") . lch-R)                                               ;; => lch-elisp.el        
+        (("S" . "shell") . shell)                                               ;; => lch-elisp.el        
+
+;; (define-key global-map (kbd "<f2> `") 'one-key-menu-term-scratch)
+;; (define-key global-map (kbd "<f2> <f3>") 'multi-term-next)
+;; (define-key global-map (kbd "<f2> ]") 'multi-term-prev)
+
+;; (define-key global-map (kbd "M-2") 'multi-term-dedicated-select)
+;; (define-key global-map (kbd "<f2> <f2>") 'multi-term)
+;; (define-key global-map (kbd "<f2> n") 'multi-term)
+;; (define-key global-map (kbd "<f2> <f1>") 'multi-term-prev)
+;; (define-key global-map (kbd "<f2> [") 'multi-term-prev)
+
+;; (define-key global-map (kbd "<f2> 1") 'shell)
+;; (define-key global-map (kbd "<f2> 2") 'lch-matlab)
+;; (define-key global-map (kbd "<f2> M") 'lch-matlab)
+;; (define-key global-map (kbd "<f2> 3") 'lch-python)
+;; (define-key global-map (kbd "<f2> P") 'lch-python)
+;; (define-key global-map (kbd "<f2> 4") 'lch-R)
+;; (define-key global-map (kbd "<f2> R") 'lch-R)
+
 ;; (setq one-key-popup-window nil)
 ;;; Super (command-test-map)
 (lch-set-key

@@ -14,6 +14,24 @@
 ;;; CODE
 (message "=> lch-elisp: loading...")
 
+;;; Magit
+(require 'magit)
+(define-key global-map (kbd "<f1> g") 'magit-status)
+;;; Keyfreq
+;; Use keyfreq-show to see how many times you used a command.
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
+;;; js2-mode
+;; Said to be the best javascript mode
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js-mode-hook 'js2-minor-mode)
+;;; Emmet-mode
+;; Enable when editing HTML
+;; (require 'emmet-mode)
+;; (add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+;; (add-hook 'html-mode-hook 'emmet-mode)
+;; (add-hook 'css-mode-hook  'emmet-mode)
 ;;; Python-mode
 (setq py-install-directory (concat emacs-lisp-dir "/python-mode/"))
 (require 'python-mode)
@@ -21,10 +39,14 @@
 ;;; Multi-term/scratch
 (require 'multi-term)
 (require 'multi-scratch)
+
+(define-key global-map (kbd "M-s") 'multi-scratch-new)
+(define-key global-map (kbd "M-,") 'multi-scratch-prev)
+(define-key global-map (kbd "M-.") 'multi-scratch-next)
+
 (define-key global-map (kbd "M-n") 'multi-term)
 (define-key global-map (kbd "M-[") 'multi-term-prev)
 (define-key global-map (kbd "M-]") 'multi-term-next)
-(define-key global-map (kbd "M-2") 'multi-term-dedicated-select)
 
 ;; One-key-menu-term-scratch
 (defvar one-key-menu-term-scratch-alist nil "")
@@ -50,7 +72,7 @@
   "The `one-key' menu for TERM."
   (interactive)
   (one-key-menu "TERM" one-key-menu-term-scratch-alist t))
-(define-key global-map (kbd "M-3") 'one-key-menu-term-scratch)
+(define-key global-map (kbd "M-`") 'one-key-menu-term-scratch)
 
 ;;; ASCII
 (autoload 'ascii-display "ascii" "" t)
@@ -304,6 +326,11 @@
 (require 'anything-config)
 (define-key global-map (kbd "M-SPC") 'anything)
 (define-key global-map (kbd "M-a") 'anything-command-map)
+;;; Helm
+;; (require 'helm-config)
+;; (helm-mode 1)
+;; (global-set-key (kbd "C-c h") 'helm-mini)
+
 ;;; Outline
 ;; Outline is part of GNU Emacs
 ;; TODO: bind the outline-minor-mode-prefix C-c @ to C-o
@@ -407,15 +434,10 @@
 ;; Ignore .DS_Store files with ido mode
 (add-to-list 'ido-ignore-files "\\.DS_Store")
 
-;;; iBuffer
-;; Part of GNU Emacs
-(define-key global-map (kbd "C-x C-b") 'ibuffer)
-(autoload 'ibuffer "ibuffer" "List buffers." t)
-
 ;;; Goto-last-change
 (require 'goto-last-change)
 (define-key global-map (kbd "C-x C-\\") 'goto-last-change)
-(define-key global-map (kbd "<f2> <f2>") 'goto-last-change)
+(define-key global-map (kbd "<f4> <f4>") 'goto-last-change)
 ;;; Desktop
 ;; Part of GNU Emacs
 (require 'desktop)

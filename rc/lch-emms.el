@@ -25,14 +25,12 @@
 (emms-devel)
 ;; (emms-standard)
 
-
 (defvar emms-dir (concat emacs-var-dir "/emms"))
 (make-directory emms-dir t)
 (setq emms-history-file (concat emms-dir "/emms-history"))
 (setq emms-cache-file (concat emms-dir "/cache"))
 (setq emms-stream-bookmarks-file (concat emms-dir "/streams"))
 (setq emms-score-file (concat emms-dir "/scores"))
-
 
 (setq emms-playlist-buffer-name "*Music*")
 (if lch-mac-p (setq emms-source-file-default-directory "/Volumes/DATA/Music/INBOX/Xiami/Current"))
@@ -44,13 +42,13 @@
         emms-player-mpg321
         emms-player-ogg123))
 
-(define-emms-simple-player mplayer '(file url)
-      (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
-                    ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
-                    ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
-      "mplayer" "-slave" "-quiet" "-really-quiet")
+;; (define-emms-simple-player mplayer '(file url)
+;;       (regexp-opt '(".ogg" ".mp3" ".wav" ".mpg" ".mpeg" ".wmv" ".wma"
+;;                     ".mov" ".avi" ".divx" ".ogm" ".asf" ".mkv" "http://" "mms://"
+;;                     ".rm" ".rmvb" ".mp4" ".flac" ".vob" ".m4a" ".flv" ".ogv" ".pls"))
+;;       "mplayer" "-slave" "-quiet" "-really-quiet")
 
-(setq emms-player-mplayer-parameters (list "-slave" "-quiet" "-really-quiet"))
+;; (setq emms-player-mplayer-parameters (list "-slave" "-quiet" "-really-quiet"))
 
 (setq emms-repeat-playlist t)
 
@@ -91,6 +89,34 @@
 ;; (setq emms-lyrics-coding-system 'gbk
 ;;       emms-lyrics-display-on-minibuffer t)
 ;; (setq emms-lyrics-dir (concat emms-dir "/lyric"))
+
+(defun lch-search-song-xiami ()
+  (interactive)
+  (let*
+      (
+       (full-path (emms-track-get (emms-playlist-current-selected-track) 'name))
+       (file-name (file-name-nondirectory full-path))
+       (name-list (split-string file-name "_"))
+       (clean-name (loop for element in name-list
+                         until (equal element "虾小米打碟中")
+                         collect element))
+       (final-name-no-extension (mapconcat 'identity clean-name " "))
+       (final-name (concat final-name-no-extension ".mp3"))
+       (url-xiami (concat "http://www.xiami.com/search?key=" final-name-no-extension))
+       )
+    ;; (message "%s" final-name2)
+    (browse-url url-xiami)
+    ;; (switch-to-buffer (get-buffer-create "*test*"))
+    ;; (with-current-buffer
+    ;; (url-retrieve-synchronously url-xiami)
+    ;; (goto-char 1)
+    ;; (when (re-search-forward "http://www.xiami.com/[0-9]+" nil t)
+    ;;   (let ((test (match-string 0)))
+    ;;     (message "%s" test)
+    ;;     )
+    ;;   ))
+    ))
+(define-key global-map (kbd "<f12> l") 'lch-search-song-xiami)
 
 ;; (require 'emms-lyrics-download)
 ;; (ad-activate 'emms-lyrics-find-lyric)

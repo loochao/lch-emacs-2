@@ -14,7 +14,7 @@
  (position . 1065))
 ("org-capture-last-stored"
  (filename . "~/Dropbox/Org/org/iPrv.org")
- (front-context-string . "*** ACTIVE D700 ")
+ (front-context-string . "*** Harvard prob")
  (rear-context-string . "ND:\n** TODO-#B-\n")
  (position . 1663))
 )

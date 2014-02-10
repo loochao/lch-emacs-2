@@ -18,17 +18,19 @@
 
 (require 'lch-key-util)
 ;;; W3M
-;; (require 'w3m)
-(when (locate-library "w3m")
-  (autoload 'w3m "w3m" nil t)
-  (autoload 'w3m-goto-url "w3m" nil t)
-  (autoload 'w3m-region "w3m"))
+(require 'w3m)
+;; (when (locate-library "w3m")
+;;   (autoload 'w3m "w3m" nil t)
+;;   (autoload 'w3m-goto-url "w3m" nil t)
+;;   (autoload 'w3m-region "w3m"))
 
 ;; (setq w3-default-stylesheet "~/.default.css")
 ;; (defvar w3m-buffer-name-prefix "*w3m" "Name prefix of w3m buffer")
 ;; (defvar w3m-buffer-name (concat w3m-buffer-name-prefix "*") "Name of w3m buffer")
 ;; (defvar w3m-bookmark-buffer-name (concat w3m-buffer-name-prefix "-bookmark*") "Name of w3m buffer")
 
+;;; Webkit
+;; (require 'webkit)
 ;;; Setting
 (defvar w3m-dir (concat emacs-var-dir "/w3m") "Dir of w3m.")
 
@@ -45,8 +47,9 @@
 
 (setq w3m-search-default-engine "google")
 
-(setq w3m-use-toolbar t
-      w3m-use-tab     nil)
+;; This will increase spaces in the menubar! Dangerous at lease under MAC!
+;; (setq w3m-use-toolbar t
+;;       w3m-use-tab     nil)
 ;; (setq w3m-key-binding 'info)
 
 (setq w3m-bookmark-file (concat w3m-dir "/w3m-bookmark.html"))
@@ -63,6 +66,7 @@
              (format "*w3m: %s*"
                      (beautify-string (or w3m-current-title
                                           w3m-current-url) 50)) t)))
+
 ;; (setq w3m-session-time-format "%Y-%m-%d %A %H:%M")
 ;;; Browse-url
 ;; Set browse function to be w3m

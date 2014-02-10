@@ -138,7 +138,8 @@
   (interactive)
   (one-key-menu "THING-EDIT" one-key-menu-thing-edit-alist t))
 
-(define-key global-map (kbd "M-4") 'one-key-menu-thing-edit)
+(define-key global-map (kbd "<f4> <f3>") 'one-key-menu-thing-edit)
+
 ;;; PROVIDE
 (provide 'lch-one-key)
 (message "~~ lch-one-key: done.")

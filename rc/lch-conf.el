@@ -21,6 +21,7 @@
 (require 'lch-ui)
 (require 'lch-util)
 (require 'lch-elisp)
+(require 'lch-ibuffer)
 (require 'lch-auto-complete)
 (require 'lch-dired)
 (require 'lch-org)

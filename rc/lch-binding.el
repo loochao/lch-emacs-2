@@ -82,7 +82,7 @@
 ;;; Meta (command-map)
 (lch-set-key
  '(
-   ("M-1" . shell)
+   ("M-`" . one-key-menu-term-scratch)
    ))
 
 ;; One-key-menu-meta
@@ -97,10 +97,18 @@
         (("<SPC>" . "anything") . anything)                                     ;; => lch-elisp.el
         (("/" . "dabbrev") . dabbrev-expand)                                    ;; => emacs-defaults
         (("'" . "yasnippet") . yas-expand)                                      ;; => lch-elisp.el
+        (("`" . "multi-scratch-term") . one-key-menu-term-scratch)              ;; => lch-binding.el
+        
+        (("," . "scratch-prev") . multi-scratch-prev)                           ;; => lch-elisp.el
+        (("." . "scratch-next") . multi-scratch-next)                           ;; => lch-elisp.el
+        (("s" . "scratch-new") . multi-scratch-new)                             ;; => lch-elisp.el
+        
+        ;; (("`" . "menu-bar") . menu-bar)                                         ;; => emacs-defaults        
         (("1" . "shell") . shell)                                               ;; => lch-binding.el
-        (("2" . "term-popup") . multi-term-dedicated-toggle)                    ;; => lch-binding.el
-        (("3" . "multi-scratch-term") . one-key-menu-term-scratch)              ;; => lch-binding.el
-        (("4" . "thing-edit") . one-key-menu-edit)                              ;; => lch-one-key.el
+        (("2" . "lch-matlab") . lch-matlab)                                     ;; => lch-util.el
+        (("3" . "lch-python") . lch-python)                                     ;; => lch-util.el        
+        (("4" . "lch-R") . lch-R)                                               ;; => lch-util.el
+        ;; (("2" . "multi-term") . multi-term-try-create)                          ;; => lch-binding.el
         (("6" . "erc-switch") . one-key-menu-irc-channel)                       ;; => lch-web.el
         (("8" . "org-agenda") . org-agenda)                                     ;; => lch-org.el
         (("9" . "anything-menu") . one-key-menu-anything)                       ;; => lch-binding.el
@@ -284,15 +292,20 @@
 ;;; Fn:  (command-map)
 (lch-set-key
  '(
-   ("<f4> <f4>" . kill-this-buffer)
+;;   ("<f4> <f4>" . kill-this-buffer)
    ))
 (defvar one-key-menu-fn-alist nil "")
 (setq one-key-menu-fn-alist
       '(
         (("<f1>" . "display-fn-keys") . lch-tip-of-the-day)                     ;; => lch-binding
-        (("<f2>" . "goto-last-change") . goto-last-change)                      ;; => lch-elisp.el
+        (("<f1> <f2>" . "start-terminal") . lch-start-terminal)                 ;; => lch-util.el
+        (("<f2>" . "multi-term-new") . multi-term)                              ;; => lch-elisp.el
+        (("<f2> <f1>" . "multi-term-prev") . multi-term-prev)                   ;; => lch-elisp.el
+        (("<f2> <f3>" . "multi-term-next") . multi-term-next)                   ;; => lch-elisp.el                
         (("<f3>" . "w3m") . lch-w3m-init)                                       ;; => lch-web.el
-        (("<f4>" . "kill-buffer") . kill-this-buffer)                           ;; => lch-binding.el
+;;      (("<f4>" . "kill-buffer") . kill-this-buffer)                           ;; => lch-binding.el
+        (("<f4>" . "goto-last-change") . goto-last-change)                      ;; => lch-elisp.el
+        (("<f4> <f3>" . "thing-edit") . one-key-menu-edit)                      ;; => lch-one-key.el        
         (("<f5>" . "bc-set") . bc-set)                                          ;; => lch-bmk.el
         (("<f6>" . "erc") . lch-erc-init)                                       ;; => lch-network.el
         (("<f7>" . "dictionary") . dictionary-search)                           ;; => lch-elisp.el
@@ -300,7 +313,6 @@
         (("<f10>" . "open-dirs-w-emacs") . one-key-menu-f10s)                   ;; => lch-binding.el
         (("<f12>" . "emms") . lch-emms-init)                                    ;; => lch-emms.el
         (("C-<f9>" . "dired-single-magic") . dired-single-magic-buffer)         ;; => lch-dired.el
-        (("<f1> <f2>" . "start-terminal") . lch-start-terminal)                 ;; => lch-util.el
         (("<f9> <f10>" . "open-dirs-w-finder") . one-key-menu-df)               ;; => lch-binding.el
         (("Shift+ [l,r,u,d] ->" . "windmove") . zone)                           ;; => lch-elisp.el
         (("C-[mouse-scroll]" . "text-scale(+/-)") . zone)                       ;; => lch-binding.el
@@ -408,6 +420,7 @@
 
 (setq one-key-menu-edit-alist
       '(
+        (("<f3>" . "thing-edit") . one-key-menu-edit)                      ;; => lch-one-key.el
         (("3" . "copy-filename") . lch-copy-file-name-to-clipboard)        ;; => lch-util.el
         (("c" . "cleanup-buffer") . lch-cleanup-buffer)                    ;; => lch-util.el
         (("d" . "delete-buffer-n-file") . lch-delete-file-and-buffer)      ;; => lch-util.el
@@ -677,6 +690,7 @@
         (("d" . "emms-dump") . lch-emms-dump)
         (("i" . "emms-mode-line") . emms-mode-line-toggle)
         (("j" . "emms-jump-to-file") . emms-jump-to-file)
+        (("l" . "lch-search-song-xiami") . lch-search-song-xiami)
         (("n" . "emms-next") . emms-next)
         (("p" . "emms-previous") . emms-previous)
         (("q" . "emms-quit") . lch-emms-quit)
