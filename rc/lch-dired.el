@@ -77,7 +77,7 @@ Otherwise, just `dired-up-directory'."
    ("<RET>"          . dired-single-buffer)
    ("<down-mouse-1>" . dired-single-buffer)
 
-   ("!"              . emms-add-dired)
+   ("E"              . emms-add-dired)
 
    ("/*"             . dired-mark-files-regexp)
    ("/m"             . dired-filter-regexp)

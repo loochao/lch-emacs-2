@@ -103,11 +103,12 @@
         (("." . "scratch-next") . multi-scratch-next)                           ;; => lch-elisp.el
         (("s" . "scratch-new") . multi-scratch-new)                             ;; => lch-elisp.el
         
-        ;; (("`" . "menu-bar") . menu-bar)                                         ;; => emacs-defaults        
+        ;; (("`" . "menu-bar") . menu-bar)                                      ;; => emacs-defaults        
         (("1" . "shell") . shell)                                               ;; => lch-binding.el
         (("2" . "lch-matlab") . lch-matlab)                                     ;; => lch-util.el
         (("3" . "lch-python") . lch-python)                                     ;; => lch-util.el        
         (("4" . "lch-R") . lch-R)                                               ;; => lch-util.el
+        (("5" . "lch-mathematica") . lch-mathematica)                           ;; => lch-util.el        
         ;; (("2" . "multi-term") . multi-term-try-create)                          ;; => lch-binding.el
         (("6" . "erc-switch") . one-key-menu-irc-channel)                       ;; => lch-web.el
         (("8" . "org-agenda") . org-agenda)                                     ;; => lch-org.el
@@ -389,30 +390,34 @@
   (interactive)
   (one-key-menu "MODE" one-key-menu-mode-alist t))
 (define-key global-map (kbd "<f2> m") 'one-key-menu-mode)
-;;; F3:  (web-map)
-;; W3m and webpage related.
-(defvar one-key-menu-web-alist nil
-  "The `one-key' menu alist for WEB.")
+;;; F3:  (network-map)
+;; Network and web related.
+(defvar one-key-menu-network-alist nil
+  "The `one-key' menu alist for NETWORK.")
 
-(setq one-key-menu-web-alist
+(setq one-key-menu-network-alist
       '(
         (("<f3>" . "w3m-init") . lch-w3m-init)                             ;; => lch-web.el
         (("<f4>" . "wget") . wget)                                         ;; => lch-web.el
+        (("<f6>" . "lch-erc-init") . lch-erc-init)                         ;; => lch-network.el
+        (("<f7>" . "lch-erc-quit") . lch-erc-quit)                         ;; => lch-network.el        
         (("d" . "wget") . wget)                                            ;; => lch-web.el
+        (("e" . "lch-erc-init") . lch-erc-init)                            ;; => lch-network.el        
         (("g" . "google") . lch-google)                                    ;; => lch-web.el
         (("s" . "w3m-search") . one-key-menu-w3m-search)                   ;; => lch-web.el
         ))
 
-(defun one-key-menu-web ()
-  "The `one-key' menu for WEB."
+(defun one-key-menu-network ()
+  "The `one-key' menu for NETWORK."
   (interactive)
-  (one-key-menu "WEB" one-key-menu-web-alist t))
-(define-key global-map (kbd "<f3> m") 'one-key-menu-web)
+  (one-key-menu "NETWORK" one-key-menu-network-alist t))
+(define-key global-map (kbd "<f3> m") 'one-key-menu-network)
 
 ;;; F4:  (buffer-edit-map)
 (lch-set-key
  '(
    ("<f4> f" . fill-region)
+   ("<f4> i" . indent-region)
    ))
 
 (defvar one-key-menu-edit-alist nil
@@ -425,6 +430,7 @@
         (("c" . "cleanup-buffer") . lch-cleanup-buffer)                    ;; => lch-util.el
         (("d" . "delete-buffer-n-file") . lch-delete-file-and-buffer)      ;; => lch-util.el
         (("f" . "fill-region") . fill-region)                              ;; => lch-binding.el
+        (("i" . "indent-region") . indent-region)                          ;; => lch-binding.el
         (("k" . "kill-all-buffers") . kill-all-buffers)                    ;; => lch-util.el
         (("p" . "punctuate-buffer") . lch-punctuate-buffer)                ;; => lch-util.el
         (("r" . "rename-buffer-n-file") . lch-rename-file-and-buffer)      ;; => lch-util.el
@@ -463,23 +469,16 @@
   (one-key-menu "BMK" one-key-menu-bmk-alist t))
 (define-key global-map (kbd "<f5> m") 'one-key-menu-bmk)
 
-;;; F6:  (network-map)
-;; Network apps like erc related.
-(defvar one-key-menu-network-alist nil
-  "The `one-key' menu alist for NETWORK.")
+;;; F6:  
+;; (setq one-key-menu-network-alist
+;;       '(
+;;         ))
 
-(setq one-key-menu-network-alist
-      '(
-        (("<f6>" . "lch-erc-init") . lch-erc-init)                         ;; => lch-network.el
-        (("e" . "lch-erc-init") . lch-erc-init)                            ;; => lch-network.el
-        (("q" . "lch-erc-quit") . lch-erc-quit)                            ;; => lch-network.el
-        ))
-
-(defun one-key-menu-network ()
-  "The `one-key' menu for NETWORK."
-  (interactive)
-  (one-key-menu "NETWORK" one-key-menu-network-alist t))
-(define-key global-map (kbd "<f6> m") 'one-key-menu-network)
+;; (defun one-key-menu-network ()
+;;   "The `one-key' menu for NETWORK."
+;;   (interactive)
+;;   (one-key-menu "NETWORK" one-key-menu-network-alist t))
+;; (define-key global-map (kbd "<f6> m") 'one-key-menu-network)
 
 ;;; F7:  (dictionary-map)
 (defvar one-key-menu-dict-alist nil

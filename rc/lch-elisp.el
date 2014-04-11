@@ -14,6 +14,9 @@
 ;;; CODE
 (message "=> lch-elisp: loading...")
 
+;;; Multiple-cursor
+(require 'multiple-cursors)
+(define-key global-map (kbd "<f2> <f2>") 'mc/edit-lines)
 ;;; Magit
 (require 'magit)
 (define-key global-map (kbd "<f1> g") 'magit-status)
@@ -157,6 +160,10 @@
 (autoload 'hexview-mode "hexview-mode"
   "Major mode for viewing file in hexical mode" t)
 (define-key global-map (kbd "<f11> x") 'hexview-mode)
+;;; Mathematica
+(require 'mathematica)
+(setq mathematica-command-line "/Applications/Mathematics/Mathematica.app/Contents/MacOS/MathKernel")
+(define-key global-map (kbd "M-5") 'mathematica)
 ;;; ESS
 (autoload 'ess-mode "ess-site" "Emacs Speaks Statistics" t)
 (autoload 'R-mode "ess-site" "Emacs Speaks Statistics" t)
@@ -456,10 +463,15 @@
 (require 'yasnippet)
 (defvar snippet-root-dir (concat emacs-lib-dir "/snippets") "")
 
-(defvar lch-snippet-dir (concat snippet-root-dir "/lch") "")
+;; order matters, put lch at last to overwrite others' conf if there's name
+;; conflict.
+(defvar andrea-snippet-dir (concat snippet-root-dir "/AndreaCrotti") "")
 (defvar rejeep-snippet-dir (concat snippet-root-dir "/rejeep") "")
+(defvar lch-snippet-dir (concat snippet-root-dir "/lch") "")
+
 (add-to-list 'yas-snippet-dirs lch-snippet-dir)
 (add-to-list 'yas-snippet-dirs rejeep-snippet-dir)
+(add-to-list 'yas-snippet-dirs andrea-snippet-dir)
 
 (yas-global-mode 1)
 

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org-code
+# key: cd
+# --
+#+begin_src ${1:lang}
+$0
+#+end_src

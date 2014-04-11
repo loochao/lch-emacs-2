@@ -30,17 +30,19 @@
   ;;(when (y-or-n-p "Do you want to start IRC? ")
   (erc :server "irc.freenode.net" :port 6667 :nick erc-nick))
 (define-key global-map (kbd "<f2> e") 'lch-erc-init)
-(define-key global-map (kbd "<f6> <f6>") 'lch-erc-init)
+;; <f3> network map, -f3 w3m, -f4 wget, -f6 erc, -f7 erc-quit
+(define-key global-map (kbd "<f3> <f6>") 'lch-erc-init)
 
 (defun lch-erc-emacs ()
   (interactive)
   (try-to-switch-buffer "#emacs"))
-(define-key global-map (kbd "<f6> e") 'lch-erc-emacs)
+(define-key global-map (kbd "<f3> e") 'lch-erc-emacs)
 
+;; FIXME: kill-buffer-by-mode NOT defined.
 (defun lch-erc-quit ()
   (interactive)
   (kill-buffers-by-mode 'erc-mode))
-(define-key global-map (kbd "<f6> q") 'lch-erc-quit)
+(define-key global-map (kbd "<f3> <f7>") 'lch-erc-quit)
 
 ;; Instead of #c, use ##c.
 (setq erc-autojoin-channels-alist

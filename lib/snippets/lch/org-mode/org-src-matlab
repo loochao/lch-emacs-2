@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org-src-matlab
+# key: sm
+# --
+#+begin_src matlab
+$0
+#+end_src

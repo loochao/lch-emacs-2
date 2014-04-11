@@ -1,1 +1,15 @@
 Both this dir and /lisp/yasnippets/snippets are to be loaded.
+After adding the new snippets, there's an option in YASnippet menu to reload everything.
+
+有key:sm的话, sm然后trigger. 若此项为空, 则以文件名为trigger.
+
+$0 代表光标的位置.
+Example
+-------
+# -*- mode: snippet -*-
+# name: org-src-matlab
+# key: sm
+# --
+#+begin_src matlab
+$0
+#+end_src

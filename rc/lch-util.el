@@ -21,11 +21,18 @@
 
 (defun lch-matlab ()
   (interactive)
-  (if (get-buffer "*MATLAB*")
-      (switch-to-buffer "*MATLAB*")
-    (matlab-shell)))
+      (if (get-buffer "*MATLAB*")
+          (switch-to-buffer "*MATLAB*")
+        (if (yes-or-no-p "Start Matlab?") (matlab-shell))))
 (define-key global-map (kbd "M-2") 'lch-matlab)
 
+(defun lch-mathematica ()
+  (interactive)
+      (if (get-buffer "*Mathematica*")
+          (switch-to-buffer "*Mathematica*")
+        (if (yes-or-no-p "Start Mathematica?")
+            (mathematica))))
+(define-key global-map (kbd "M-5") 'lch-mathematica)
 
 (defun lch-python ()
   (interactive)
@@ -69,7 +76,10 @@
     ("“" "\"") ("”" "\"") ("（" "(") ("）" ")")
     ("【" "[") ("】" "]") ("《" "<") ("》" ">")
     ("…" "...") ("～" "~") ("——" "--")
-    ("：" ":") ("！" "!") ("？" "?")
+    ("：" ":") ("！" "!") ("？" "?") ("　" " ") 
+    ("〈" "<") ("〉" ">") ("「" "'") ("」" "'")
+    ("１" "1") ("２" "2") ("３" "3") ("４" "4") ("５" "5")
+    ("６" "6") ("７" "7") ("８" "8") ("９" "9") ("０" "0")
     ))
 
 (defun lch-punctuate-buffer ()

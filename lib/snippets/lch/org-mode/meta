@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-#name : org-meta
+# name: org-meta
 # --
 #+-*- coding:utf-8 -*-
 #+Title: ${1:title}
